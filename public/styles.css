@@ -1,0 +1,409 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f7f4;
+  --ink: #17201b;
+  --muted: #68746d;
+  --line: #dce3dd;
+  --panel: #ffffff;
+  --panel-soft: #eef5f1;
+  --green: #1f7a4d;
+  --red: #b13c3c;
+  --blue: #315f91;
+  --amber: #a66c16;
+  --shadow: 0 18px 42px rgba(23, 32, 27, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    "Segoe UI",
+    "Noto Sans JP",
+    system-ui,
+    sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px clamp(18px, 4vw, 46px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: 0.95rem;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 0.73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 40px;
+  padding: 0 14px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #b8c7be;
+  background: #f7faf8;
+}
+
+.primary-button {
+  border-color: #214c36;
+  background: #214c36;
+  color: #fff;
+}
+
+.primary-button:hover {
+  background: #173d2a;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  grid-template-areas:
+    "summary side"
+    "market side"
+    "news side";
+  gap: 18px;
+  padding: 22px clamp(18px, 4vw, 46px) 42px;
+}
+
+.summary-panel,
+.market-panel,
+.news-panel,
+.side-panel section {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.summary-panel {
+  grid-area: summary;
+  padding: 22px;
+}
+
+.market-panel {
+  grid-area: market;
+  padding: 22px;
+}
+
+.news-panel {
+  grid-area: news;
+  padding: 22px;
+}
+
+.side-panel {
+  grid-area: side;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.side-panel section {
+  padding: 18px;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.panel-heading.compact {
+  margin-bottom: 12px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  padding: 0 9px;
+  background: var(--panel-soft);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.status-pill.live {
+  border-color: #c4ded0;
+  background: #e7f6ee;
+  color: var(--green);
+}
+
+.status-pill.demo {
+  border-color: #ead7ad;
+  background: #fff6de;
+  color: var(--amber);
+}
+
+.summary-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.summary-list li {
+  padding-left: 14px;
+  border-left: 4px solid #8eb5a1;
+  line-height: 1.65;
+  color: #26352d;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(145px, 1fr));
+  gap: 12px;
+}
+
+.market-card {
+  min-height: 178px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 13px;
+  background: #fbfdfb;
+}
+
+.market-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 24px;
+}
+
+.change {
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.change.up {
+  color: var(--green);
+}
+
+.change.down {
+  color: var(--red);
+}
+
+.market-value {
+  margin-top: 12px;
+  font-size: 1.55rem;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 54px;
+  margin-top: 8px;
+}
+
+.market-source {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.news-list {
+  display: grid;
+  gap: 10px;
+}
+
+.news-item {
+  display: grid;
+  gap: 8px;
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+}
+
+.news-item:first-child {
+  border-top: 0;
+}
+
+.news-item a {
+  color: #163c5c;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.news-item a:hover {
+  text-decoration: underline;
+}
+
+.news-meta,
+.news-summary {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #eaf0f8;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.event-list,
+.source-list {
+  display: grid;
+  gap: 10px;
+}
+
+.event-card,
+.source-card {
+  border-left: 4px solid #6f9db4;
+  padding: 9px 0 9px 10px;
+}
+
+.event-card time,
+.source-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.event-card strong,
+.source-card strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.source-card.ok {
+  border-left-color: var(--green);
+}
+
+.source-card.fail {
+  border-left-color: var(--amber);
+}
+
+@media (max-width: 1100px) {
+  .market-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 840px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .actions button {
+    flex: 1 1 130px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "summary"
+      "market"
+      "news"
+      "side";
+  }
+}
+
+@media (max-width: 520px) {
+  .layout {
+    padding-inline: 12px;
+  }
+
+  .summary-panel,
+  .market-panel,
+  .news-panel,
+  .side-panel section {
+    padding: 16px;
+  }
+
+  .market-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .market-card {
+    min-height: 160px;
+  }
+}

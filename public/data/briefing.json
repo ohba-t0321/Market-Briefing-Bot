@@ -1,0 +1,277 @@
+{
+  "generatedAt": "2026-05-11T15:54:49.289Z",
+  "generatedAtTokyo": "2026/05/12 0:54",
+  "status": {
+    "newsLive": false,
+    "marketLive": false,
+    "timezone": "Asia/Tokyo"
+  },
+  "summary": [
+    "日本公式ソースから2件、海外重要ソースから0件を抽出しました。",
+    "注目キーワードは RSS / 統計 / 金融政策 / TOPIX / 市場データ です。",
+    "主な値動きは JGB 10Y +2.90%、Nikkei 225 +0.72%、TOPIX +0.45%。市場データはデモ表示です。APIまたはベンダー契約を設定してください。",
+    "投資判断は一次資料と取引先データで必ず再確認してください。"
+  ],
+  "markets": [
+    {
+      "id": "nikkei-demo",
+      "name": "Nikkei 225",
+      "value": 38420.15,
+      "change": 274.22,
+      "changePct": 0.72,
+      "unit": "pt",
+      "date": "demo",
+      "source": "Demo fallback",
+      "spark": [
+        37200,
+        37420,
+        37340,
+        37830,
+        38100,
+        38020,
+        38420
+      ]
+    },
+    {
+      "id": "topix-demo",
+      "name": "TOPIX",
+      "value": 2743.18,
+      "change": 12.24,
+      "changePct": 0.45,
+      "unit": "pt",
+      "date": "demo",
+      "source": "Demo fallback",
+      "spark": [
+        2698,
+        2714,
+        2705,
+        2722,
+        2730,
+        2731,
+        2743
+      ]
+    },
+    {
+      "id": "usdjpy-demo",
+      "name": "USD/JPY",
+      "value": 155.24,
+      "change": -0.28,
+      "changePct": -0.18,
+      "unit": "JPY",
+      "date": "demo",
+      "source": "Demo fallback",
+      "spark": [
+        156.1,
+        155.9,
+        155.6,
+        155.7,
+        155.4,
+        155.5,
+        155.24
+      ]
+    },
+    {
+      "id": "jgb-demo",
+      "name": "JGB 10Y",
+      "value": 1.42,
+      "change": 0.04,
+      "changePct": 2.9,
+      "unit": "%",
+      "date": "demo",
+      "source": "Demo fallback",
+      "spark": [
+        1.31,
+        1.34,
+        1.32,
+        1.36,
+        1.39,
+        1.38,
+        1.42
+      ]
+    },
+    {
+      "id": "spx-demo",
+      "name": "S&P 500",
+      "value": 5328.44,
+      "change": -18.2,
+      "changePct": -0.34,
+      "unit": "pt",
+      "date": "demo",
+      "source": "Demo fallback",
+      "spark": [
+        5356,
+        5364,
+        5342,
+        5338,
+        5349,
+        5336,
+        5328
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": "fallback-boj",
+      "title": "日銀・政府統計・海外中銀RSSの取得待ち",
+      "link": "https://www.boj.or.jp/rss.htm",
+      "publishedAt": "2026-05-11T15:54:48.801Z",
+      "source": "Demo fallback",
+      "region": "Japan",
+      "summary": "ネットワークまたはRSS配信元に接続できない場合の表示です。実運用では公式RSSとAPIから直近項目を取り込みます。",
+      "keywords": [
+        "RSS",
+        "統計",
+        "金融政策"
+      ],
+      "score": 4
+    },
+    {
+      "id": "fallback-market",
+      "title": "市場データは無料ソースで試作、実運用はライセンス契約を推奨",
+      "link": "https://www.jpx.co.jp/english/markets/",
+      "publishedAt": "2026-05-11T15:54:48.802Z",
+      "source": "Demo fallback",
+      "region": "Japan",
+      "summary": "指数・株価・債券利回りは、用途に応じてJPX、情報ベンダー、または有償APIへ切り替える設計です。",
+      "keywords": [
+        "TOPIX",
+        "市場データ",
+        "ライセンス"
+      ],
+      "score": 3
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-05-12",
+      "region": "Japan",
+      "title": "景気動向指数 2026年3月速報",
+      "source": "内閣府ESRI"
+    },
+    {
+      "date": "2026-05-21",
+      "region": "Japan",
+      "title": "機械受注 2026年3月",
+      "source": "内閣府ESRI"
+    },
+    {
+      "date": "2026-05-29",
+      "region": "Japan",
+      "title": "消費者態度指数 2026年5月",
+      "source": "内閣府ESRI"
+    },
+    {
+      "date": "2026-06-05",
+      "region": "Japan",
+      "title": "景気動向指数 2026年4月速報",
+      "source": "内閣府ESRI"
+    }
+  ],
+  "sourceHealth": [
+    {
+      "id": "boj-stat",
+      "name": "日本銀行 統計RSS",
+      "region": "Japan",
+      "ok": false,
+      "count": 0,
+      "error": "fetch failed"
+    },
+    {
+      "id": "boj",
+      "name": "日本銀行 新着RSS",
+      "region": "Japan",
+      "ok": false,
+      "count": 0,
+      "error": "fetch failed"
+    },
+    {
+      "id": "cao",
+      "name": "内閣府 報道発表RSS",
+      "region": "Japan",
+      "ok": false,
+      "count": 0,
+      "error": "fetch failed"
+    },
+    {
+      "id": "fsa",
+      "name": "金融庁 新着RSS",
+      "region": "Japan",
+      "ok": false,
+      "count": 0,
+      "error": "fetch failed"
+    },
+    {
+      "id": "fed",
+      "name": "FRB Press Releases",
+      "region": "Global",
+      "ok": false,
+      "count": 0,
+      "error": "fetch failed"
+    },
+    {
+      "id": "bls",
+      "name": "BLS Latest Numbers",
+      "region": "Global",
+      "ok": false,
+      "count": 0,
+      "error": "fetch failed"
+    },
+    {
+      "id": "ecb",
+      "name": "ECB News",
+      "region": "Global",
+      "ok": false,
+      "count": 0,
+      "error": "fetch failed"
+    }
+  ],
+  "marketErrors": [
+    {
+      "id": "nikkei",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "id": "topix",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "id": "usdjpy",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "id": "spx",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "id": "us10y",
+      "ok": false,
+      "error": "fetch failed"
+    }
+  ],
+  "sources": [
+    {
+      "name": "BOJ RSS / BOJ Time-Series Data Search API",
+      "url": "https://www.boj.or.jp/rss.htm"
+    },
+    {
+      "name": "e-Stat / 統計ダッシュボードAPI",
+      "url": "https://dashboard.e-stat.go.jp/static/api"
+    },
+    {
+      "name": "Cabinet Office ESRI release schedule",
+      "url": "https://www.esri.cao.go.jp/en/stat/stat-schedule-e.html"
+    },
+    {
+      "name": "Federal Reserve RSS",
+      "url": "https://www.federalreserve.gov/feeds/feeds.htm"
+    },
+    {
+      "name": "BLS RSS",
+      "url": "https://www.bls.gov/feed/"
+    }
+  ]
+}

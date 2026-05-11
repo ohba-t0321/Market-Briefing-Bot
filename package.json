@@ -1,0 +1,14 @@
+{
+  "name": "market-morning-brief",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Morning market and economic indicator briefing dashboard for Japan-focused monitoring.",
+  "scripts": {
+    "start": "node server.js",
+    "brief": "node server.js brief",
+    "export": "node server.js export public/data/briefing.json"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

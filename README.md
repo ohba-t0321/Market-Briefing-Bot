@@ -1,5 +1,35 @@
 # Market Briefing Bot
 
+## GitHub Pages
+
+日本の金融・経済指標を中心に、公式RSSと市場データを朝の確認用にまとめるダッシュボードを追加しています。ブラウザからPPTX形式のサマリースライドをダウンロードできます。
+
+公開URL:
+
+```text
+https://ohba-t0321.github.io/Market-Briefing-Bot/
+```
+
+GitHub Actions で `public/data/briefing.json` を毎朝 7:30 JST に生成し、`public/` を GitHub Pages にデプロイします。
+
+ローカル起動:
+
+```powershell
+npm start
+```
+
+朝刊テキスト出力:
+
+```powershell
+npm run brief
+```
+
+GitHub Pages用データ生成:
+
+```powershell
+npm run export
+```
+
 ## 入力データ仕様（引用メタデータ）
 
 外部情報を使う項目は、`source_name` と `source_url` を持てる仕様とする。

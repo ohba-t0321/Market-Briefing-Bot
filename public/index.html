@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Market Morning Brief</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Japan-focused market monitor</p>
+        <h1>金融指標・ニュース朝刊</h1>
+      </div>
+      <div class="actions">
+        <button id="refreshBtn" class="icon-button" type="button" title="最新データを取得">更新</button>
+        <button id="downloadBtn" class="primary-button" type="button" title="PPTXでダウンロード">スライドDL</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="summary-panel" aria-labelledby="summaryTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Morning digest</p>
+            <h2 id="summaryTitle">今朝の要点</h2>
+          </div>
+          <span id="liveBadge" class="status-pill">取得中</span>
+        </div>
+        <ul id="summaryList" class="summary-list"></ul>
+        <div class="meta-row">
+          <span id="generatedAt">--</span>
+          <span>投資助言ではありません</span>
+        </div>
+      </section>
+
+      <section class="market-panel" aria-labelledby="marketTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Price action</p>
+            <h2 id="marketTitle">値動き</h2>
+          </div>
+          <span id="marketBadge" class="status-pill">--</span>
+        </div>
+        <div id="marketGrid" class="market-grid"></div>
+      </section>
+
+      <section class="news-panel" aria-labelledby="newsTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Official feeds</p>
+            <h2 id="newsTitle">重要ニュース</h2>
+          </div>
+          <span id="newsCount" class="status-pill">--</span>
+        </div>
+        <div id="newsList" class="news-list"></div>
+      </section>
+
+      <aside class="side-panel">
+        <section aria-labelledby="eventTitle">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Calendar</p>
+              <h2 id="eventTitle">予定</h2>
+            </div>
+          </div>
+          <div id="eventList" class="event-list"></div>
+        </section>
+
+        <section aria-labelledby="sourceTitle">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Pipelines</p>
+              <h2 id="sourceTitle">取得元</h2>
+            </div>
+          </div>
+          <div id="sourceList" class="source-list"></div>
+        </section>
+      </aside>
+    </main>
+
+    <template id="marketTemplate">
+      <article class="market-card">
+        <div class="market-top">
+          <h3></h3>
+          <span class="change"></span>
+        </div>
+        <div class="market-value"></div>
+        <canvas width="220" height="54"></canvas>
+        <p class="market-source"></p>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
