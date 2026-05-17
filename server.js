@@ -7,9 +7,18 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const PORT = Number(process.env.PORT || 4173);
 const TZ = "Asia/Tokyo";
 const FETCH_TIMEOUT_MS = 8500;
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+const OPENAI_MODEL = process.env.OPENAI_MODEL || "auto";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
 const isMain = require.main === module;
+
+const MODEL_PRIORITY = [
+  "gpt-5",
+  "gpt-5-mini",
+  "o3",
+  "o4-mini",
+  "gpt-4.1"
+];
+let cachedOpenAiModel = null;
 
 const OFFICIAL_FEEDS = [
   {
@@ -440,6 +449,32 @@ function getUpcomingEvents() {
   return RELEASE_CALENDAR.filter((event) => event.date >= todayKey).slice(0, 5);
 }
 
+async function resolveOpenAiModel() {
+  if (OPENAI_MODEL !== "auto") {
+    return OPENAI_MODEL;
+  }
+  if (cachedOpenAiModel) {
+    return cachedOpenAiModel;
+  }
+
+  const response = await fetch("https://api.openai.com/v1/models", {
+    headers: {
+      authorization: `Bearer ${OPENAI_API_KEY}`
+    }
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`OpenAI model list request failed (${response.status}): ${detail}`);
+  }
+
+  const payload = await response.json();
+  const ids = new Set((payload.data || []).map((item) => item.id));
+  const selected = MODEL_PRIORITY.find((id) => ids.has(id));
+  cachedOpenAiModel = selected || "gpt-4.1";
+  return cachedOpenAiModel;
+}
+
 function buildSummary(newsItems, markets, isLive) {
   const japanCount = newsItems.filter((item) => item.region === "Japan").length;
   const globalCount = newsItems.filter((item) => item.region !== "Japan").length;
@@ -501,7 +536,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
       authorization: `Bearer ${OPENAI_API_KEY}`
     },
     body: JSON.stringify({
-      model: OPENAI_MODEL,
+      model: await resolveOpenAiModel(),
       input: [
         {
           role: "system",
@@ -521,23 +556,29 @@ async function generateAiSummary(newsItems, markets, isLive) {
   }
 
   const payload = await response.json();
+  const selectedModel = payload.model || await resolveOpenAiModel();
   const text = payload.output_text;
   if (!text || typeof text !== "string") {
     return null;
   }
 
-  return text
+  const lines = text
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter(Boolean)
     .slice(0, 4);
+
+  return { lines, model: selectedModel };
 }
 
 async function buildBriefing() {
   const [news, markets] = await Promise.all([fetchNews(), fetchMarkets()]);
   let aiSummary = null;
+  let aiModel = null;
   try {
-    aiSummary = await generateAiSummary(news.items, markets.items, markets.isLive);
+    const aiResult = await generateAiSummary(news.items, markets.items, markets.isLive);
+    aiSummary = aiResult?.lines || null;
+    aiModel = aiResult?.model || null;
   } catch (error) {
     console.warn(String(error?.message || error));
   }
@@ -550,7 +591,7 @@ async function buildBriefing() {
       timezone: TZ
     },
     summary: aiSummary || buildSummary(news.items, markets.items, markets.isLive),
-    summarySource: aiSummary ? `OpenAI:${OPENAI_MODEL}` : "rule-based",
+    summarySource: aiSummary ? `OpenAI:${aiModel || OPENAI_MODEL}` : "rule-based",
     markets: markets.items,
     news: news.items,
     events: getUpcomingEvents(),
