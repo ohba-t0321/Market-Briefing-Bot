@@ -10,7 +10,17 @@
 https://ohba-t0321.github.io/Market-Briefing-Bot/
 ```
 
-GitHub Actions で `public/data/briefing.json` を毎朝 7:30 JST に生成し、`public/` を GitHub Pages にデプロイします。
+GitHub Actions で `public/data/briefing.json` を毎朝 7:30 JST（UTC 22:30）に生成し、`public/` を GitHub Pages にデプロイします。手動で実行ボタンを押さなくても日次で自動実行されます。
+
+`OPENAI_API_KEY` を GitHub Secrets に設定すると、要約文は OpenAI API で自動生成されます。未設定時は既存のルールベース要約に自動フォールバックします。
+
+### OpenAI API を使った日次自動要約の設定
+
+1. GitHub リポジトリの **Settings → Secrets and variables → Actions** を開く
+2. Secret に `OPENAI_API_KEY` を登録
+3. （任意）Repository variable `OPENAI_MODEL` を登録（例: `gpt-4.1-mini`）
+
+これで毎朝のスケジュール実行時に、最新ニュース・市場データを使ったテキスト要約が自動生成されます。
 
 ローカル起動:
 
