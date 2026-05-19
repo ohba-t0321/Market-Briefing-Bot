@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-17T11:24:01.042Z",
-  "generatedAtTokyo": "2026/05/17 20:24",
+  "generatedAt": "2026-05-19T22:57:51.911Z",
+  "generatedAtTokyo": "2026/05/20 7:57",
   "status": {
     "newsLive": false,
     "marketLive": false,
@@ -115,7 +115,7 @@
       "id": "fallback-boj",
       "title": "日銀・政府統計・海外中銀RSSの取得待ち",
       "link": "https://www.boj.or.jp/rss.htm",
-      "publishedAt": "2026-05-17T11:23:52.421Z",
+      "publishedAt": "2026-05-19T22:57:43.278Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "ネットワークまたはRSS配信元に接続できない場合の表示です。実運用では公式RSSとAPIから直近項目を取り込みます。",
@@ -130,7 +130,7 @@
       "id": "fallback-market",
       "title": "市場データは無料ソースで試作、実運用はライセンス契約を推奨",
       "link": "https://www.jpx.co.jp/english/markets/",
-      "publishedAt": "2026-05-17T11:23:52.422Z",
+      "publishedAt": "2026-05-19T22:57:43.279Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "指数・株価・債券利回りは、用途に応じてJPX、情報ベンダー、または有償APIへ切り替える設計です。",
@@ -193,7 +193,7 @@
       "region": "Japan",
       "ok": false,
       "count": 0,
-      "error": "fetch failed"
+      "error": "This operation was aborted"
     },
     {
       "id": "fed",

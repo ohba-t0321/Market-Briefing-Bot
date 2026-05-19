@@ -19,10 +19,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: npm run export
+      - name: Export briefing JSON
+        run: npm run export
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'auto' }}
+      - name: Show summary source in generated JSON
+        run: |
+          node -e "const fs=require('fs');const p='public/data/briefing.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));console.log('[briefing] generatedAtTokyo=',d.generatedAtTokyo);console.log('[briefing] summarySource=',d.summarySource);console.log('[briefing] newsLive=',d.status?.newsLive,'marketLive=',d.status?.marketLive);"
       - name: Publish static site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
