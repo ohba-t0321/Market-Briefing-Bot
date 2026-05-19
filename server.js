@@ -451,11 +451,15 @@ function getUpcomingEvents() {
 
 async function resolveOpenAiModel() {
   if (OPENAI_MODEL !== "auto") {
+    console.log(`[AI] OPENAI_MODEL is fixed: ${OPENAI_MODEL}`);
     return OPENAI_MODEL;
   }
   if (cachedOpenAiModel) {
+    console.log(`[AI] Reusing cached OpenAI model: ${cachedOpenAiModel}`);
     return cachedOpenAiModel;
   }
+
+  console.log("[AI] Resolving model via OpenAI /v1/models...");
 
   const response = await fetch("https://api.openai.com/v1/models", {
     headers: {
@@ -472,6 +476,7 @@ async function resolveOpenAiModel() {
   const ids = new Set((payload.data || []).map((item) => item.id));
   const selected = MODEL_PRIORITY.find((id) => ids.has(id));
   cachedOpenAiModel = selected || "gpt-4.1";
+  console.log(`[AI] Resolved model: ${cachedOpenAiModel}`);
   return cachedOpenAiModel;
 }
 
@@ -502,8 +507,11 @@ function buildSummary(newsItems, markets, isLive) {
 
 async function generateAiSummary(newsItems, markets, isLive) {
   if (!OPENAI_API_KEY) {
+    console.log("[AI] OPENAI_API_KEY is not set. Falling back to rule-based summary.");
     return null;
   }
+
+  console.log(`[AI] Attempting OpenAI summary generation (news=${newsItems.length}, markets=${markets.length}, isLive=${isLive})`);
 
   const topNews = newsItems.slice(0, 8).map((item) => ({
     title: item.title,
@@ -529,6 +537,9 @@ async function generateAiSummary(newsItems, markets, isLive) {
     markets: topMarkets
   };
 
+  const selectedModel = await resolveOpenAiModel();
+  console.log(`[AI] Calling OpenAI Responses API with model=${selectedModel}`);
+
   const response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
@@ -536,7 +547,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
       authorization: `Bearer ${OPENAI_API_KEY}`
     },
     body: JSON.stringify({
-      model: await resolveOpenAiModel(),
+      model: selectedModel,
       input: [
         {
           role: "system",
@@ -552,13 +563,16 @@ async function generateAiSummary(newsItems, markets, isLive) {
 
   if (!response.ok) {
     const detail = await response.text();
+    console.warn(`[AI] OpenAI API returned non-OK status: ${response.status}`);
     throw new Error(`OpenAI API request failed (${response.status}): ${detail}`);
   }
 
   const payload = await response.json();
-  const selectedModel = payload.model || await resolveOpenAiModel();
+  const resolvedModel = payload.model || selectedModel;
+  console.log(`[AI] OpenAI summary generation succeeded. response_model=${resolvedModel}`);
   const text = payload.output_text;
   if (!text || typeof text !== "string") {
+    console.warn("[AI] OpenAI response did not contain output_text. Falling back to rule-based summary.");
     return null;
   }
 
@@ -568,7 +582,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
     .filter(Boolean)
     .slice(0, 4);
 
-  return { lines, model: selectedModel };
+  return { lines, model: resolvedModel };
 }
 
 async function buildBriefing() {
@@ -580,7 +594,7 @@ async function buildBriefing() {
     aiSummary = aiResult?.lines || null;
     aiModel = aiResult?.model || null;
   } catch (error) {
-    console.warn(String(error?.message || error));
+    console.warn(`[AI] Failed to generate OpenAI summary. ${String(error?.message || error)}`);
   }
   const briefing = {
     generatedAt: nowIso(),
