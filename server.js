@@ -480,6 +480,28 @@ async function resolveOpenAiModel() {
   return cachedOpenAiModel;
 }
 
+function extractResponseText(payload) {
+  if (!payload || typeof payload !== "object") return null;
+
+  if (typeof payload.output_text === "string" && payload.output_text.trim()) {
+    return payload.output_text.trim();
+  }
+
+  if (!Array.isArray(payload.output)) return null;
+
+  const textChunks = [];
+  for (const item of payload.output) {
+    if (!item || item.type !== "message" || !Array.isArray(item.content)) continue;
+    for (const content of item.content) {
+      if (!content || content.type !== "output_text" || typeof content.text !== "string") continue;
+      const value = content.text.trim();
+      if (value) textChunks.push(value);
+    }
+  }
+
+  return textChunks.length ? textChunks.join("\n") : null;
+}
+
 function buildSummary(newsItems, markets, isLive) {
   const japanCount = newsItems.filter((item) => item.region === "Japan").length;
   const globalCount = newsItems.filter((item) => item.region !== "Japan").length;
@@ -576,7 +598,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
 
   const resolvedModel = payload.model || selectedModel;
   console.log(`[AI] OpenAI summary generation succeeded. response_model=${resolvedModel}`);
-  const text = payload.output_text;
+  const text = extractResponseText(payload);
   if (!text || typeof text !== "string") {
     console.warn("[AI] OpenAI response did not contain output_text. Falling back to rule-based summary.");
     return null;
