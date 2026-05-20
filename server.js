@@ -568,6 +568,12 @@ async function generateAiSummary(newsItems, markets, isLive) {
   }
 
   const payload = await response.json();
+  try {
+    console.log(`[AI] Raw OpenAI Responses payload: ${JSON.stringify(payload)}`);
+  } catch (error) {
+    console.warn(`[AI] Failed to stringify raw OpenAI payload: ${String(error?.message || error)}`);
+  }
+
   const resolvedModel = payload.model || selectedModel;
   console.log(`[AI] OpenAI summary generation succeeded. response_model=${resolvedModel}`);
   const text = payload.output_text;
