@@ -207,6 +207,17 @@ button:hover {
   color: #26352d;
 }
 
+.inline-source {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.inline-source a,
+.market-source a {
+  color: var(--blue);
+}
+
 .meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -257,6 +268,18 @@ button:hover {
   font-size: 1.55rem;
   font-weight: 850;
   letter-spacing: 0;
+}
+
+.market-source {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.market-basis {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
 }
 
 canvas {
