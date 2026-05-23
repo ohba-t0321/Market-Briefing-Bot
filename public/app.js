@@ -15,6 +15,15 @@ const els = {
   marketTemplate: document.querySelector("#marketTemplate")
 };
 
+const MARKET_SOURCE_LINKS = {
+  nikkei: "https://indexes.nikkei.co.jp/en/nkave",
+  topix: "https://www.jpx.co.jp/english/markets/indices/topix/",
+  usdjpy: "https://www.investing.com/currencies/usd-jpy",
+  jgb: "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/index.htm",
+  us10y: "https://fred.stlouisfed.org/series/DGS10",
+  spx: "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
+};
+
 function formatNumber(value, unit) {
   const digits = unit === "JPY" || unit === "%" ? 3 : 2;
   return Number(value).toLocaleString("ja-JP", {
@@ -36,6 +45,23 @@ function setPill(el, text, mode) {
   el.textContent = text;
   el.classList.remove("live", "demo");
   if (mode) el.classList.add(mode);
+}
+
+function pickMarketSourceLink(data, market) {
+  const marketId = String(market.id || "").toLowerCase();
+  const knownKey = Object.keys(MARKET_SOURCE_LINKS).find((key) => marketId.includes(key));
+  if (knownKey) return MARKET_SOURCE_LINKS[knownKey];
+
+  const sourceName = String(market.source || "").toLowerCase();
+  const sourceCandidate = (data.sources || []).find((source) => sourceName && String(source.name || "").toLowerCase().includes(sourceName));
+  return sourceCandidate?.url || "";
+}
+
+function getChangeBasisLabel(market) {
+  if (Array.isArray(market.spark) && market.spark.length >= 2) {
+    return "増減率: 直前サンプル比";
+  }
+  return "増減率: 前回終値（または前回取得値）比";
 }
 
 function drawSparkline(canvas, values, positive) {
@@ -71,13 +97,23 @@ function drawSparkline(canvas, values, positive) {
 }
 
 function renderSummary(data) {
-  els.summaryList.replaceChildren(
-    ...data.summary.map((line) => {
+  const summaryNodes = data.summary.map((line, index) => {
       const li = document.createElement("li");
       li.textContent = line;
+      if (index === data.summary.length - 1 && data.news?.[0]?.link) {
+        const cite = document.createElement("p");
+        cite.className = "inline-source";
+        const link = document.createElement("a");
+        link.href = data.news[0].link;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "要約の根拠ニュース";
+        cite.append("出所: ", link);
+        li.append(cite);
+      }
       return li;
-    })
-  );
+    });
+  els.summaryList.replaceChildren(...summaryNodes);
   els.generatedAt.textContent = `生成: ${data.generatedAtTokyo || formatDate(data.generatedAt)}`;
   const mode = data.status.newsLive ? "live" : "demo";
   setPill(els.liveBadge, data.status.newsLive ? "公式RSS" : "デモ", mode);
@@ -92,6 +128,8 @@ function renderMarkets(data) {
     const change = node.querySelector(".change");
     const value = node.querySelector(".market-value");
     const source = node.querySelector(".market-source");
+    const basis = document.createElement("p");
+    basis.className = "market-basis";
     const canvas = node.querySelector("canvas");
     const positive = Number(market.changePct) >= 0;
     title.textContent = market.name;
@@ -99,6 +137,17 @@ function renderMarkets(data) {
     change.classList.add(positive ? "up" : "down");
     value.textContent = `${formatNumber(market.value, market.unit)} ${market.unit}`;
     source.textContent = `${market.source} / ${market.date || "latest"}`;
+    const sourceLink = pickMarketSourceLink(data, market);
+    if (sourceLink) {
+      const a = document.createElement("a");
+      a.href = sourceLink;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "元データ";
+      source.append(" / ", a);
+    }
+    basis.textContent = getChangeBasisLabel(market);
+    source.after(basis);
     card.dataset.market = market.id;
     drawSparkline(canvas, market.spark, positive);
     els.marketGrid.append(node);
