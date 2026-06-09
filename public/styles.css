@@ -381,6 +381,81 @@ canvas {
   border-left-color: var(--amber);
 }
 
+.source-feed-link {
+  display: inline-block;
+  margin-top: 5px;
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.rss-details {
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdfb;
+}
+
+.rss-details summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.rss-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.rss-details summary::before {
+  content: ">";
+  width: 1em;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.rss-details[open] summary::before {
+  content: "v";
+}
+
+.rss-item-list {
+  display: grid;
+  gap: 10px;
+  max-height: 420px;
+  overflow: auto;
+  padding: 0 10px 10px;
+}
+
+.rss-item {
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+}
+
+.rss-item a {
+  color: #163c5c;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.rss-item a:hover {
+  text-decoration: underline;
+}
+
+.rss-meta,
+.rss-body {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 1100px) {
   .market-grid {
     grid-template-columns: repeat(2, minmax(180px, 1fr));

@@ -349,6 +349,12 @@ function parseFeed(xml, source) {
     .sort((a, b) => b.score - a.score || Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 }
 
+function withCacheBuster(url) {
+  const parsed = new URL(url);
+  parsed.searchParams.set("_", String(Date.now()));
+  return parsed.toString();
+}
+
 async function fetchText(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
@@ -356,7 +362,9 @@ async function fetchText(url) {
     const response = await fetch(url, {
       signal: controller.signal,
       headers: {
-        "user-agent": "market-morning-brief/0.1 (+local dashboard)"
+        "user-agent": "market-morning-brief/0.1 (+local dashboard)",
+        "cache-control": "no-cache",
+        pragma: "no-cache"
       }
     });
     if (!response.ok) {
@@ -381,13 +389,27 @@ async function fetchNews() {
 
   const sourceHealth = results.map((result, index) => {
     const source = OFFICIAL_FEEDS[index];
+    const items = result.status === "fulfilled" ? result.value.items : [];
+    const rssItems = items
+      .slice()
+      .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+      .slice(0, 12)
+      .map((item) => ({
+        title: item.title,
+        link: item.link,
+        publishedAt: item.publishedAt,
+        summary: item.summary,
+        keywords: item.keywords
+      }));
     return {
       id: source.id,
       name: source.name,
       region: source.region,
       ok: result.status === "fulfilled",
-      count: result.status === "fulfilled" ? result.value.items.length : 0,
-      error: result.status === "rejected" ? String(result.reason?.message || result.reason) : ""
+      count: items.length,
+      error: result.status === "rejected" ? String(result.reason?.message || result.reason) : "",
+      feedUrl: source.url,
+      rssItems
     };
   });
 
@@ -441,7 +463,7 @@ function parseMarketCsv(csv, symbol, fetchedAt = nowIso()) {
 async function fetchMarkets() {
   const results = await Promise.allSettled(
     MARKET_SYMBOLS.map(async (symbol) => {
-      const csv = await fetchText(symbol.url);
+      const csv = await fetchText(withCacheBuster(symbol.url));
       return parseMarketCsv(csv, symbol, nowIso());
     })
   );

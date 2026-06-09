@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-08T23:45:16.178Z",
-  "generatedAtTokyo": "2026/06/09 8:45",
+  "generatedAt": "2026-06-09T15:21:45.587Z",
+  "generatedAtTokyo": "2026/06/10 0:21",
   "status": {
     "newsLive": false,
     "marketLive": false,
@@ -181,7 +181,7 @@
       "link": "https://www.boj.or.jp/rss.htm",
       "sourceUrl": "https://www.boj.or.jp/rss.htm",
       "sourceFeedUrl": "https://www.boj.or.jp/rss.htm",
-      "publishedAt": "2026-06-08T23:45:07.569Z",
+      "publishedAt": "2026-06-09T15:21:36.959Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "ネットワークまたはRSS配信元に接続できない場合の表示です。実運用では公式RSSとAPIから直近項目を取り込みます。",
@@ -198,7 +198,7 @@
       "link": "https://www.jpx.co.jp/english/markets/",
       "sourceUrl": "https://www.jpx.co.jp/english/markets/",
       "sourceFeedUrl": "https://www.jpx.co.jp/english/markets/",
-      "publishedAt": "2026-06-08T23:45:07.570Z",
+      "publishedAt": "2026-06-09T15:21:36.960Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "指数・株価・債券利回りは、用途に応じてJPX、情報ベンダー、または有償APIへ切り替える設計です。",
@@ -218,7 +218,9 @@
       "region": "Japan",
       "ok": false,
       "count": 0,
-      "error": "fetch failed"
+      "error": "fetch failed",
+      "feedUrl": "https://www.boj.or.jp/rss/statistics.xml",
+      "rssItems": []
     },
     {
       "id": "boj",
@@ -226,7 +228,9 @@
       "region": "Japan",
       "ok": false,
       "count": 0,
-      "error": "fetch failed"
+      "error": "fetch failed",
+      "feedUrl": "https://www.boj.or.jp/rss/whatsnew.xml",
+      "rssItems": []
     },
     {
       "id": "cao",
@@ -234,7 +238,9 @@
       "region": "Japan",
       "ok": false,
       "count": 0,
-      "error": "fetch failed"
+      "error": "fetch failed",
+      "feedUrl": "https://www.cao.go.jp/rss/news.rdf",
+      "rssItems": []
     },
     {
       "id": "fsa",
@@ -242,7 +248,9 @@
       "region": "Japan",
       "ok": false,
       "count": 0,
-      "error": "This operation was aborted"
+      "error": "fetch failed",
+      "feedUrl": "https://www.fsa.go.jp/fsaNewsListAll_rss2.xml",
+      "rssItems": []
     },
     {
       "id": "fed",
@@ -250,7 +258,9 @@
       "region": "Global",
       "ok": false,
       "count": 0,
-      "error": "This operation was aborted"
+      "error": "This operation was aborted",
+      "feedUrl": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "rssItems": []
     },
     {
       "id": "bls",
@@ -258,7 +268,9 @@
       "region": "Global",
       "ok": false,
       "count": 0,
-      "error": "This operation was aborted"
+      "error": "This operation was aborted",
+      "feedUrl": "https://www.bls.gov/feed/bls_latest.rss",
+      "rssItems": []
     },
     {
       "id": "ecb",
@@ -266,7 +278,9 @@
       "region": "Global",
       "ok": false,
       "count": 0,
-      "error": "This operation was aborted"
+      "error": "This operation was aborted",
+      "feedUrl": "https://www.ecb.europa.eu/rss/press.html",
+      "rssItems": []
     }
   ],
   "marketErrors": [
