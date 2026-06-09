@@ -219,10 +219,43 @@ function renderEvents(data) {
   );
 }
 
+function renderSourceRssItems(source) {
+  const items = source.rssItems || [];
+  if (!items.length) return null;
+
+  const details = document.createElement("details");
+  details.className = "rss-details";
+  const summary = document.createElement("summary");
+  summary.textContent = "参照したRSSの内容";
+  const list = document.createElement("div");
+  list.className = "rss-item-list";
+
+  items.forEach((item) => {
+    const block = document.createElement("article");
+    block.className = "rss-item";
+    const title = document.createElement("a");
+    title.href = item.link || source.feedUrl || "#";
+    title.target = "_blank";
+    title.rel = "noopener";
+    title.textContent = item.title || "無題";
+    const meta = document.createElement("p");
+    meta.className = "rss-meta";
+    meta.textContent = item.publishedAt ? formatDate(item.publishedAt) : "日時不明";
+    const body = document.createElement("p");
+    body.className = "rss-body";
+    body.textContent = item.summary || "RSS本文は空です。リンク先で確認してください。";
+    block.append(title, meta, body);
+    list.append(block);
+  });
+
+  details.append(summary, list);
+  return details;
+}
+
 function renderSources(data) {
   const health = data.sourceHealth?.length
     ? data.sourceHealth
-    : data.sources.map((source) => ({ name: source.name, ok: true, count: 0, error: "", region: "" }));
+    : data.sources.map((source) => ({ name: source.name, ok: true, count: 0, error: "", region: "", feedUrl: source.url, rssItems: [] }));
   els.sourceList.replaceChildren(
     ...health.map((source) => {
       const div = document.createElement("div");
@@ -231,7 +264,16 @@ function renderSources(data) {
       status.textContent = source.ok ? `${source.count}件取得` : source.error || "未取得";
       const name = document.createElement("strong");
       name.textContent = source.name;
+      const feed = document.createElement("a");
+      feed.className = "source-feed-link";
+      feed.href = source.feedUrl || "#";
+      feed.target = "_blank";
+      feed.rel = "noopener";
+      feed.textContent = "RSSフィード";
+      const rssItems = renderSourceRssItems(source);
       div.append(status, name);
+      if (source.feedUrl) div.append(feed);
+      if (rssItems) div.append(rssItems);
       return div;
     })
   );
@@ -250,14 +292,14 @@ async function loadBriefing() {
   els.refreshBtn.disabled = true;
   els.refreshBtn.textContent = "取得中";
   try {
-    const response = await fetch("data/briefing.json", { cache: "no-store" });
-    if (response.ok) {
-      render(await response.json());
+    const apiResponse = await fetch(`/api/briefing?_=${Date.now()}`, { cache: "no-store" });
+    if (apiResponse.ok) {
+      render(await apiResponse.json());
       return;
     }
-    const apiResponse = await fetch("/api/briefing", { cache: "no-store" });
-    if (!apiResponse.ok) throw new Error(`HTTP ${apiResponse.status}`);
-    render(await apiResponse.json());
+    const response = await fetch(`data/briefing.json?_=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${apiResponse.status || response.status}`);
+    render(await response.json());
   } catch (error) {
     setPill(els.liveBadge, "エラー", "demo");
     els.summaryList.replaceChildren(Object.assign(document.createElement("li"), { textContent: `取得に失敗しました: ${error.message}` }));
