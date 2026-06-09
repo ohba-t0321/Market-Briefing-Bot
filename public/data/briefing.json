@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-19T22:57:51.911Z",
-  "generatedAtTokyo": "2026/05/20 7:57",
+  "generatedAt": "2026-06-08T23:45:16.178Z",
+  "generatedAtTokyo": "2026/06/09 8:45",
   "status": {
     "newsLive": false,
     "marketLive": false,
@@ -11,6 +11,60 @@
     "注目キーワードは RSS / 統計 / 金融政策 / TOPIX / 市場データ です。",
     "主な値動きは JGB 10Y +2.90%、Nikkei 225 +0.72%、TOPIX +0.45%。市場データはデモ表示です。APIまたはベンダー契約を設定してください。",
     "投資判断は一次資料と取引先データで必ず再確認してください。"
+  ],
+  "summarySources": [
+    [
+      {
+        "label": "Demo fallback",
+        "url": "https://www.boj.or.jp/rss.htm"
+      },
+      {
+        "label": "Demo fallback",
+        "url": "https://www.jpx.co.jp/english/markets/"
+      }
+    ],
+    [
+      {
+        "label": "Demo fallback",
+        "url": "https://www.boj.or.jp/rss.htm"
+      },
+      {
+        "label": "Demo fallback",
+        "url": "https://www.jpx.co.jp/english/markets/"
+      }
+    ],
+    [
+      {
+        "label": "Nikkei 225 / Demo fallback",
+        "url": "https://indexes.nikkei.co.jp/en/nkave"
+      },
+      {
+        "label": "TOPIX / Demo fallback",
+        "url": "https://www.jpx.co.jp/english/markets/indices/topix/"
+      },
+      {
+        "label": "USD/JPY / Demo fallback",
+        "url": "https://stooq.com/q/?s=usdjpy"
+      }
+    ],
+    [
+      {
+        "label": "Demo fallback",
+        "url": "https://www.boj.or.jp/rss.htm"
+      },
+      {
+        "label": "Demo fallback",
+        "url": "https://www.jpx.co.jp/english/markets/"
+      },
+      {
+        "label": "Nikkei 225 / Demo fallback",
+        "url": "https://indexes.nikkei.co.jp/en/nkave"
+      },
+      {
+        "label": "TOPIX / Demo fallback",
+        "url": "https://www.jpx.co.jp/english/markets/indices/topix/"
+      }
+    ]
   ],
   "summarySource": "rule-based",
   "markets": [
@@ -23,6 +77,8 @@
       "unit": "pt",
       "date": "demo",
       "source": "Demo fallback",
+      "sourceUrl": "https://indexes.nikkei.co.jp/en/nkave",
+      "fetchedAt": null,
       "spark": [
         37200,
         37420,
@@ -42,6 +98,8 @@
       "unit": "pt",
       "date": "demo",
       "source": "Demo fallback",
+      "sourceUrl": "https://www.jpx.co.jp/english/markets/indices/topix/",
+      "fetchedAt": null,
       "spark": [
         2698,
         2714,
@@ -61,6 +119,8 @@
       "unit": "JPY",
       "date": "demo",
       "source": "Demo fallback",
+      "sourceUrl": "https://stooq.com/q/?s=usdjpy",
+      "fetchedAt": null,
       "spark": [
         156.1,
         155.9,
@@ -80,6 +140,8 @@
       "unit": "%",
       "date": "demo",
       "source": "Demo fallback",
+      "sourceUrl": "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/index.htm",
+      "fetchedAt": null,
       "spark": [
         1.31,
         1.34,
@@ -99,6 +161,8 @@
       "unit": "pt",
       "date": "demo",
       "source": "Demo fallback",
+      "sourceUrl": "https://stooq.com/q/?s=%5Espx",
+      "fetchedAt": null,
       "spark": [
         5356,
         5364,
@@ -115,7 +179,9 @@
       "id": "fallback-boj",
       "title": "日銀・政府統計・海外中銀RSSの取得待ち",
       "link": "https://www.boj.or.jp/rss.htm",
-      "publishedAt": "2026-05-19T22:57:43.278Z",
+      "sourceUrl": "https://www.boj.or.jp/rss.htm",
+      "sourceFeedUrl": "https://www.boj.or.jp/rss.htm",
+      "publishedAt": "2026-06-08T23:45:07.569Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "ネットワークまたはRSS配信元に接続できない場合の表示です。実運用では公式RSSとAPIから直近項目を取り込みます。",
@@ -130,7 +196,9 @@
       "id": "fallback-market",
       "title": "市場データは無料ソースで試作、実運用はライセンス契約を推奨",
       "link": "https://www.jpx.co.jp/english/markets/",
-      "publishedAt": "2026-05-19T22:57:43.279Z",
+      "sourceUrl": "https://www.jpx.co.jp/english/markets/",
+      "sourceFeedUrl": "https://www.jpx.co.jp/english/markets/",
+      "publishedAt": "2026-06-08T23:45:07.570Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "指数・株価・債券利回りは、用途に応じてJPX、情報ベンダー、または有償APIへ切り替える設計です。",
@@ -142,26 +210,7 @@
       "score": 3
     }
   ],
-  "events": [
-    {
-      "date": "2026-05-21",
-      "region": "Japan",
-      "title": "機械受注 2026年3月",
-      "source": "内閣府ESRI"
-    },
-    {
-      "date": "2026-05-29",
-      "region": "Japan",
-      "title": "消費者態度指数 2026年5月",
-      "source": "内閣府ESRI"
-    },
-    {
-      "date": "2026-06-05",
-      "region": "Japan",
-      "title": "景気動向指数 2026年4月速報",
-      "source": "内閣府ESRI"
-    }
-  ],
+  "events": [],
   "sourceHealth": [
     {
       "id": "boj-stat",
