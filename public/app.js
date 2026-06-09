@@ -48,6 +48,8 @@ function setPill(el, text, mode) {
 }
 
 function pickMarketSourceLink(data, market) {
+  if (market.sourceUrl) return market.sourceUrl;
+
   const marketId = String(market.id || "").toLowerCase();
   const knownKey = Object.keys(MARKET_SOURCE_LINKS).find((key) => marketId.includes(key));
   if (knownKey) return MARKET_SOURCE_LINKS[knownKey];
@@ -55,6 +57,25 @@ function pickMarketSourceLink(data, market) {
   const sourceName = String(market.source || "").toLowerCase();
   const sourceCandidate = (data.sources || []).find((source) => sourceName && String(source.name || "").toLowerCase().includes(sourceName));
   return sourceCandidate?.url || "";
+}
+
+function appendSourceRefs(container, refs, fallbackLabel = "出所") {
+  const validRefs = (refs || []).filter((ref) => ref?.url);
+  if (!validRefs.length) return;
+
+  const cite = document.createElement("p");
+  cite.className = "inline-source";
+  cite.append(`${fallbackLabel}: `);
+  validRefs.forEach((ref, index) => {
+    if (index > 0) cite.append(" / ");
+    const link = document.createElement("a");
+    link.href = ref.url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = ref.label || ref.url;
+    cite.append(link);
+  });
+  container.append(cite);
 }
 
 function getChangeBasisLabel(market) {
@@ -98,21 +119,13 @@ function drawSparkline(canvas, values, positive) {
 
 function renderSummary(data) {
   const summaryNodes = data.summary.map((line, index) => {
-      const li = document.createElement("li");
-      li.textContent = line;
-      if (index === data.summary.length - 1 && data.news?.[0]?.link) {
-        const cite = document.createElement("p");
-        cite.className = "inline-source";
-        const link = document.createElement("a");
-        link.href = data.news[0].link;
-        link.target = "_blank";
-        link.rel = "noopener";
-        link.textContent = "要約の根拠ニュース";
-        cite.append("出所: ", link);
-        li.append(cite);
-      }
-      return li;
-    });
+    const li = document.createElement("li");
+    const text = document.createElement("span");
+    text.textContent = line;
+    li.append(text);
+    appendSourceRefs(li, data.summarySources?.[index], "データソース");
+    return li;
+  });
   els.summaryList.replaceChildren(...summaryNodes);
   els.generatedAt.textContent = `生成: ${data.generatedAtTokyo || formatDate(data.generatedAt)}`;
   const mode = data.status.newsLive ? "live" : "demo";
@@ -136,14 +149,16 @@ function renderMarkets(data) {
     change.textContent = `${positive ? "+" : ""}${Number(market.changePct || 0).toFixed(2)}%`;
     change.classList.add(positive ? "up" : "down");
     value.textContent = `${formatNumber(market.value, market.unit)} ${market.unit}`;
-    source.textContent = `${market.source} / ${market.date || "latest"}`;
+    source.textContent = `${market.source} / 市場日時: ${market.date || "latest"}`;
+    const fetchedAt = market.fetchedAt ? formatDate(market.fetchedAt) : "デモデータ（取得日時なし）";
+    source.append(` / 取得: ${fetchedAt}`);
     const sourceLink = pickMarketSourceLink(data, market);
     if (sourceLink) {
       const a = document.createElement("a");
       a.href = sourceLink;
       a.target = "_blank";
       a.rel = "noopener";
-      a.textContent = "元データ";
+      a.textContent = "実データ取得元";
       source.append(" / ", a);
     }
     basis.textContent = getChangeBasisLabel(market);
@@ -171,6 +186,7 @@ function renderNews(data) {
       const summary = document.createElement("p");
       summary.className = "news-summary";
       summary.textContent = item.summary || "概要は配信元リンクで確認してください。";
+      appendSourceRefs(article, [{ label: item.source, url: item.sourceUrl || item.link }], "データソース");
       const tags = document.createElement("div");
       tags.className = "tag-row";
       (item.keywords || []).slice(0, 5).forEach((keyword) => {
@@ -179,7 +195,7 @@ function renderNews(data) {
         tag.textContent = keyword;
         tags.append(tag);
       });
-      article.append(link, meta, summary, tags);
+      article.replaceChildren(link, meta, summary, ...article.querySelectorAll(".inline-source"), tags);
       return article;
     })
   );
@@ -300,11 +316,12 @@ function slideXml(title, blocks, accent = "1F7A4D") {
 function makeSlides(data) {
   const marketLines = data.markets
     .slice(0, 6)
-    .map((m) => `${m.name}: ${formatNumber(m.value, m.unit)} ${m.unit} (${m.changePct >= 0 ? "+" : ""}${Number(m.changePct).toFixed(2)}%)`)
+    .map((m) => `${m.name}: ${formatNumber(m.value, m.unit)} ${m.unit} (${m.changePct >= 0 ? "+" : ""}${Number(m.changePct).toFixed(2)}%) / 取得: ${m.fetchedAt ? formatDate(m.fetchedAt) : "demo"} / 出所: ${m.sourceUrl || m.source}`)
     .join("\n");
   const newsLines = data.news
     .slice(0, 6)
-    .map((n, i) => `${i + 1}. ${n.title}`)
+    .map((n, i) => `${i + 1}. ${n.title}
+   出所: ${n.sourceUrl || n.link}`)
     .join("\n");
   const eventLines = data.events.map((e) => `${e.date} ${e.title}`).join("\n") || "直近予定なし";
   return [

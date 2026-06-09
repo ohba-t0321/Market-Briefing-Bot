@@ -149,6 +149,8 @@ const DEMO_MARKETS = [
     unit: "pt",
     date: "demo",
     source: "Demo fallback",
+    sourceUrl: "https://indexes.nikkei.co.jp/en/nkave",
+    fetchedAt: null,
     spark: [37200, 37420, 37340, 37830, 38100, 38020, 38420]
   },
   {
@@ -160,6 +162,8 @@ const DEMO_MARKETS = [
     unit: "pt",
     date: "demo",
     source: "Demo fallback",
+    sourceUrl: "https://www.jpx.co.jp/english/markets/indices/topix/",
+    fetchedAt: null,
     spark: [2698, 2714, 2705, 2722, 2730, 2731, 2743]
   },
   {
@@ -171,6 +175,8 @@ const DEMO_MARKETS = [
     unit: "JPY",
     date: "demo",
     source: "Demo fallback",
+    sourceUrl: "https://stooq.com/q/?s=usdjpy",
+    fetchedAt: null,
     spark: [156.1, 155.9, 155.6, 155.7, 155.4, 155.5, 155.24]
   },
   {
@@ -182,6 +188,8 @@ const DEMO_MARKETS = [
     unit: "%",
     date: "demo",
     source: "Demo fallback",
+    sourceUrl: "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/index.htm",
+    fetchedAt: null,
     spark: [1.31, 1.34, 1.32, 1.36, 1.39, 1.38, 1.42]
   },
   {
@@ -193,6 +201,8 @@ const DEMO_MARKETS = [
     unit: "pt",
     date: "demo",
     source: "Demo fallback",
+    sourceUrl: "https://stooq.com/q/?s=%5Espx",
+    fetchedAt: null,
     spark: [5356, 5364, 5342, 5338, 5349, 5336, 5328]
   }
 ];
@@ -202,6 +212,8 @@ const FALLBACK_NEWS = [
     id: "fallback-boj",
     title: "日銀・政府統計・海外中銀RSSの取得待ち",
     link: "https://www.boj.or.jp/rss.htm",
+    sourceUrl: "https://www.boj.or.jp/rss.htm",
+    sourceFeedUrl: "https://www.boj.or.jp/rss.htm",
     publishedAt: new Date().toISOString(),
     source: "Demo fallback",
     region: "Japan",
@@ -213,6 +225,8 @@ const FALLBACK_NEWS = [
     id: "fallback-market",
     title: "市場データは無料ソースで試作、実運用はライセンス契約を推奨",
     link: "https://www.jpx.co.jp/english/markets/",
+    sourceUrl: "https://www.jpx.co.jp/english/markets/",
+    sourceFeedUrl: "https://www.jpx.co.jp/english/markets/",
     publishedAt: new Date().toISOString(),
     source: "Demo fallback",
     region: "Japan",
@@ -321,6 +335,8 @@ function parseFeed(xml, source) {
         id: `${source.id}-${Date.parse(publishedAt) || Date.now()}-${index}`,
         title,
         link,
+        sourceUrl: link,
+        sourceFeedUrl: source.url,
         publishedAt,
         source: source.name,
         region: source.region,
@@ -387,7 +403,7 @@ async function fetchNews() {
   };
 }
 
-function parseMarketCsv(csv, symbol) {
+function parseMarketCsv(csv, symbol, fetchedAt = nowIso()) {
   const [, line] = csv.trim().split(/\r?\n/);
   if (!line) throw new Error("empty csv");
   const [code, date, time, open, high, low, close, volume] = line.split(",");
@@ -406,6 +422,8 @@ function parseMarketCsv(csv, symbol) {
     unit: symbol.unit,
     date: `${date || ""} ${time || ""}`.trim(),
     source: symbol.source,
+    sourceUrl: symbol.url,
+    fetchedAt,
     spark: [
       base * 0.985,
       base * 0.994,
@@ -424,7 +442,7 @@ async function fetchMarkets() {
   const results = await Promise.allSettled(
     MARKET_SYMBOLS.map(async (symbol) => {
       const csv = await fetchText(symbol.url);
-      return parseMarketCsv(csv, symbol);
+      return parseMarketCsv(csv, symbol, nowIso());
     })
   );
   const live = results.filter((result) => result.status === "fulfilled").map((result) => result.value);
@@ -539,6 +557,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
     title: item.title,
     summary: item.summary,
     source: item.source,
+    sourceUrl: item.sourceUrl || item.link,
     region: item.region,
     publishedAt: item.publishedAt
   }));
@@ -548,7 +567,9 @@ async function generateAiSummary(newsItems, markets, isLive) {
     value: item.value,
     unit: item.unit,
     changePct: item.changePct,
-    source: item.source
+    source: item.source,
+    sourceUrl: item.sourceUrl,
+    fetchedAt: item.fetchedAt
   }));
 
   const prompt = {
@@ -613,6 +634,43 @@ async function generateAiSummary(newsItems, markets, isLive) {
   return { lines, model: resolvedModel };
 }
 
+
+function uniqueSourceRefs(refs, limit = 4) {
+  const seen = new Set();
+  return refs
+    .filter((ref) => ref && ref.label && ref.url)
+    .filter((ref) => {
+      const key = `${ref.label}|${ref.url}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, limit);
+}
+
+function newsSourceRef(item) {
+  return item?.link
+    ? { label: item.source || "ニュース原文", url: item.link }
+    : null;
+}
+
+function marketSourceRef(item) {
+  return item?.sourceUrl
+    ? { label: `${item.name} / ${item.source}`, url: item.sourceUrl }
+    : null;
+}
+
+function buildSummarySources(newsItems, markets) {
+  const topNewsRefs = uniqueSourceRefs(newsItems.slice(0, 6).map(newsSourceRef), 3);
+  const marketRefs = uniqueSourceRefs(markets.slice(0, 6).map(marketSourceRef), 3);
+  return [
+    topNewsRefs,
+    topNewsRefs,
+    marketRefs,
+    uniqueSourceRefs([...topNewsRefs, ...marketRefs], 4)
+  ];
+}
+
 async function buildBriefing() {
   const [news, markets] = await Promise.all([fetchNews(), fetchMarkets()]);
   let aiSummary = null;
@@ -633,6 +691,7 @@ async function buildBriefing() {
       timezone: TZ
     },
     summary: aiSummary || buildSummary(news.items, markets.items, markets.isLive),
+    summarySources: buildSummarySources(news.items, markets.items),
     summarySource: aiSummary ? `OpenAI:${aiModel || OPENAI_MODEL}` : "rule-based",
     markets: markets.items,
     news: news.items,
@@ -736,7 +795,7 @@ async function printBriefing() {
   briefing.summary.forEach((line) => console.log(`- ${line}`));
   console.log("\n## Markets");
   briefing.markets.forEach((item) => {
-    console.log(`- ${item.name}: ${item.value} ${item.unit} (${item.changePct >= 0 ? "+" : ""}${item.changePct.toFixed(2)}%) [${item.source}]`);
+    console.log(`- ${item.name}: ${item.value} ${item.unit} (${item.changePct >= 0 ? "+" : ""}${item.changePct.toFixed(2)}%) [${item.source}] ${item.sourceUrl || ""} fetched=${item.fetchedAt || "demo"}`);
   });
   console.log("\n## Top News");
   briefing.news.slice(0, 8).forEach((item) => {
