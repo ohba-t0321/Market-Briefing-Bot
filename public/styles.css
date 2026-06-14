@@ -231,12 +231,12 @@ button:hover {
 
 .market-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(145px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 12px;
 }
 
 .market-card {
-  min-height: 178px;
+  min-height: 246px;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 13px;
@@ -266,7 +266,7 @@ button:hover {
 
 .market-value {
   margin-top: 12px;
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   font-weight: 850;
   letter-spacing: 0;
 }
@@ -283,11 +283,75 @@ button:hover {
   font-size: 0.75rem;
 }
 
-canvas {
+.market-chart {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.chart-row {
+  --bar-width: 0%;
+  display: grid;
+  grid-template-columns: minmax(64px, 0.85fr) minmax(64px, 1.2fr) minmax(64px, auto);
+  align-items: center;
+  gap: 7px;
+  min-height: 19px;
+}
+
+.chart-time,
+.chart-number {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-time {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.chart-track {
   display: block;
-  width: 100%;
-  height: 54px;
-  margin-top: 8px;
+  min-width: 0;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e8eee9;
+}
+
+.chart-bar {
+  display: block;
+  width: var(--bar-width);
+  min-width: 3px;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green);
+}
+
+.market-chart.down .chart-bar {
+  background: var(--red);
+}
+
+.chart-number {
+  justify-self: end;
+  color: #26352d;
+  font-size: 0.7rem;
+  font-weight: 850;
+}
+
+.chart-row.latest .chart-time,
+.chart-row.latest .chart-number {
+  color: var(--ink);
+}
+
+.market-chart-empty {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.75rem;
 }
 
 .market-source {
@@ -458,7 +522,7 @@ canvas {
 
 @media (max-width: 1100px) {
   .market-grid {
-    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
 
@@ -504,6 +568,6 @@ canvas {
   }
 
   .market-card {
-    min-height: 160px;
+    min-height: 232px;
   }
 }

@@ -79,42 +79,73 @@ function appendSourceRefs(container, refs, fallbackLabel = "出所") {
 }
 
 function getChangeBasisLabel(market) {
-  if (Array.isArray(market.spark) && market.spark.length >= 2) {
-    return "増減率: 直前サンプル比";
+  if (market.changeBasis) {
+    return `増減率: ${market.changeBasis}`;
+  }
+  if ((Array.isArray(market.points) && market.points.length >= 2) || (Array.isArray(market.spark) && market.spark.length >= 2)) {
+    return "増減率: 直近サンプル比";
   }
   return "増減率: 前回終値（または前回取得値）比";
 }
 
-function drawSparkline(canvas, values, positive) {
-  const ctx = canvas.getContext("2d");
-  const width = canvas.width;
-  const height = canvas.height;
-  ctx.clearRect(0, 0, width, height);
-  if (!values || values.length < 2) return;
+function getMarketPoints(market) {
+  if (Array.isArray(market.points) && market.points.length) {
+    return market.points
+      .map((point, index) => ({
+        label: point.label || (point.timestamp ? formatDate(point.timestamp) : `#${index + 1}`),
+        value: Number(point.value)
+      }))
+      .filter((point) => Number.isFinite(point.value));
+  }
+
+  return (market.spark || [])
+    .map((value, index) => ({
+      label: `#${index + 1}`,
+      value: Number(value)
+    }))
+    .filter((point) => Number.isFinite(point.value));
+}
+
+function renderMarketChart(container, market, positive) {
+  const points = getMarketPoints(market);
+  container.classList.toggle("up", positive);
+  container.classList.toggle("down", !positive);
+
+  if (points.length < 2) {
+    const empty = document.createElement("p");
+    empty.className = "market-chart-empty";
+    empty.textContent = "値動きデータなし";
+    container.replaceChildren(empty);
+    return;
+  }
+
+  const values = points.map((point) => point.value);
   const min = Math.min(...values);
   const max = Math.max(...values);
   const range = max - min || 1;
-  const pad = 6;
+  const rows = points.map((point, index) => {
+    const row = document.createElement("div");
+    const time = document.createElement("span");
+    const track = document.createElement("span");
+    const bar = document.createElement("span");
+    const number = document.createElement("span");
+    const width = max === min ? 100 : 18 + ((point.value - min) / range) * 82;
 
-  ctx.strokeStyle = "#dce3dd";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(0, height - pad);
-  ctx.lineTo(width, height - pad);
-  ctx.stroke();
-
-  ctx.strokeStyle = positive ? "#1f7a4d" : "#b13c3c";
-  ctx.lineWidth = 3;
-  ctx.lineJoin = "round";
-  ctx.lineCap = "round";
-  ctx.beginPath();
-  values.forEach((value, index) => {
-    const x = pad + (index / (values.length - 1)) * (width - pad * 2);
-    const y = pad + (1 - (value - min) / range) * (height - pad * 2);
-    if (index === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
+    row.className = `chart-row${index === points.length - 1 ? " latest" : ""}`;
+    row.style.setProperty("--bar-width", `${width}%`);
+    row.title = `${point.label}: ${formatNumber(point.value, market.unit)} ${market.unit}`;
+    time.className = "chart-time";
+    time.textContent = point.label;
+    track.className = "chart-track";
+    bar.className = "chart-bar";
+    number.className = "chart-number";
+    number.textContent = formatNumber(point.value, market.unit);
+    track.append(bar);
+    row.append(time, track, number);
+    return row;
   });
-  ctx.stroke();
+
+  container.replaceChildren(...rows);
 }
 
 function renderSummary(data) {
@@ -143,7 +174,7 @@ function renderMarkets(data) {
     const source = node.querySelector(".market-source");
     const basis = document.createElement("p");
     basis.className = "market-basis";
-    const canvas = node.querySelector("canvas");
+    const chart = node.querySelector(".market-chart");
     const positive = Number(market.changePct) >= 0;
     title.textContent = market.name;
     change.textContent = `${positive ? "+" : ""}${Number(market.changePct || 0).toFixed(2)}%`;
@@ -164,7 +195,7 @@ function renderMarkets(data) {
     basis.textContent = getChangeBasisLabel(market);
     source.after(basis);
     card.dataset.market = market.id;
-    drawSparkline(canvas, market.spark, positive);
+    renderMarketChart(chart, market, positive);
     els.marketGrid.append(node);
   });
   setPill(els.marketBadge, data.status.marketLive ? "ライブ" : "デモ", data.status.marketLive ? "live" : "demo");

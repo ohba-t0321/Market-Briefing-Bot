@@ -7,6 +7,7 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const PORT = Number(process.env.PORT || 4173);
 const TZ = "Asia/Tokyo";
 const FETCH_TIMEOUT_MS = 8500;
+const MARKET_POINT_LIMIT = 6;
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "auto";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
 const isMain = require.main === module;
@@ -105,36 +106,41 @@ const MARKET_SYMBOLS = [
   {
     id: "nikkei",
     name: "Nikkei 225",
-    source: "Stooq",
-    url: "https://stooq.com/q/l/?s=%5Enkx&f=sd2t2ohlcv&h&e=csv",
+    source: "Yahoo Finance",
+    yahooSymbol: "^N225",
+    sourceUrl: "https://finance.yahoo.com/quote/%5EN225/",
     unit: "pt"
   },
   {
-    id: "topix",
-    name: "TOPIX",
-    source: "Stooq",
-    url: "https://stooq.com/q/l/?s=%5Etpx&f=sd2t2ohlcv&h&e=csv",
-    unit: "pt"
+    id: "topix-etf",
+    name: "TOPIX ETF",
+    source: "Yahoo Finance",
+    yahooSymbol: "1306.T",
+    sourceUrl: "https://finance.yahoo.com/quote/1306.T/",
+    unit: "JPY"
   },
   {
     id: "usdjpy",
     name: "USD/JPY",
-    source: "Stooq",
-    url: "https://stooq.com/q/l/?s=usdjpy&f=sd2t2ohlcv&h&e=csv",
+    source: "Yahoo Finance",
+    yahooSymbol: "USDJPY=X",
+    sourceUrl: "https://finance.yahoo.com/quote/USDJPY%3DX/",
     unit: "JPY"
   },
   {
     id: "spx",
     name: "S&P 500",
-    source: "Stooq",
-    url: "https://stooq.com/q/l/?s=%5Espx&f=sd2t2ohlcv&h&e=csv",
+    source: "Yahoo Finance",
+    yahooSymbol: "^GSPC",
+    sourceUrl: "https://finance.yahoo.com/quote/%5EGSPC/",
     unit: "pt"
   },
   {
     id: "us10y",
     name: "US 10Y Yield",
-    source: "Stooq",
-    url: "https://stooq.com/q/l/?s=10usy.b&f=sd2t2ohlcv&h&e=csv",
+    source: "Yahoo Finance",
+    yahooSymbol: "^TNX",
+    sourceUrl: "https://finance.yahoo.com/quote/%5ETNX/",
     unit: "%"
   }
 ];
@@ -355,7 +361,7 @@ function withCacheBuster(url) {
   return parsed.toString();
 }
 
-async function fetchText(url) {
+async function fetchText(url, headers = {}) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
@@ -364,7 +370,8 @@ async function fetchText(url) {
       headers: {
         "user-agent": "market-morning-brief/0.1 (+local dashboard)",
         "cache-control": "no-cache",
-        pragma: "no-cache"
+        pragma: "no-cache",
+        ...headers
       }
     });
     if (!response.ok) {
@@ -374,6 +381,14 @@ async function fetchText(url) {
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function fetchJson(url, headers = {}) {
+  const text = await fetchText(url, {
+    accept: "application/json,text/plain,*/*",
+    ...headers
+  });
+  return JSON.parse(text);
 }
 
 async function fetchNews() {
@@ -425,48 +440,152 @@ async function fetchNews() {
   };
 }
 
-function parseMarketCsv(csv, symbol, fetchedAt = nowIso()) {
-  const [, line] = csv.trim().split(/\r?\n/);
-  if (!line) throw new Error("empty csv");
-  const [code, date, time, open, high, low, close, volume] = line.split(",");
-  const value = Number(close);
-  const openValue = Number(open);
-  if (!Number.isFinite(value)) throw new Error(`invalid price for ${symbol.name}`);
-  const change = Number.isFinite(openValue) ? value - openValue : 0;
-  const changePct = Number.isFinite(openValue) && openValue !== 0 ? (change / openValue) * 100 : 0;
-  const base = Number.isFinite(openValue) ? openValue : value;
+function marketDigits(unit) {
+  if (unit === "JPY" || unit === "%") return 3;
+  return 2;
+}
+
+function roundMarketValue(value, unit) {
+  return Number(Number(value).toFixed(marketDigits(unit)));
+}
+
+function yahooChartUrl(symbol, range, interval) {
+  const url = new URL(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}`);
+  url.searchParams.set("range", range);
+  url.searchParams.set("interval", interval);
+  return url.toString();
+}
+
+function formatMarketDate(iso, timeZone, includeTime = true) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso || "--";
+  return new Intl.DateTimeFormat("ja-JP", {
+    timeZone: timeZone || TZ,
+    month: "numeric",
+    day: "numeric",
+    ...(includeTime ? { hour: "2-digit", minute: "2-digit" } : {})
+  }).format(date);
+}
+
+function latestFinite(values = []) {
+  for (let index = values.length - 1; index >= 0; index -= 1) {
+    if (values[index] === null || values[index] === undefined) continue;
+    const value = Number(values[index]);
+    if (Number.isFinite(value)) return value;
+  }
+  return null;
+}
+
+function selectRecentMarketPoints(points) {
+  return points.slice(-MARKET_POINT_LIMIT);
+}
+
+function normalizeYahooPoints(result, symbol, attempt) {
+  const meta = result.meta || {};
+  const quote = result.indicators?.quote?.[0] || {};
+  const timestamps = Array.isArray(result.timestamp) ? result.timestamp : [];
+  const closes = Array.isArray(quote.close) ? quote.close : [];
+  const points = timestamps
+    .map((timestamp, index) => {
+      const rawValue = closes[index];
+      if (rawValue === null || rawValue === undefined) return null;
+      const value = Number(rawValue);
+      if (!Number.isFinite(value)) return null;
+      return {
+        timestamp: new Date(Number(timestamp) * 1000).toISOString(),
+        value
+      };
+    })
+    .filter(Boolean);
+
+  const metaPrice = Number(meta.regularMarketPrice);
+  const metaTime = Number(meta.regularMarketTime);
+  if (Number.isFinite(metaPrice) && Number.isFinite(metaTime)) {
+    const metaTimestamp = new Date(metaTime * 1000).toISOString();
+    const matchingPoint = points.find((point) => point.timestamp === metaTimestamp);
+    if (matchingPoint) {
+      matchingPoint.value = metaPrice;
+    } else {
+      points.push({
+        timestamp: metaTimestamp,
+        value: metaPrice
+      });
+    }
+  }
+
+  points.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+  if (!points.length) {
+    throw new Error(`no chart points for ${symbol.name}`);
+  }
+
+  const timeZone = meta.exchangeTimezoneName || symbol.timeZone || TZ;
+  const latest = points.at(-1);
+  const previousClose = Number(meta.chartPreviousClose ?? meta.previousClose);
+  const previousSample = points.length >= 2 ? points.at(-2).value : null;
+  const firstOpen = Array.isArray(quote.open) ? quote.open.find((value) => Number.isFinite(Number(value))) : null;
+  const basis = Number.isFinite(previousClose) ? previousClose : Number(previousSample ?? firstOpen ?? latest.value);
+  const change = latest.value - basis;
+  const changePct = basis !== 0 ? (change / basis) * 100 : 0;
+  const selectedPoints = selectRecentMarketPoints(points).map((point) => ({
+    timestamp: point.timestamp,
+    label: formatMarketDate(point.timestamp, timeZone, attempt.interval !== "1d"),
+    value: roundMarketValue(point.value, symbol.unit)
+  }));
+
   return {
     id: symbol.id,
     name: symbol.name,
-    value,
-    change,
-    changePct,
+    value: roundMarketValue(latest.value, symbol.unit),
+    change: roundMarketValue(change, symbol.unit),
+    changePct: Number(changePct.toFixed(2)),
     unit: symbol.unit,
-    date: `${date || ""} ${time || ""}`.trim(),
+    date: formatMarketDate(latest.timestamp, timeZone, true),
     source: symbol.source,
-    sourceUrl: symbol.url,
-    fetchedAt,
-    spark: [
-      base * 0.985,
-      base * 0.994,
-      base * 0.99,
-      (base + value) / 2,
-      value * 0.997,
-      value * 1.002,
-      value
-    ].map((num) => Number(num.toFixed(symbol.unit === "JPY" ? 3 : 2))),
-    rawCode: code,
-    volume
+    sourceUrl: symbol.sourceUrl,
+    fetchedAt: nowIso(),
+    latestAt: latest.timestamp,
+    timeZone,
+    changeBasis: Number.isFinite(previousClose) ? "前回終値比" : "直近サンプル比",
+    points: selectedPoints,
+    spark: selectedPoints.map((point) => point.value),
+    rawSymbol: meta.symbol || symbol.yahooSymbol,
+    interval: attempt.interval,
+    range: attempt.range,
+    volume: latestFinite(quote.volume)
   };
 }
 
+async function fetchYahooMarket(symbol) {
+  const attempts = [
+    { range: "1d", interval: "5m" },
+    { range: "5d", interval: "1d" }
+  ];
+  let lastError = null;
+
+  for (const attempt of attempts) {
+    try {
+      const payload = await fetchJson(withCacheBuster(yahooChartUrl(symbol.yahooSymbol, attempt.range, attempt.interval)), {
+        "user-agent": "Mozilla/5.0 (compatible; market-morning-brief/0.1; +local dashboard)"
+      });
+      const error = payload?.chart?.error;
+      if (error) {
+        throw new Error(error.description || error.code || "Yahoo chart error");
+      }
+      const result = payload?.chart?.result?.[0];
+      if (!result) {
+        throw new Error("empty Yahoo chart response");
+      }
+      return normalizeYahooPoints(result, symbol, attempt);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw new Error(lastError?.message || `failed to fetch ${symbol.name}`);
+}
+
 async function fetchMarkets() {
-  const results = await Promise.allSettled(
-    MARKET_SYMBOLS.map(async (symbol) => {
-      const csv = await fetchText(withCacheBuster(symbol.url));
-      return parseMarketCsv(csv, symbol, nowIso());
-    })
-  );
+  const results = await Promise.allSettled(MARKET_SYMBOLS.map((symbol) => fetchYahooMarket(symbol)));
   const live = results.filter((result) => result.status === "fulfilled").map((result) => result.value);
   const errors = results
     .map((result, index) => ({
