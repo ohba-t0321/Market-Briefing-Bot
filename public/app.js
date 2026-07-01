@@ -24,6 +24,55 @@ const MARKET_SOURCE_LINKS = {
   spx: "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
 };
 
+const CLIENT_MARKET_STORAGE_KEY = "market-morning-brief:markets:v1";
+const CLIENT_MARKET_STORAGE_MAX_AGE_MS = 12 * 60 * 60 * 1000;
+const CLIENT_MARKET_POINT_LIMIT = 7;
+const CLIENT_MARKET_PROXY_PREFIX = "https://api.allorigins.win/raw?url=";
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+const CLIENT_MARKET_SYMBOLS = [
+  {
+    id: "nikkei",
+    name: "Nikkei 225",
+    source: "Yahoo Finance",
+    yahooSymbol: "^N225",
+    sourceUrl: "https://finance.yahoo.com/quote/%5EN225/",
+    unit: "pt"
+  },
+  {
+    id: "topix-etf",
+    name: "TOPIX ETF",
+    source: "Yahoo Finance",
+    yahooSymbol: "1306.T",
+    sourceUrl: "https://finance.yahoo.com/quote/1306.T/",
+    unit: "JPY"
+  },
+  {
+    id: "usdjpy",
+    name: "USD/JPY",
+    source: "Yahoo Finance",
+    yahooSymbol: "USDJPY=X",
+    sourceUrl: "https://finance.yahoo.com/quote/USDJPY%3DX/",
+    unit: "JPY"
+  },
+  {
+    id: "spx",
+    name: "S&P 500",
+    source: "Yahoo Finance",
+    yahooSymbol: "^GSPC",
+    sourceUrl: "https://finance.yahoo.com/quote/%5EGSPC/",
+    unit: "pt"
+  },
+  {
+    id: "us10y",
+    name: "US 10Y Yield",
+    source: "Yahoo Finance",
+    yahooSymbol: "^TNX",
+    sourceUrl: "https://finance.yahoo.com/quote/%5ETNX/",
+    unit: "%"
+  }
+];
+
 function formatNumber(value, unit) {
   const digits = unit === "JPY" || unit === "%" ? 3 : 2;
   return Number(value).toLocaleString("ja-JP", {
@@ -38,6 +87,17 @@ function formatDate(value) {
   return new Intl.DateTimeFormat("ja-JP", {
     dateStyle: "medium",
     timeStyle: "short"
+  }).format(date);
+}
+
+function formatMarketDate(value, timeZone, includeTime = true) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value || "--";
+  return new Intl.DateTimeFormat("ja-JP", {
+    timeZone: timeZone || currentBriefing?.status?.timezone || "Asia/Tokyo",
+    month: "numeric",
+    day: "numeric",
+    ...(includeTime ? { hour: "2-digit", minute: "2-digit" } : {})
   }).format(date);
 }
 
@@ -106,6 +166,35 @@ function getMarketPoints(market) {
     .filter((point) => Number.isFinite(point.value));
 }
 
+function createSvgElement(tagName, attributes = {}) {
+  const element = document.createElementNS(SVG_NS, tagName);
+  Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+  return element;
+}
+
+function getLineChartGeometry(points) {
+  const values = points.map((point) => point.value);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const left = 6;
+  const right = 6;
+  const top = 12;
+  const bottom = 16;
+  const width = 100 - left - right;
+  const height = 100 - top - bottom;
+
+  return points.map((point, index) => {
+    const x = left + (points.length === 1 ? width / 2 : (index / (points.length - 1)) * width);
+    const y = top + ((max - point.value) / range) * height;
+    return {
+      ...point,
+      x,
+      y
+    };
+  });
+}
+
 function renderMarketChart(container, market, positive) {
   const points = getMarketPoints(market);
   container.classList.toggle("up", positive);
@@ -119,33 +208,66 @@ function renderMarketChart(container, market, positive) {
     return;
   }
 
-  const values = points.map((point) => point.value);
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const range = max - min || 1;
-  const rows = points.map((point, index) => {
-    const row = document.createElement("div");
-    const time = document.createElement("span");
-    const track = document.createElement("span");
-    const bar = document.createElement("span");
-    const number = document.createElement("span");
-    const width = max === min ? 100 : 18 + ((point.value - min) / range) * 82;
+  const geometry = getLineChartGeometry(points);
+  const linePoints = geometry.map((point) => `${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ");
+  const areaPoints = `${geometry[0].x.toFixed(2)},100 ${linePoints} ${geometry.at(-1).x.toFixed(2)},100`;
+  const plot = document.createElement("div");
+  const svg = createSvgElement("svg", {
+    class: "chart-svg",
+    viewBox: "0 0 100 100",
+    preserveAspectRatio: "none",
+    "aria-hidden": "true",
+    focusable: "false"
+  });
+  const axis = document.createElement("div");
+  const startLabel = document.createElement("span");
+  const endLabel = document.createElement("span");
 
-    row.className = `chart-row${index === points.length - 1 ? " latest" : ""}`;
-    row.style.setProperty("--bar-width", `${width}%`);
-    row.title = `${point.label}: ${formatNumber(point.value, market.unit)} ${market.unit}`;
-    time.className = "chart-time";
-    time.textContent = point.label;
-    track.className = "chart-track";
-    bar.className = "chart-bar";
-    number.className = "chart-number";
-    number.textContent = formatNumber(point.value, market.unit);
-    track.append(bar);
-    row.append(time, track, number);
-    return row;
+  plot.className = "chart-plot";
+  axis.className = "chart-axis";
+  startLabel.textContent = points[0].label;
+  endLabel.textContent = points.at(-1).label;
+
+  [25, 50, 75].forEach((y) => {
+    svg.append(
+      createSvgElement("line", {
+        class: "chart-grid",
+        x1: "0",
+        y1: String(y),
+        x2: "100",
+        y2: String(y)
+      })
+    );
+  });
+  svg.append(createSvgElement("polygon", { class: "chart-area", points: areaPoints }));
+  svg.append(createSvgElement("polyline", { class: "chart-line", points: linePoints }));
+
+  const pointButtons = geometry.map((point, index) => {
+    const button = document.createElement("button");
+    const tooltip = document.createElement("span");
+    const valueText = `${formatNumber(point.value, market.unit)} ${market.unit}`;
+
+    button.type = "button";
+    button.className = [
+      "chart-point",
+      index === 0 ? "start" : "",
+      index === geometry.length - 1 ? "end latest" : ""
+    ]
+      .filter(Boolean)
+      .join(" ");
+    button.style.setProperty("--x", point.x.toFixed(2));
+    button.style.setProperty("--y", point.y.toFixed(2));
+    button.setAttribute("aria-label", `${point.label}: ${valueText}`);
+    tooltip.className = "chart-tooltip";
+    tooltip.setAttribute("aria-hidden", "true");
+    tooltip.textContent = `${point.label} ${valueText}`;
+    button.append(tooltip);
+    return button;
   });
 
-  container.replaceChildren(...rows);
+  axis.append(startLabel, endLabel);
+  plot.append(svg, ...pointButtons);
+  container.replaceChildren(plot, axis);
 }
 
 function renderSummary(data) {
@@ -198,7 +320,8 @@ function renderMarkets(data) {
     renderMarketChart(chart, market, positive);
     els.marketGrid.append(node);
   });
-  setPill(els.marketBadge, data.status.marketLive ? "ライブ" : "デモ", data.status.marketLive ? "live" : "demo");
+  const marketBadgeText = data.clientMarketUpdatedAt ? "サイト更新" : data.status.marketLive ? "ライブ" : "デモ";
+  setPill(els.marketBadge, marketBadgeText, data.status.marketLive ? "live" : "demo");
 }
 
 function renderNews(data) {
@@ -310,6 +433,282 @@ function renderSources(data) {
   );
 }
 
+function marketDigits(unit) {
+  if (unit === "JPY" || unit === "%") return 3;
+  return 2;
+}
+
+function roundMarketValue(value, unit) {
+  return Number(Number(value).toFixed(marketDigits(unit)));
+}
+
+function latestFinite(values = []) {
+  for (let index = values.length - 1; index >= 0; index -= 1) {
+    if (values[index] === null || values[index] === undefined) continue;
+    const value = Number(values[index]);
+    if (Number.isFinite(value)) return value;
+  }
+  return null;
+}
+
+function selectClientMarketPoints(points) {
+  return points.slice(-CLIENT_MARKET_POINT_LIMIT);
+}
+
+function withCacheBuster(url) {
+  const parsed = new URL(url);
+  parsed.searchParams.set("_", String(Date.now()));
+  return parsed.toString();
+}
+
+function yahooChartUrl(symbol, range, interval) {
+  const url = new URL(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}`);
+  url.searchParams.set("range", range);
+  url.searchParams.set("interval", interval);
+  return url.toString();
+}
+
+async function fetchClientText(url) {
+  const response = await fetch(url, {
+    cache: "no-store",
+    headers: {
+      accept: "application/json,text/plain,*/*"
+    }
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+  return response.text();
+}
+
+async function fetchClientJson(url) {
+  const attempts = [
+    { label: "direct", url },
+    { label: "cors-proxy", url: `${CLIENT_MARKET_PROXY_PREFIX}${encodeURIComponent(url)}` }
+  ];
+  const errors = [];
+
+  for (const attempt of attempts) {
+    try {
+      return JSON.parse(await fetchClientText(attempt.url));
+    } catch (error) {
+      errors.push(`${attempt.label}: ${error.message}`);
+    }
+  }
+
+  throw new Error(errors.join(" / "));
+}
+
+function normalizeClientYahooPoints(result, symbol, attempt) {
+  const meta = result.meta || {};
+  const quote = result.indicators?.quote?.[0] || {};
+  const timestamps = Array.isArray(result.timestamp) ? result.timestamp : [];
+  const closes = Array.isArray(quote.close) ? quote.close : [];
+  const points = timestamps
+    .map((timestamp, index) => {
+      const rawValue = closes[index];
+      if (rawValue === null || rawValue === undefined) return null;
+      const value = Number(rawValue);
+      if (!Number.isFinite(value)) return null;
+      return {
+        timestamp: new Date(Number(timestamp) * 1000).toISOString(),
+        value
+      };
+    })
+    .filter(Boolean);
+
+  const metaPrice = Number(meta.regularMarketPrice);
+  const metaTime = Number(meta.regularMarketTime);
+  if (Number.isFinite(metaPrice) && Number.isFinite(metaTime)) {
+    const metaTimestamp = new Date(metaTime * 1000).toISOString();
+    const matchingPoint = points.find((point) => point.timestamp === metaTimestamp);
+    if (matchingPoint) {
+      matchingPoint.value = metaPrice;
+    } else {
+      points.push({
+        timestamp: metaTimestamp,
+        value: metaPrice
+      });
+    }
+  }
+
+  points.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+  if (!points.length) {
+    throw new Error(`no chart points for ${symbol.name}`);
+  }
+
+  const timeZone = meta.exchangeTimezoneName || symbol.timeZone || currentBriefing?.status?.timezone || "Asia/Tokyo";
+  const latest = points.at(-1);
+  const previousClose = Number(meta.chartPreviousClose ?? meta.previousClose);
+  const previousSample = points.length >= 2 ? points.at(-2).value : null;
+  const firstOpen = Array.isArray(quote.open) ? quote.open.find((value) => Number.isFinite(Number(value))) : null;
+  const basis = Number.isFinite(previousClose) ? previousClose : Number(previousSample ?? firstOpen ?? latest.value);
+  const change = latest.value - basis;
+  const changePct = basis !== 0 ? (change / basis) * 100 : 0;
+  const selectedPoints = selectClientMarketPoints(points).map((point) => ({
+    timestamp: point.timestamp,
+    label: formatMarketDate(point.timestamp, timeZone, attempt.interval !== "1d"),
+    value: roundMarketValue(point.value, symbol.unit)
+  }));
+
+  return {
+    id: symbol.id,
+    name: symbol.name,
+    value: roundMarketValue(latest.value, symbol.unit),
+    change: roundMarketValue(change, symbol.unit),
+    changePct: Number(changePct.toFixed(2)),
+    unit: symbol.unit,
+    date: formatMarketDate(latest.timestamp, timeZone, true),
+    source: symbol.source,
+    sourceUrl: symbol.sourceUrl,
+    fetchedAt: new Date().toISOString(),
+    latestAt: latest.timestamp,
+    timeZone,
+    changeBasis: Number.isFinite(previousClose) ? "前回終値比" : "直近サンプル比",
+    points: selectedPoints,
+    spark: selectedPoints.map((point) => point.value),
+    rawSymbol: meta.symbol || symbol.yahooSymbol,
+    interval: attempt.interval,
+    range: attempt.range,
+    volume: latestFinite(quote.volume)
+  };
+}
+
+async function fetchClientYahooMarket(symbol) {
+  const attempts = [
+    { range: "1d", interval: "5m" },
+    { range: "5d", interval: "1d" }
+  ];
+  let lastError = null;
+
+  for (const attempt of attempts) {
+    try {
+      const payload = await fetchClientJson(withCacheBuster(yahooChartUrl(symbol.yahooSymbol, attempt.range, attempt.interval)));
+      const error = payload?.chart?.error;
+      if (error) {
+        throw new Error(error.description || error.code || "Yahoo chart error");
+      }
+      const result = payload?.chart?.result?.[0];
+      if (!result) {
+        throw new Error("empty Yahoo chart response");
+      }
+      return normalizeClientYahooPoints(result, symbol, attempt);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw new Error(lastError?.message || `failed to fetch ${symbol.name}`);
+}
+
+async function fetchClientMarkets() {
+  const results = await Promise.allSettled(CLIENT_MARKET_SYMBOLS.map((symbol) => fetchClientYahooMarket(symbol)));
+  const items = results.filter((result) => result.status === "fulfilled").map((result) => result.value);
+  const errors = results
+    .map((result, index) => ({
+      id: CLIENT_MARKET_SYMBOLS[index].id,
+      ok: result.status === "fulfilled",
+      error: result.status === "rejected" ? String(result.reason?.message || result.reason) : ""
+    }))
+    .filter((entry) => !entry.ok);
+
+  if (items.length < 3) {
+    throw new Error(`市場データの取得成功が${items.length}件のみでした`);
+  }
+
+  return { items, errors };
+}
+
+function replaceMarketsInBriefing(data, markets, marketErrors = [], updatedAt = new Date().toISOString()) {
+  return {
+    ...data,
+    status: {
+      ...data.status,
+      marketLive: true,
+      marketSource: "browser"
+    },
+    markets,
+    marketErrors,
+    clientMarketUpdatedAt: updatedAt
+  };
+}
+
+function saveClientMarketSnapshot(data) {
+  try {
+    localStorage.setItem(
+      CLIENT_MARKET_STORAGE_KEY,
+      JSON.stringify({
+        savedAt: data.clientMarketUpdatedAt || new Date().toISOString(),
+        markets: data.markets,
+        marketErrors: data.marketErrors || []
+      })
+    );
+  } catch (error) {
+    console.warn("Failed to save client market snapshot", error);
+  }
+}
+
+function readClientMarketSnapshot() {
+  try {
+    const raw = localStorage.getItem(CLIENT_MARKET_STORAGE_KEY);
+    if (!raw) return null;
+    const snapshot = JSON.parse(raw);
+    if (!Array.isArray(snapshot.markets) || !snapshot.markets.length) return null;
+    return snapshot;
+  } catch (error) {
+    console.warn("Failed to read client market snapshot", error);
+    return null;
+  }
+}
+
+function applyStoredClientMarkets(data) {
+  const snapshot = readClientMarketSnapshot();
+  if (!snapshot?.savedAt) return data;
+
+  const savedAt = Date.parse(snapshot.savedAt);
+  if (!Number.isFinite(savedAt) || Date.now() - savedAt > CLIENT_MARKET_STORAGE_MAX_AGE_MS) return data;
+
+  const generatedAt = Date.parse(data.generatedAt);
+  if (data.status?.marketLive && Number.isFinite(generatedAt) && savedAt <= generatedAt) return data;
+
+  return replaceMarketsInBriefing(data, snapshot.markets, snapshot.marketErrors || [], snapshot.savedAt);
+}
+
+async function refreshClientMarketsFromBrowser() {
+  if (!currentBriefing) return false;
+
+  setPill(els.marketBadge, "市場取得中", "live");
+  try {
+    const { items, errors } = await fetchClientMarkets();
+    const nextBriefing = replaceMarketsInBriefing(currentBriefing, items, errors);
+    currentBriefing = nextBriefing;
+    saveClientMarketSnapshot(nextBriefing);
+    renderMarkets(nextBriefing);
+    return true;
+  } catch (error) {
+    console.warn("Failed to refresh market data in browser", error);
+    setPill(els.marketBadge, "更新失敗", "demo");
+    return false;
+  }
+}
+
+async function fetchBriefingData() {
+  const apiResponse = await fetch(`/api/briefing?_=${Date.now()}`, { cache: "no-store" });
+  if (apiResponse.ok) {
+    return {
+      source: "api",
+      data: await apiResponse.json()
+    };
+  }
+
+  const response = await fetch(`data/briefing.json?_=${Date.now()}`, { cache: "no-store" });
+  if (!response.ok) throw new Error(`HTTP ${apiResponse.status || response.status}`);
+  return {
+    source: "static",
+    data: await response.json()
+  };
+}
+
 function render(data) {
   currentBriefing = data;
   renderSummary(data);
@@ -319,18 +718,18 @@ function render(data) {
   renderSources(data);
 }
 
-async function loadBriefing() {
+async function loadBriefing({ refreshClientMarkets = false } = {}) {
   els.refreshBtn.disabled = true;
   els.refreshBtn.textContent = "取得中";
   try {
-    const apiResponse = await fetch(`/api/briefing?_=${Date.now()}`, { cache: "no-store" });
-    if (apiResponse.ok) {
-      render(await apiResponse.json());
-      return;
+    const { source, data } = await fetchBriefingData();
+    const briefing = source === "static" ? applyStoredClientMarkets(data) : data;
+    render(briefing);
+
+    if (refreshClientMarkets && source === "static") {
+      els.refreshBtn.textContent = "市場取得中";
+      await refreshClientMarketsFromBrowser();
     }
-    const response = await fetch(`data/briefing.json?_=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${apiResponse.status || response.status}`);
-    render(await response.json());
   } catch (error) {
     setPill(els.liveBadge, "エラー", "demo");
     els.summaryList.replaceChildren(Object.assign(document.createElement("li"), { textContent: `取得に失敗しました: ${error.message}` }));
@@ -387,6 +786,11 @@ function slideXml(title, blocks, accent = "1F7A4D") {
 }
 
 function makeSlides(data) {
+  const marketStatus = data.clientMarketUpdatedAt
+    ? `サイト更新 (${formatDate(data.clientMarketUpdatedAt)})`
+    : data.status.marketLive
+      ? "ライブ"
+      : "デモ";
   const marketLines = data.markets
     .slice(0, 6)
     .map((m) => `${m.name}: ${formatNumber(m.value, m.unit)} ${m.unit} (${m.changePct >= 0 ? "+" : ""}${Number(m.changePct).toFixed(2)}%) / 取得: ${m.fetchedAt ? formatDate(m.fetchedAt) : "demo"} / 出所: ${m.sourceUrl || m.source}`)
@@ -400,7 +804,7 @@ function makeSlides(data) {
   return [
     slideXml("金融指標・ニュース朝刊", [
       { x: 0.75, y: 1.55, w: 6.0, h: 3.0, text: data.summary.join("\n"), size: 1750, fill: "FFFFFF" },
-      { x: 7.0, y: 1.55, w: 5.5, h: 3.0, text: `生成時刻\n${data.generatedAtTokyo}\n\nステータス\nニュース: ${data.status.newsLive ? "公式RSS" : "デモ"}\n市場: ${data.status.marketLive ? "ライブ" : "デモ"}`, size: 1750, fill: "EEF5F1", line: "C4DED0" }
+      { x: 7.0, y: 1.55, w: 5.5, h: 3.0, text: `生成時刻\n${data.generatedAtTokyo}\n\nステータス\nニュース: ${data.status.newsLive ? "公式RSS" : "デモ"}\n市場: ${marketStatus}`, size: 1750, fill: "EEF5F1", line: "C4DED0" }
     ]),
     slideXml("主要値動き", [{ x: 0.75, y: 1.5, w: 11.8, h: 4.9, text: marketLines, size: 2050, fill: "FFFFFF" }], "315F91"),
     slideXml("重要ニュース", [{ x: 0.75, y: 1.5, w: 11.8, h: 4.9, text: newsLines, size: 1550, fill: "FFFFFF" }], "A66C16"),
@@ -586,6 +990,6 @@ function downloadSlides() {
   URL.revokeObjectURL(url);
 }
 
-els.refreshBtn.addEventListener("click", loadBriefing);
+els.refreshBtn.addEventListener("click", () => loadBriefing({ refreshClientMarkets: true }));
 els.downloadBtn.addEventListener("click", downloadSlides);
 loadBriefing();

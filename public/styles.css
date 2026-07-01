@@ -284,68 +284,147 @@ button:hover {
 }
 
 .market-chart {
+  --chart-color: var(--green);
+  --chart-area: rgba(31, 122, 77, 0.12);
   display: grid;
-  gap: 6px;
+  gap: 4px;
   margin-top: 12px;
   padding-top: 10px;
   border-top: 1px solid var(--line);
 }
 
-.chart-row {
-  --bar-width: 0%;
+.market-chart.down {
+  --chart-color: var(--red);
+  --chart-area: rgba(177, 60, 60, 0.12);
+}
+
+.chart-plot {
+  position: relative;
+  height: 116px;
+  min-height: 116px;
+  overflow: visible;
+}
+
+.chart-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.chart-grid {
+  stroke: #e3eae5;
+  stroke-dasharray: 2 4;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.chart-area {
+  fill: var(--chart-area);
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--chart-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.chart-point {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  z-index: 2;
   display: grid;
-  grid-template-columns: minmax(64px, 0.85fr) minmax(64px, 1.2fr) minmax(64px, auto);
-  align-items: center;
-  gap: 7px;
-  min-height: 19px;
+  width: 15px;
+  min-height: 0;
+  height: 15px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: var(--chart-color);
+  box-shadow: 0 2px 8px rgba(23, 32, 27, 0.18);
+  transform: translate(-50%, -50%);
 }
 
-.chart-time,
-.chart-number {
+.chart-point.latest {
+  width: 17px;
+  height: 17px;
+}
+
+.chart-point:hover,
+.chart-point:focus-visible {
+  border-color: #fff;
+  background: var(--chart-color);
+  box-shadow: 0 0 0 4px rgba(49, 95, 145, 0.14), 0 4px 12px rgba(23, 32, 27, 0.24);
+  outline: 0;
+}
+
+.chart-tooltip {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  z-index: 4;
+  max-width: min(210px, 72vw);
   overflow: hidden;
+  border: 1px solid rgba(23, 32, 27, 0.08);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: rgba(23, 32, 27, 0.94);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1.25;
+  opacity: 0;
+  pointer-events: none;
   text-overflow: ellipsis;
+  transform: translate(-50%, 4px);
+  transition: opacity 140ms ease, transform 140ms ease;
   white-space: nowrap;
-  font-variant-numeric: tabular-nums;
 }
 
-.chart-time {
+.chart-point.start .chart-tooltip {
+  left: 0;
+  transform: translate(0, 4px);
+}
+
+.chart-point.end .chart-tooltip {
+  right: 0;
+  left: auto;
+  transform: translate(0, 4px);
+}
+
+.chart-point:hover .chart-tooltip,
+.chart-point:focus-visible .chart-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.chart-point.start:hover .chart-tooltip,
+.chart-point.start:focus-visible .chart-tooltip,
+.chart-point.end:hover .chart-tooltip,
+.chart-point.end:focus-visible .chart-tooltip {
+  transform: translate(0, 0);
+}
+
+.chart-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   color: var(--muted);
   font-size: 0.68rem;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
-.chart-track {
-  display: block;
+.chart-axis span {
   min-width: 0;
-  height: 8px;
   overflow: hidden;
-  border-radius: 999px;
-  background: #e8eee9;
-}
-
-.chart-bar {
-  display: block;
-  width: var(--bar-width);
-  min-width: 3px;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--green);
-}
-
-.market-chart.down .chart-bar {
-  background: var(--red);
-}
-
-.chart-number {
-  justify-self: end;
-  color: #26352d;
-  font-size: 0.7rem;
-  font-weight: 850;
-}
-
-.chart-row.latest .chart-time,
-.chart-row.latest .chart-number {
-  color: var(--ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .market-chart-empty {

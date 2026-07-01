@@ -12,6 +12,8 @@ https://ohba-t0321.github.io/Market-Briefing-Bot/
 
 GitHub Actions で `public/data/briefing.json` を毎朝 7:30 JST（UTC 22:30）に生成し、`public/` を GitHub Pages にデプロイします。手動で実行ボタンを押さなくても日次で自動実行されます。
 
+Price action は、GitHub Actions で生成された値を初期表示・フォールバックとして使いつつ、Web画面の「更新」ボタンからブラウザ側で最新の市場データを取得して表示中のデータを置き換えます。取得に成功した値は同じブラウザの `localStorage` に保存され、次回表示時にも直近のサイト更新値を利用できます。Yahoo Finance がブラウザ直接取得の CORS を許可しない場合は、CORS プロキシ経由で同じ chart API を読みます。
+
 `OPENAI_API_KEY` を GitHub Secrets に設定すると、要約文は OpenAI API で自動生成されます。未設定時は既存のルールベース要約に自動フォールバックします。
 
 ### OpenAI API を使った日次自動要約の設定
