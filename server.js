@@ -73,6 +73,38 @@ const OFFICIAL_FEEDS = [
   }
 ];
 
+
+const MARKET_NEWS_SEARCHES = [
+  {
+    id: "google-japan-stocks",
+    name: "Google News: 日本株・企業決算",
+    region: "Japan",
+    weight: 3,
+    query: "(日本株 OR 日経平均 OR TOPIX OR 決算 OR 業績予想 OR 自社株買い) when:1d"
+  },
+  {
+    id: "google-yen-rates",
+    name: "Google News: 為替・金利",
+    region: "Japan",
+    weight: 3,
+    query: "(円相場 OR ドル円 OR 長期金利 OR 国債 OR 日銀) when:1d"
+  },
+  {
+    id: "google-us-markets",
+    name: "Google News: 米国株・金利",
+    region: "Global",
+    weight: 3,
+    query: "(US stocks OR S&P 500 OR Nasdaq OR Treasury yields OR Fed) when:1d"
+  },
+  {
+    id: "google-commodities-geopolitics",
+    name: "Google News: 商品・地政学",
+    region: "Global",
+    weight: 2,
+    query: "(oil prices OR gold OR semiconductor stocks OR geopolitics OR tariffs) when:1d"
+  }
+];
+
 const WATCH_KEYWORDS = [
   "GDP",
   "CPI",
@@ -99,7 +131,26 @@ const WATCH_KEYWORDS = [
   "yield",
   "interest rate",
   "monetary policy",
-  "central bank"
+  "central bank",
+  "日経平均",
+  "TOPIX",
+  "日本株",
+  "米国株",
+  "S&P 500",
+  "Nasdaq",
+  "決算",
+  "業績",
+  "自社株買い",
+  "半導体",
+  "原油",
+  "gold",
+  "tariff",
+  "geopolitics",
+  "earnings",
+  "guidance",
+  "stocks",
+  "equities",
+  "Treasury"
 ];
 
 const MARKET_SYMBOLS = [
@@ -324,8 +375,32 @@ function keywordHits(text) {
 
 function scoreNews(item, source) {
   const ageHours = Math.max(0, (Date.now() - Date.parse(item.publishedAt)) / 36e5);
-  const recency = Math.max(0, 3 - ageHours / 24);
-  return Number((source.weight + item.keywords.length * 1.2 + recency).toFixed(2));
+  const recency = Math.max(0, 4 - ageHours / 12);
+  const impactTerms = ["株", "stocks", "equities", "yield", "金利", "為替", "円", "oil", "原油", "semiconductor", "半導体", "決算", "earnings", "guidance", "tariff", "地政学"];
+  const impactBonus = impactTerms.filter((term) => `${item.title || ""} ${item.summary || ""}`.toLowerCase().includes(term.toLowerCase())).length * 0.7;
+  return Number((source.weight + item.keywords.length * 1.1 + impactBonus + recency).toFixed(2));
+}
+
+function googleNewsRssUrl(query) {
+  const url = new URL("https://news.google.com/rss/search");
+  url.searchParams.set("q", query);
+  url.searchParams.set("hl", "ja");
+  url.searchParams.set("gl", "JP");
+  url.searchParams.set("ceid", "JP:ja");
+  return url.toString();
+}
+
+function summarizeNewsItem({ title, summary, source, publishedAt, keywords }) {
+  const cleanSummary = htmlDecode(summary || "");
+  const sentences = cleanSummary
+    .split(/(?<=[。.!?！？])\s+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const core = sentences.slice(0, 2).join(" ") || title;
+  const dateText = Number.isNaN(Date.parse(publishedAt)) ? "" : new Intl.DateTimeFormat("ja-JP", { timeZone: TZ, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(new Date(publishedAt));
+  const keywordText = keywords?.length ? ` 検出テーマ: ${keywords.slice(0, 4).join(" / ")}。` : "";
+  const sourceText = source ? `（${source}${dateText ? `、${dateText}` : ""}）` : dateText ? `（${dateText}）` : "";
+  return `${core}${sourceText}${keywordText}`.slice(0, 360);
 }
 
 function parseFeed(xml, source) {
@@ -346,9 +421,10 @@ function parseFeed(xml, source) {
         publishedAt,
         source: source.name,
         region: source.region,
-        summary,
+        summary: summarizeNewsItem({ title, summary, source: source.name, publishedAt, keywords }),
+        rawSummary: summary,
         keywords,
-        score: scoreNews({ publishedAt, keywords }, source)
+        score: scoreNews({ title, summary, publishedAt, keywords }, source)
       };
     })
     .filter((item) => item.title)
@@ -392,8 +468,15 @@ async function fetchJson(url, headers = {}) {
 }
 
 async function fetchNews() {
+  const sources = [
+    ...OFFICIAL_FEEDS,
+    ...MARKET_NEWS_SEARCHES.map((source) => ({
+      ...source,
+      url: googleNewsRssUrl(source.query)
+    }))
+  ];
   const results = await Promise.allSettled(
-    OFFICIAL_FEEDS.map(async (source) => {
+    sources.map(async (source) => {
       const xml = await fetchText(source.url);
       return {
         source,
@@ -403,7 +486,7 @@ async function fetchNews() {
   );
 
   const sourceHealth = results.map((result, index) => {
-    const source = OFFICIAL_FEEDS[index];
+    const source = sources[index];
     const items = result.status === "fulfilled" ? result.value.items : [];
     const rssItems = items
       .slice()
@@ -431,11 +514,20 @@ async function fetchNews() {
   const items = results
     .filter((result) => result.status === "fulfilled")
     .flatMap((result) => result.value.items)
-    .sort((a, b) => b.score - a.score || Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
-    .slice(0, 18);
+    .sort((a, b) => b.score - a.score || Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+
+  const seenLinks = new Set();
+  const deduped = [];
+  for (const item of items) {
+    const key = item.link || item.title;
+    if (seenLinks.has(key)) continue;
+    seenLinks.add(key);
+    deduped.push(item);
+  }
+  const selected = deduped.slice(0, 28);
 
   return {
-    items: items.length ? items : FALLBACK_NEWS,
+    items: selected.length ? selected : FALLBACK_NEWS,
     sourceHealth
   };
 }
@@ -694,7 +786,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
 
   console.log(`[AI] Attempting OpenAI summary generation (news=${newsItems.length}, markets=${markets.length}, isLive=${isLive})`);
 
-  const topNews = newsItems.slice(0, 8).map((item) => ({
+  const topNews = newsItems.slice(0, 12).map((item) => ({
     title: item.title,
     summary: item.summary,
     source: item.source,
@@ -716,7 +808,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
   const prompt = {
     timezone: TZ,
     isLive,
-    instruction: "日本語で朝会向けに4行で要約。1行目: 全体感、2行目: 注目ニュース、3行目: 市場変動、4行目: 注意点。",
+    instruction: "日本語で朝会向けに4行で要約。各行は具体的なニュース名・数値・資産クラスを含め、単なるキーワード列挙を避ける。1行目: 全体感、2行目: 株価に影響し得る注目ニュース、3行目: 市場変動、4行目: 確認すべきリスク。",
     news: topNews,
     markets: topMarkets
   };
@@ -735,7 +827,7 @@ async function generateAiSummary(newsItems, markets, isLive) {
       input: [
         {
           role: "system",
-          content: "あなたはマーケットアナリストです。推測を避け、与えられたデータのみを使って簡潔に要約してください。"
+          content: "あなたはマーケットアナリストです。推測を避け、与えられたニュース本文・タイトル・市場データのみを使い、投資判断に役立つ具体情報を日本語で簡潔に要約してください。"
         },
         {
           role: "user",

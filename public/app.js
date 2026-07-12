@@ -326,7 +326,7 @@ function renderMarkets(data) {
 
 function renderNews(data) {
   els.newsList.replaceChildren(
-    ...data.news.slice(0, 12).map((item) => {
+    ...data.news.slice(0, 16).map((item) => {
       const article = document.createElement("article");
       article.className = "news-item";
       const link = document.createElement("a");
