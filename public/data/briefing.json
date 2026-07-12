@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-09T15:21:45.587Z",
-  "generatedAtTokyo": "2026/06/10 0:21",
+  "generatedAt": "2026-07-12T07:53:58.296Z",
+  "generatedAtTokyo": "2026/07/12 16:53",
   "status": {
     "newsLive": false,
     "marketLive": false,
@@ -181,7 +181,7 @@
       "link": "https://www.boj.or.jp/rss.htm",
       "sourceUrl": "https://www.boj.or.jp/rss.htm",
       "sourceFeedUrl": "https://www.boj.or.jp/rss.htm",
-      "publishedAt": "2026-06-09T15:21:36.959Z",
+      "publishedAt": "2026-07-12T07:53:41.157Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "ネットワークまたはRSS配信元に接続できない場合の表示です。実運用では公式RSSとAPIから直近項目を取り込みます。",
@@ -198,7 +198,7 @@
       "link": "https://www.jpx.co.jp/english/markets/",
       "sourceUrl": "https://www.jpx.co.jp/english/markets/",
       "sourceFeedUrl": "https://www.jpx.co.jp/english/markets/",
-      "publishedAt": "2026-06-09T15:21:36.960Z",
+      "publishedAt": "2026-07-12T07:53:41.158Z",
       "source": "Demo fallback",
       "region": "Japan",
       "summary": "指数・株価・債券利回りは、用途に応じてJPX、情報ベンダー、または有償APIへ切り替える設計です。",
@@ -281,6 +281,46 @@
       "error": "This operation was aborted",
       "feedUrl": "https://www.ecb.europa.eu/rss/press.html",
       "rssItems": []
+    },
+    {
+      "id": "google-japan-stocks",
+      "name": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "ok": false,
+      "count": 0,
+      "error": "This operation was aborted",
+      "feedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": []
+    },
+    {
+      "id": "google-yen-rates",
+      "name": "Google News: 為替・金利",
+      "region": "Japan",
+      "ok": false,
+      "count": 0,
+      "error": "This operation was aborted",
+      "feedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": []
+    },
+    {
+      "id": "google-us-markets",
+      "name": "Google News: 米国株・金利",
+      "region": "Global",
+      "ok": false,
+      "count": 0,
+      "error": "This operation was aborted",
+      "feedUrl": "https://news.google.com/rss/search?q=%28US+stocks+OR+S%26P+500+OR+Nasdaq+OR+Treasury+yields+OR+Fed%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": []
+    },
+    {
+      "id": "google-commodities-geopolitics",
+      "name": "Google News: 商品・地政学",
+      "region": "Global",
+      "ok": false,
+      "count": 0,
+      "error": "This operation was aborted",
+      "feedUrl": "https://news.google.com/rss/search?q=%28oil+prices+OR+gold+OR+semiconductor+stocks+OR+geopolitics+OR+tariffs%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": []
     }
   ],
   "marketErrors": [
@@ -290,7 +330,7 @@
       "error": "This operation was aborted"
     },
     {
-      "id": "topix",
+      "id": "topix-etf",
       "ok": false,
       "error": "This operation was aborted"
     },
