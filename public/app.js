@@ -576,8 +576,7 @@ function normalizeClientYahooPoints(result, symbol, attempt) {
 
 async function fetchClientYahooMarket(symbol) {
   const attempts = [
-    { range: "1d", interval: "5m" },
-    { range: "5d", interval: "1d" }
+    { range: "1mo", interval: "1d" }
   ];
   let lastError = null;
 
