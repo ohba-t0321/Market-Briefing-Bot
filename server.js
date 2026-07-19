@@ -559,6 +559,31 @@ function formatMarketDate(iso, timeZone, includeTime = true) {
   }).format(date);
 }
 
+function marketTradingDateKey(iso, timeZone) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso || "";
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: timeZone || TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function dedupeMarketPointsByTradingDate(points, timeZone) {
+  const byTradingDate = new Map();
+  points.forEach((point) => {
+    const key = marketTradingDateKey(point.timestamp, timeZone);
+    const current = byTradingDate.get(key);
+    if (!current || Date.parse(point.timestamp) >= Date.parse(current.timestamp)) {
+      byTradingDate.set(key, point);
+    }
+  });
+  return [...byTradingDate.values()].sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+}
+
 function latestFinite(values = []) {
   for (let index = values.length - 1; index >= 0; index -= 1) {
     if (values[index] === null || values[index] === undefined) continue;
@@ -575,9 +600,10 @@ function selectRecentMarketPoints(points) {
 function normalizeYahooPoints(result, symbol, attempt) {
   const meta = result.meta || {};
   const quote = result.indicators?.quote?.[0] || {};
+  const timeZone = meta.exchangeTimezoneName || symbol.timeZone || TZ;
   const timestamps = Array.isArray(result.timestamp) ? result.timestamp : [];
   const closes = Array.isArray(quote.close) ? quote.close : [];
-  const points = timestamps
+  let points = timestamps
     .map((timestamp, index) => {
       const rawValue = closes[index];
       if (rawValue === null || rawValue === undefined) return null;
@@ -605,17 +631,21 @@ function normalizeYahooPoints(result, symbol, attempt) {
     }
   }
 
-  points.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+  points = dedupeMarketPointsByTradingDate(points, timeZone);
   if (!points.length) {
     throw new Error(`no chart points for ${symbol.name}`);
   }
 
-  const timeZone = meta.exchangeTimezoneName || symbol.timeZone || TZ;
   const latest = points.at(-1);
-  const previousClose = Number(meta.chartPreviousClose ?? meta.previousClose);
   const previousSample = points.length >= 2 ? points.at(-2).value : null;
+  const hasPreviousSample = previousSample !== null && previousSample !== undefined && Number.isFinite(Number(previousSample));
+  const sourcePreviousClose = Number(meta.chartPreviousClose ?? meta.previousClose);
   const firstOpen = Array.isArray(quote.open) ? quote.open.find((value) => Number.isFinite(Number(value))) : null;
-  const basis = Number.isFinite(previousClose) ? previousClose : Number(previousSample ?? firstOpen ?? latest.value);
+  const basis = hasPreviousSample
+    ? Number(previousSample)
+    : Number.isFinite(sourcePreviousClose)
+      ? sourcePreviousClose
+      : Number(firstOpen ?? latest.value);
   const change = latest.value - basis;
   const changePct = basis !== 0 ? (change / basis) * 100 : 0;
   const selectedPoints = selectRecentMarketPoints(points).map((point) => ({
@@ -630,6 +660,7 @@ function normalizeYahooPoints(result, symbol, attempt) {
     value: roundMarketValue(latest.value, symbol.unit),
     change: roundMarketValue(change, symbol.unit),
     changePct: Number(changePct.toFixed(2)),
+    previousClose: roundMarketValue(basis, symbol.unit),
     unit: symbol.unit,
     date: formatMarketDate(latest.timestamp, timeZone, true),
     source: symbol.source,
@@ -637,7 +668,7 @@ function normalizeYahooPoints(result, symbol, attempt) {
     fetchedAt: nowIso(),
     latestAt: latest.timestamp,
     timeZone,
-    changeBasis: Number.isFinite(previousClose) ? "前回終値比" : "直近サンプル比",
+    changeBasis: hasPreviousSample ? "前営業日終値比" : "取得元の前日終値比",
     points: selectedPoints,
     spark: selectedPoints.map((point) => point.value),
     rawSymbol: meta.symbol || symbol.yahooSymbol,
@@ -798,7 +829,10 @@ async function generateAiSummary(newsItems, markets, isLive) {
     name: item.name,
     value: item.value,
     unit: item.unit,
+    change: item.change,
     changePct: item.changePct,
+    previousClose: item.previousClose,
+    changeBasis: item.changeBasis,
     source: item.source,
     sourceUrl: item.sourceUrl,
     fetchedAt: item.fetchedAt
@@ -1027,7 +1061,7 @@ async function printBriefing() {
   briefing.summary.forEach((line) => console.log(`- ${line}`));
   console.log("\n## Markets");
   briefing.markets.forEach((item) => {
-    console.log(`- ${item.name}: ${item.value} ${item.unit} (${item.changePct >= 0 ? "+" : ""}${item.changePct.toFixed(2)}%) [${item.source}] ${item.sourceUrl || ""} fetched=${item.fetchedAt || "demo"}`);
+    console.log(`- ${item.name}: ${item.value} ${item.unit} / 前日比 ${item.change >= 0 ? "+" : ""}${item.change} ${item.unit} (${item.changePct >= 0 ? "+" : ""}${item.changePct.toFixed(2)}%) [${item.source}] ${item.sourceUrl || ""} fetched=${item.fetchedAt || "demo"}`);
   });
   console.log("\n## Top News");
   briefing.news.slice(0, 8).forEach((item) => {
