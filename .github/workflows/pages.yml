@@ -6,14 +6,20 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "30 22 * * *"
+    # GitHub Actions uses UTC. 21:30 UTC on Sun-Thu is 06:30 JST on Mon-Fri.
+    - cron: "30 21 * * 0-4"
 
 permissions:
   contents: write
 
+concurrency:
+  group: morning-alpha-pages
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,9 +30,9 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'auto' }}
-      - name: Show summary source in generated JSON
+      - name: Validate generated briefing
         run: |
-          node -e "const fs=require('fs');const p='public/data/briefing.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));console.log('[briefing] generatedAtTokyo=',d.generatedAtTokyo);console.log('[briefing] summarySource=',d.summarySource);console.log('[briefing] newsLive=',d.status?.newsLive,'marketLive=',d.status?.marketLive);"
+          node -e "const fs=require('fs');const p='public/data/briefing.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));if(!d.generatedAtTokyo||!Array.isArray(d.markets)||!Array.isArray(d.news))throw new Error('Generated briefing is incomplete');console.log('[briefing] generatedAtTokyo=',d.generatedAtTokyo);console.log('[briefing] summarySource=',d.summarySource);console.log('[briefing] newsLive=',d.status?.newsLive,'marketLive=',d.status?.marketLive);"
       - name: Publish static site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
