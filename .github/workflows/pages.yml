@@ -33,6 +33,9 @@ jobs:
       - name: Validate generated briefing
         run: |
           node -e "const fs=require('fs');const p='public/data/briefing.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));if(!d.generatedAtTokyo||!Array.isArray(d.markets)||!Array.isArray(d.news))throw new Error('Generated briefing is incomplete');console.log('[briefing] generatedAtTokyo=',d.generatedAtTokyo);console.log('[briefing] summarySource=',d.summarySource);console.log('[briefing] newsLive=',d.status?.newsLive,'marketLive=',d.status?.marketLive);"
+          node -e "const fs=require('fs');const d=JSON.parse(fs.readFileSync('public/data/briefing.json','utf8'));if(!d.status?.marketLive)process.exit(0);for(const m of d.markets){const labels=(m.points||[]).map(p=>p.label);if(labels.length!==new Set(labels).size)throw new Error(m.name+': duplicate market dates');if(!Number.isFinite(Number(m.previousClose)))throw new Error(m.name+': previous close missing');const expected=(Number(m.change)/Number(m.previousClose))*100;if(Math.abs(expected-Number(m.changePct))>=0.011)throw new Error(m.name+': day-over-day ratio mismatch');}console.log('[briefing] market points and day-over-day changes validated');"
+      - name: Check browser scripts
+        run: node --check public/app.js && node --check public/design.js
       - name: Publish static site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
