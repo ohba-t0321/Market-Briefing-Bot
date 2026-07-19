@@ -101,6 +101,31 @@ function formatMarketDate(value, timeZone, includeTime = true) {
   }).format(date);
 }
 
+function marketTradingDateKey(value, timeZone) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value || "";
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: timeZone || currentBriefing?.status?.timezone || "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function dedupeMarketPointsByTradingDate(points, timeZone) {
+  const byTradingDate = new Map();
+  points.forEach((point) => {
+    const key = marketTradingDateKey(point.timestamp, timeZone);
+    const current = byTradingDate.get(key);
+    if (!current || Date.parse(point.timestamp) >= Date.parse(current.timestamp)) {
+      byTradingDate.set(key, point);
+    }
+  });
+  return [...byTradingDate.values()].sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+}
+
 function setPill(el, text, mode) {
   el.textContent = text;
   el.classList.remove("live", "demo");
@@ -146,6 +171,14 @@ function getChangeBasisLabel(market) {
     return "増減率: 直近サンプル比";
   }
   return "増減率: 前回終値（または前回取得値）比";
+}
+
+function formatMarketChange(market) {
+  const change = Number(market.change || 0);
+  const changePct = Number(market.changePct || 0);
+  const changeSign = change > 0 ? "+" : "";
+  const pctSign = changePct > 0 ? "+" : "";
+  return `${changeSign}${formatNumber(change, market.unit)} ${market.unit} (${pctSign}${changePct.toFixed(2)}%)`;
 }
 
 function getMarketPoints(market) {
@@ -299,7 +332,7 @@ function renderMarkets(data) {
     const chart = node.querySelector(".market-chart");
     const positive = Number(market.changePct) >= 0;
     title.textContent = market.name;
-    change.textContent = `${positive ? "+" : ""}${Number(market.changePct || 0).toFixed(2)}%`;
+    change.textContent = formatMarketChange(market);
     change.classList.add(positive ? "up" : "down");
     value.textContent = `${formatNumber(market.value, market.unit)} ${market.unit}`;
     source.textContent = `${market.source} / 市場日時: ${market.date || "latest"}`;
@@ -314,7 +347,10 @@ function renderMarkets(data) {
       a.textContent = "実データ取得元";
       source.append(" / ", a);
     }
-    basis.textContent = getChangeBasisLabel(market);
+    const previousClose = Number(market.previousClose);
+    basis.textContent = Number.isFinite(previousClose)
+      ? `前日終値: ${formatNumber(previousClose, market.unit)} ${market.unit} / ${getChangeBasisLabel(market)}`
+      : getChangeBasisLabel(market);
     source.after(basis);
     card.dataset.market = market.id;
     renderMarketChart(chart, market, positive);
@@ -502,9 +538,10 @@ async function fetchClientJson(url) {
 function normalizeClientYahooPoints(result, symbol, attempt) {
   const meta = result.meta || {};
   const quote = result.indicators?.quote?.[0] || {};
+  const timeZone = meta.exchangeTimezoneName || symbol.timeZone || currentBriefing?.status?.timezone || "Asia/Tokyo";
   const timestamps = Array.isArray(result.timestamp) ? result.timestamp : [];
   const closes = Array.isArray(quote.close) ? quote.close : [];
-  const points = timestamps
+  let points = timestamps
     .map((timestamp, index) => {
       const rawValue = closes[index];
       if (rawValue === null || rawValue === undefined) return null;
@@ -532,17 +569,21 @@ function normalizeClientYahooPoints(result, symbol, attempt) {
     }
   }
 
-  points.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+  points = dedupeMarketPointsByTradingDate(points, timeZone);
   if (!points.length) {
     throw new Error(`no chart points for ${symbol.name}`);
   }
 
-  const timeZone = meta.exchangeTimezoneName || symbol.timeZone || currentBriefing?.status?.timezone || "Asia/Tokyo";
   const latest = points.at(-1);
-  const previousClose = Number(meta.chartPreviousClose ?? meta.previousClose);
   const previousSample = points.length >= 2 ? points.at(-2).value : null;
+  const hasPreviousSample = previousSample !== null && previousSample !== undefined && Number.isFinite(Number(previousSample));
+  const sourcePreviousClose = Number(meta.chartPreviousClose ?? meta.previousClose);
   const firstOpen = Array.isArray(quote.open) ? quote.open.find((value) => Number.isFinite(Number(value))) : null;
-  const basis = Number.isFinite(previousClose) ? previousClose : Number(previousSample ?? firstOpen ?? latest.value);
+  const basis = hasPreviousSample
+    ? Number(previousSample)
+    : Number.isFinite(sourcePreviousClose)
+      ? sourcePreviousClose
+      : Number(firstOpen ?? latest.value);
   const change = latest.value - basis;
   const changePct = basis !== 0 ? (change / basis) * 100 : 0;
   const selectedPoints = selectClientMarketPoints(points).map((point) => ({
@@ -557,6 +598,7 @@ function normalizeClientYahooPoints(result, symbol, attempt) {
     value: roundMarketValue(latest.value, symbol.unit),
     change: roundMarketValue(change, symbol.unit),
     changePct: Number(changePct.toFixed(2)),
+    previousClose: roundMarketValue(basis, symbol.unit),
     unit: symbol.unit,
     date: formatMarketDate(latest.timestamp, timeZone, true),
     source: symbol.source,
@@ -564,7 +606,7 @@ function normalizeClientYahooPoints(result, symbol, attempt) {
     fetchedAt: new Date().toISOString(),
     latestAt: latest.timestamp,
     timeZone,
-    changeBasis: Number.isFinite(previousClose) ? "前回終値比" : "直近サンプル比",
+    changeBasis: hasPreviousSample ? "前営業日終値比" : "取得元の前日終値比",
     points: selectedPoints,
     spark: selectedPoints.map((point) => point.value),
     rawSymbol: meta.symbol || symbol.yahooSymbol,
@@ -792,7 +834,7 @@ function makeSlides(data) {
       : "デモ";
   const marketLines = data.markets
     .slice(0, 6)
-    .map((m) => `${m.name}: ${formatNumber(m.value, m.unit)} ${m.unit} (${m.changePct >= 0 ? "+" : ""}${Number(m.changePct).toFixed(2)}%) / 取得: ${m.fetchedAt ? formatDate(m.fetchedAt) : "demo"} / 出所: ${m.sourceUrl || m.source}`)
+    .map((m) => `${m.name}: ${formatNumber(m.value, m.unit)} ${m.unit} / 前日比 ${formatMarketChange(m)} / 取得: ${m.fetchedAt ? formatDate(m.fetchedAt) : "demo"} / 出所: ${m.sourceUrl || m.source}`)
     .join("\n");
   const newsLines = data.news
     .slice(0, 6)
