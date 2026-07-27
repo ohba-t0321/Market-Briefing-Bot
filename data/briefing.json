@@ -1,0 +1,1782 @@
+{
+  "generatedAt": "2026-07-27T22:34:05.528Z",
+  "generatedAtTokyo": "2026/07/28 7:34",
+  "status": {
+    "newsLive": true,
+    "marketLive": true,
+    "timezone": "Asia/Tokyo"
+  },
+  "summary": [
+    "全体感：日本株は日経平均が320円高（+0.50%）の64,931円、TOPIX ETFは+1.63%と堅調だった一方、米国株はまちまち。",
+    "注目ニュース：半導体決算への期待が強まらず、米半導体株安が重荷との「日経平均株価、米半導体株安が重荷」で半導体株の選別が続く見込み。",
+    "市場変動：米国株はS&P500が+0.02%、米10年債利回りは4.641%（-0.038ポイント）、ドル円は163.735円（-0.06%）、原油安が株式を下支え。",
+    "確認すべきリスク：日銀会合・FOMCを控え、ドル円の164円意識や金利変動、AI・半導体決算、韓国株を含む半導体連鎖で日本株の値幅拡大に注意。"
+  ],
+  "summarySources": [
+    [
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwVGhmanJVSFpxcnRPcnBPbkVhYkFjd2NZMnlvMncwbmljX1p6VGRseXowckdzRXBqejI3ME5GZGkxUTJENU1sMnVreFdKRy1XRkNOR3lzVlRLaVF3bllIa2NtbXpQWkp0bUI3Tw?oc=5"
+      },
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRUZtRURhMVNJNFR5ODIyWDZwSUdQYzVublN6UExRa1Uwc1dxTGdaaWI5cm5SWmRMVENHZlZpd3hqSTRaaFhCWEFNbnk1LTh0bFhlem1TM1dTZw?oc=5"
+      },
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TSnVqVTIxR1Y0TWVOU3YteWZFM2tIaGdXN3Z3U2k3dXhTdS1SNmt5NVlkQmxSa3o1ekpVX0VSSU9xQXhGYkx4OGprekxIYlFuYlE?oc=5"
+      }
+    ],
+    [
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwVGhmanJVSFpxcnRPcnBPbkVhYkFjd2NZMnlvMncwbmljX1p6VGRseXowckdzRXBqejI3ME5GZGkxUTJENU1sMnVreFdKRy1XRkNOR3lzVlRLaVF3bllIa2NtbXpQWkp0bUI3Tw?oc=5"
+      },
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRUZtRURhMVNJNFR5ODIyWDZwSUdQYzVublN6UExRa1Uwc1dxTGdaaWI5cm5SWmRMVENHZlZpd3hqSTRaaFhCWEFNbnk1LTh0bFhlem1TM1dTZw?oc=5"
+      },
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TSnVqVTIxR1Y0TWVOU3YteWZFM2tIaGdXN3Z3U2k3dXhTdS1SNmt5NVlkQmxSa3o1ekpVX0VSSU9xQXhGYkx4OGprekxIYlFuYlE?oc=5"
+      }
+    ],
+    [
+      {
+        "label": "Nikkei 225 / Yahoo Finance",
+        "url": "https://finance.yahoo.com/quote/%5EN225/"
+      },
+      {
+        "label": "TOPIX ETF / Yahoo Finance",
+        "url": "https://finance.yahoo.com/quote/1306.T/"
+      },
+      {
+        "label": "USD/JPY / Yahoo Finance",
+        "url": "https://finance.yahoo.com/quote/USDJPY%3DX/"
+      }
+    ],
+    [
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwVGhmanJVSFpxcnRPcnBPbkVhYkFjd2NZMnlvMncwbmljX1p6VGRseXowckdzRXBqejI3ME5GZGkxUTJENU1sMnVreFdKRy1XRkNOR3lzVlRLaVF3bllIa2NtbXpQWkp0bUI3Tw?oc=5"
+      },
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRUZtRURhMVNJNFR5ODIyWDZwSUdQYzVublN6UExRa1Uwc1dxTGdaaWI5cm5SWmRMVENHZlZpd3hqSTRaaFhCWEFNbnk1LTh0bFhlem1TM1dTZw?oc=5"
+      },
+      {
+        "label": "Google News: 日本株・企業決算",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TSnVqVTIxR1Y0TWVOU3YteWZFM2tIaGdXN3Z3U2k3dXhTdS1SNmt5NVlkQmxSa3o1ekpVX0VSSU9xQXhGYkx4OGprekxIYlFuYlE?oc=5"
+      },
+      {
+        "label": "Nikkei 225 / Yahoo Finance",
+        "url": "https://finance.yahoo.com/quote/%5EN225/"
+      }
+    ]
+  ],
+  "summarySource": "OpenAI:gpt-5.6-luna",
+  "markets": [
+    {
+      "id": "nikkei",
+      "name": "Nikkei 225",
+      "value": 64931.19,
+      "change": 320.04,
+      "changePct": 0.5,
+      "previousClose": 64611.15,
+      "unit": "pt",
+      "date": "7/27 15:45",
+      "source": "Yahoo Finance",
+      "sourceUrl": "https://finance.yahoo.com/quote/%5EN225/",
+      "fetchedAt": "2026-07-27T22:33:59.996Z",
+      "latestAt": "2026-07-27T06:45:03.000Z",
+      "timeZone": "Asia/Tokyo",
+      "changeBasis": "前営業日終値比",
+      "points": [
+        {
+          "timestamp": "2026-07-17T00:00:00.000Z",
+          "label": "7/17",
+          "value": 64141.12
+        },
+        {
+          "timestamp": "2026-07-21T00:00:00.000Z",
+          "label": "7/21",
+          "value": 66232.19
+        },
+        {
+          "timestamp": "2026-07-22T00:00:00.000Z",
+          "label": "7/22",
+          "value": 66115.6
+        },
+        {
+          "timestamp": "2026-07-23T00:00:00.000Z",
+          "label": "7/23",
+          "value": 66422.6
+        },
+        {
+          "timestamp": "2026-07-24T00:00:00.000Z",
+          "label": "7/24",
+          "value": 64611.15
+        },
+        {
+          "timestamp": "2026-07-27T06:45:03.000Z",
+          "label": "7/27",
+          "value": 64931.19
+        }
+      ],
+      "spark": [
+        64141.12,
+        66232.19,
+        66115.6,
+        66422.6,
+        64611.15,
+        64931.19
+      ],
+      "rawSymbol": "^N225",
+      "interval": "1d",
+      "range": "1mo",
+      "volume": 0
+    },
+    {
+      "id": "topix-etf",
+      "name": "TOPIX ETF",
+      "value": 424.3,
+      "change": 6.8,
+      "changePct": 1.63,
+      "previousClose": 417.5,
+      "unit": "JPY",
+      "date": "7/27 15:30",
+      "source": "Yahoo Finance",
+      "sourceUrl": "https://finance.yahoo.com/quote/1306.T/",
+      "fetchedAt": "2026-07-27T22:34:00.002Z",
+      "latestAt": "2026-07-27T06:30:00.000Z",
+      "timeZone": "Asia/Tokyo",
+      "changeBasis": "前営業日終値比",
+      "points": [
+        {
+          "timestamp": "2026-07-17T00:00:00.000Z",
+          "label": "7/17",
+          "value": 407.9
+        },
+        {
+          "timestamp": "2026-07-21T00:00:00.000Z",
+          "label": "7/21",
+          "value": 418.3
+        },
+        {
+          "timestamp": "2026-07-22T00:00:00.000Z",
+          "label": "7/22",
+          "value": 420.3
+        },
+        {
+          "timestamp": "2026-07-23T00:00:00.000Z",
+          "label": "7/23",
+          "value": 422.1
+        },
+        {
+          "timestamp": "2026-07-24T00:00:00.000Z",
+          "label": "7/24",
+          "value": 417.5
+        },
+        {
+          "timestamp": "2026-07-27T06:30:00.000Z",
+          "label": "7/27",
+          "value": 424.3
+        }
+      ],
+      "spark": [
+        407.9,
+        418.3,
+        420.3,
+        422.1,
+        417.5,
+        424.3
+      ],
+      "rawSymbol": "1306.T",
+      "interval": "1d",
+      "range": "1mo",
+      "volume": 14187050
+    },
+    {
+      "id": "usdjpy",
+      "name": "USD/JPY",
+      "value": 163.735,
+      "change": -0.097,
+      "changePct": -0.06,
+      "previousClose": 163.832,
+      "unit": "JPY",
+      "date": "7/27 23:33",
+      "source": "Yahoo Finance",
+      "sourceUrl": "https://finance.yahoo.com/quote/USDJPY%3DX/",
+      "fetchedAt": "2026-07-27T22:34:00.052Z",
+      "latestAt": "2026-07-27T22:33:56.000Z",
+      "timeZone": "Europe/London",
+      "changeBasis": "前営業日終値比",
+      "points": [
+        {
+          "timestamp": "2026-07-19T23:00:00.000Z",
+          "label": "7/20",
+          "value": 162.512
+        },
+        {
+          "timestamp": "2026-07-20T23:00:00.000Z",
+          "label": "7/21",
+          "value": 162.487
+        },
+        {
+          "timestamp": "2026-07-21T23:00:00.000Z",
+          "label": "7/22",
+          "value": 163.186
+        },
+        {
+          "timestamp": "2026-07-22T23:00:00.000Z",
+          "label": "7/23",
+          "value": 163.081
+        },
+        {
+          "timestamp": "2026-07-23T23:00:00.000Z",
+          "label": "7/24",
+          "value": 163.832
+        },
+        {
+          "timestamp": "2026-07-27T22:33:56.000Z",
+          "label": "7/27",
+          "value": 163.735
+        }
+      ],
+      "spark": [
+        162.512,
+        162.487,
+        163.186,
+        163.081,
+        163.832,
+        163.735
+      ],
+      "rawSymbol": "JPY=X",
+      "interval": "1d",
+      "range": "1mo",
+      "volume": 0
+    },
+    {
+      "id": "spx",
+      "name": "S&P 500",
+      "value": 7413.18,
+      "change": 1.2,
+      "changePct": 0.02,
+      "previousClose": 7411.98,
+      "unit": "pt",
+      "date": "7/27 16:52",
+      "source": "Yahoo Finance",
+      "sourceUrl": "https://finance.yahoo.com/quote/%5EGSPC/",
+      "fetchedAt": "2026-07-27T22:34:00.000Z",
+      "latestAt": "2026-07-27T20:52:41.000Z",
+      "timeZone": "America/New_York",
+      "changeBasis": "前営業日終値比",
+      "points": [
+        {
+          "timestamp": "2026-07-20T13:30:00.000Z",
+          "label": "7/20",
+          "value": 7443.28
+        },
+        {
+          "timestamp": "2026-07-21T13:30:00.000Z",
+          "label": "7/21",
+          "value": 7509.2
+        },
+        {
+          "timestamp": "2026-07-22T13:30:00.000Z",
+          "label": "7/22",
+          "value": 7498.96
+        },
+        {
+          "timestamp": "2026-07-23T13:30:00.000Z",
+          "label": "7/23",
+          "value": 7408.3
+        },
+        {
+          "timestamp": "2026-07-24T13:30:00.000Z",
+          "label": "7/24",
+          "value": 7411.98
+        },
+        {
+          "timestamp": "2026-07-27T20:52:41.000Z",
+          "label": "7/27",
+          "value": 7413.18
+        }
+      ],
+      "spark": [
+        7443.28,
+        7509.2,
+        7498.96,
+        7408.3,
+        7411.98,
+        7413.18
+      ],
+      "rawSymbol": "^GSPC",
+      "interval": "1d",
+      "range": "1mo",
+      "volume": 3099757000
+    },
+    {
+      "id": "us10y",
+      "name": "US 10Y Yield",
+      "value": 4.641,
+      "change": -0.038,
+      "changePct": -0.81,
+      "previousClose": 4.679,
+      "unit": "%",
+      "date": "7/27 13:59",
+      "source": "Yahoo Finance",
+      "sourceUrl": "https://finance.yahoo.com/quote/%5ETNX/",
+      "fetchedAt": "2026-07-27T22:34:00.032Z",
+      "latestAt": "2026-07-27T18:59:52.000Z",
+      "timeZone": "America/Chicago",
+      "changeBasis": "前営業日終値比",
+      "points": [
+        {
+          "timestamp": "2026-07-20T12:20:00.000Z",
+          "label": "7/20",
+          "value": 4.598
+        },
+        {
+          "timestamp": "2026-07-21T12:20:00.000Z",
+          "label": "7/21",
+          "value": 4.628
+        },
+        {
+          "timestamp": "2026-07-22T12:20:00.000Z",
+          "label": "7/22",
+          "value": 4.657
+        },
+        {
+          "timestamp": "2026-07-23T12:20:00.000Z",
+          "label": "7/23",
+          "value": 4.703
+        },
+        {
+          "timestamp": "2026-07-24T12:20:00.000Z",
+          "label": "7/24",
+          "value": 4.679
+        },
+        {
+          "timestamp": "2026-07-27T18:59:52.000Z",
+          "label": "7/27",
+          "value": 4.641
+        }
+      ],
+      "spark": [
+        4.598,
+        4.628,
+        4.657,
+        4.703,
+        4.679,
+        4.641
+      ],
+      "rawSymbol": "^TNX",
+      "interval": "1d",
+      "range": "1mo",
+      "volume": 0
+    }
+  ],
+  "news": [
+    {
+      "id": "google-japan-stocks-1785120870000-61",
+      "title": "日経平均終値320円高、半導体決算の期待高まらず 原油安が下支え - 日本経済新聞",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwVGhmanJVSFpxcnRPcnBPbkVhYkFjd2NZMnlvMncwbmljX1p6VGRseXowckdzRXBqejI3ME5GZGkxUTJENU1sMnVreFdKRy1XRkNOR3lzVlRLaVF3bllIa2NtbXpQWkp0bUI3Tw?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwVGhmanJVSFpxcnRPcnBPbkVhYkFjd2NZMnlvMncwbmljX1p6VGRseXowckdzRXBqejI3ME5GZGkxUTJENU1sMnVreFdKRy1XRkNOR3lzVlRLaVF3bllIa2NtbXpQWkp0bUI3Tw?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T02:54:30.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "日経平均終値320円高、半導体決算の期待高まらず 原油安が下支え &nbsp;&nbsp; 日本経済新聞（Google News: 日本株・企業決算、7/27 11:54） 検出テーマ: 日経平均 / 決算 / 半導体 / 原油。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTFBwVGhmanJVSFpxcnRPcnBPbkVhYkFjd2NZMnlvMncwbmljX1p6VGRseXowckdzRXBqejI3ME5GZGkxUTJENU1sMnVreFdKRy1XRkNOR3lzVlRLaVF3bllIa2NtbXpQWkp0bUI3Tw?oc=5\" target=\"_blank\">日経平均終値320円高、半導体決算の期待高まらず 原油安が下支え</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日本経済新聞</font>",
+      "keywords": [
+        "日経平均",
+        "決算",
+        "半導体",
+        "原油"
+      ],
+      "score": 12.56
+    },
+    {
+      "id": "google-japan-stocks-1785140580000-39",
+      "title": "［動画］【テクニカル分析】今週の日本株 日米「中銀ウィーク」と本格化するAI・半導体決算。日経平均は「レンジ相場」か？＜チャートで振り返る先週の株式市場と今週の見通し - トウシル",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRUZtRURhMVNJNFR5ODIyWDZwSUdQYzVublN6UExRa1Uwc1dxTGdaaWI5cm5SWmRMVENHZlZpd3hqSTRaaFhCWEFNbnk1LTh0bFhlem1TM1dTZw?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRUZtRURhMVNJNFR5ODIyWDZwSUdQYzVublN6UExRa1Uwc1dxTGdaaWI5cm5SWmRMVENHZlZpd3hqSTRaaFhCWEFNbnk1LTh0bFhlem1TM1dTZw?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T08:23:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "［動画］【テクニカル分析】今週の日本株 日米「中銀ウィーク」と本格化するAI・半導体決算。日経平均は「レンジ相場」か？＜チャートで振り返る先週の株式市場と今週の見通し &nbsp;&nbsp; トウシル（Google News: 日本株・企業決算、7/27 17:23） 検出テーマ: 日経平均 / 日本株 / 決算 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRUZtRURhMVNJNFR5ODIyWDZwSUdQYzVublN6UExRa1Uwc1dxTGdaaWI5cm5SWmRMVENHZlZpd3hqSTRaaFhCWEFNbnk1LTh0bFhlem1TM1dTZw?oc=5\" target=\"_blank\">［動画］【テクニカル分析】今週の日本株 日米「中銀ウィーク」と本格化するAI・半導体決算。日経平均は「レンジ相場」か？＜チャートで振り返る先週の株式市場と今週の見通し</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">トウシル</font>",
+      "keywords": [
+        "日経平均",
+        "日本株",
+        "決算",
+        "半導体"
+      ],
+      "score": 12.32
+    },
+    {
+      "id": "google-japan-stocks-1785184320000-15",
+      "title": "ダウ平均はプラスもナスダックは下落 決算ラッシュ控え半導体に売り＝米国株概況 - 株探",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TSnVqVTIxR1Y0TWVOU3YteWZFM2tIaGdXN3Z3U2k3dXhTdS1SNmt5NVlkQmxSa3o1ekpVX0VSSU9xQXhGYkx4OGprekxIYlFuYlE?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TSnVqVTIxR1Y0TWVOU3YteWZFM2tIaGdXN3Z3U2k3dXhTdS1SNmt5NVlkQmxSa3o1ekpVX0VSSU9xQXhGYkx4OGprekxIYlFuYlE?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T20:32:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "ダウ平均はプラスもナスダックは下落 決算ラッシュ控え半導体に売り＝米国株概況 &nbsp;&nbsp; 株探（Google News: 日本株・企業決算、7/28 05:32） 検出テーマ: 米国株 / 決算 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TSnVqVTIxR1Y0TWVOU3YteWZFM2tIaGdXN3Z3U2k3dXhTdS1SNmt5NVlkQmxSa3o1ekpVX0VSSU9xQXhGYkx4OGprekxIYlFuYlE?oc=5\" target=\"_blank\">ダウ平均はプラスもナスダックは下落 決算ラッシュ控え半導体に売り＝米国株概況</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">株探</font>",
+      "keywords": [
+        "米国株",
+        "決算",
+        "半導体"
+      ],
+      "score": 12.23
+    },
+    {
+      "id": "google-japan-stocks-1785187378000-2",
+      "title": "米国株式市場＝まちまち、ハイテク決算見極め 利上げ警戒感も - ロイター",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWThwUmJFZGJBQ1didFI1REVGRm1SRWNHZzdTeE1VZkNxd0ZfUTVoNk93VDEtdTA3SzNsSlNTNHVQdVNnTU8wRklkTC1WQWlnSUZ1Y2VWaGpaVjdoRmFsTmxHMGJwRm9oRW5LTmNXdVg3WFd5U2xUeG4taVRiT1I2OA?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWThwUmJFZGJBQ1didFI1REVGRm1SRWNHZzdTeE1VZkNxd0ZfUTVoNk93VDEtdTA3SzNsSlNTNHVQdVNnTU8wRklkTC1WQWlnSUZ1Y2VWaGpaVjdoRmFsTmxHMGJwRm9oRW5LTmNXdVg3WFd5U2xUeG4taVRiT1I2OA?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T21:22:58.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "米国株式市場＝まちまち、ハイテク決算見極め 利上げ警戒感も &nbsp;&nbsp; ロイター（Google News: 日本株・企業決算、7/28 06:22） 検出テーマ: 利上げ / 米国株 / 決算。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxQWThwUmJFZGJBQ1didFI1REVGRm1SRWNHZzdTeE1VZkNxd0ZfUTVoNk93VDEtdTA3SzNsSlNTNHVQdVNnTU8wRklkTC1WQWlnSUZ1Y2VWaGpaVjdoRmFsTmxHMGJwRm9oRW5LTmNXdVg3WFd5U2xUeG4taVRiT1I2OA?oc=5\" target=\"_blank\">米国株式市場＝まちまち、ハイテク決算見極め 利上げ警戒感も</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ロイター</font>",
+      "keywords": [
+        "利上げ",
+        "米国株",
+        "決算"
+      ],
+      "score": 11.6
+    },
+    {
+      "id": "google-japan-stocks-1785150627000-47",
+      "title": "決算で信越化学が下落も、AIによるウエハー期待でSUMCOが上昇/日経平均反発【今日の注目株＆日本株市場見通し】「デイリーZAi」7月27日号（ダイヤモンド・ザイ） - Yahoo!ニュース",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE55cTRzLU9nV0dTUDRhRjNlT1BOT21aMEhOTjEwSHNfLTJzeXQ2WE9XMmZkWDJJYmU1TTJaQ3ZSbnhLVE9qYjd1a2tGbXpFd0pFUjBCZktJc3owSTBhZk43dHdTbHNxaTdqVTcwbjdXOUdnclhxTjRaZGhyeGVOalk?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTE55cTRzLU9nV0dTUDRhRjNlT1BOT21aMEhOTjEwSHNfLTJzeXQ2WE9XMmZkWDJJYmU1TTJaQ3ZSbnhLVE9qYjd1a2tGbXpFd0pFUjBCZktJc3owSTBhZk43dHdTbHNxaTdqVTcwbjdXOUdnclhxTjRaZGhyeGVOalk?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T11:10:27.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "決算で信越化学が下落も、AIによるウエハー期待でSUMCOが上昇/日経平均反発【今日の注目株＆日本株市場見通し】「デイリーZAi」7月27日号（ダイヤモンド・ザイ） &nbsp;&nbsp; Yahoo!ニュース（Google News: 日本株・企業決算、7/27 20:10） 検出テーマ: 日経平均 / 日本株 / 決算。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTE55cTRzLU9nV0dTUDRhRjNlT1BOT21aMEhOTjEwSHNfLTJzeXQ2WE9XMmZkWDJJYmU1TTJaQ3ZSbnhLVE9qYjd1a2tGbXpFd0pFUjBCZktJc3owSTBhZk43dHdTbHNxaTdqVTcwbjdXOUdnclhxTjRaZGhyeGVOalk?oc=5\" target=\"_blank\">決算で信越化学が下落も、AIによるウエハー期待でSUMCOが上昇/日経平均反発【今日の注目株＆日本株市場見通し】「デイリーZAi」7月27日号（ダイヤモンド・ザイ）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo!ニュース</font>",
+      "keywords": [
+        "日経平均",
+        "日本株",
+        "決算"
+      ],
+      "score": 10.75
+    },
+    {
+      "id": "google-yen-rates-1785119400000-34",
+      "title": "【FX】7/27 原油急落でもドル円底堅い 今週は日銀・FOMCが焦点 ｜為替市場ニュースの振り返り、今日の見通し - 外為どっとコム",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9wVTUwMzAtRFRkSXF3elF1aEhaMV9NRWszV3RWWUNLNU1DZnFXTVpEUzM3M1hZdUhfYnA3bWJ5aGx1YzdLVGJwWjV0MWMydmdVMVI4dFhCSUs4VkZTaWdQMHZwNA?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9wVTUwMzAtRFRkSXF3elF1aEhaMV9NRWszV3RWWUNLNU1DZnFXTVpEUzM3M1hZdUhfYnA3bWJ5aGx1YzdLVGJwWjV0MWMydmdVMVI4dFhCSUs4VkZTaWdQMHZwNA?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T02:30:00.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "【FX】7/27 原油急落でもドル円底堅い 今週は日銀・FOMCが焦点 ｜為替市場ニュースの振り返り、今日の見通し &nbsp;&nbsp; 外為どっとコム（Google News: 為替・金利、7/27 11:30） 検出テーマ: 為替 / FOMC / 原油。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE9wVTUwMzAtRFRkSXF3elF1aEhaMV9NRWszV3RWWUNLNU1DZnFXTVpEUzM3M1hZdUhfYnA3bWJ5aGx1YzdLVGJwWjV0MWMydmdVMVI4dFhCSUs4VkZTaWdQMHZwNA?oc=5\" target=\"_blank\">【FX】7/27 原油急落でもドル円底堅い 今週は日銀・FOMCが焦点 ｜為替市場ニュースの振り返り、今日の見通し</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">外為どっとコム</font>",
+      "keywords": [
+        "為替",
+        "FOMC",
+        "原油"
+      ],
+      "score": 10.73
+    },
+    {
+      "id": "google-yen-rates-1785148149000-58",
+      "title": "米国と日本の金融政策はどう動く？FOMCと日銀会合から読み解く金利・インフレ・為替の行方 - Bloomo",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBjTElkbnMzeXczbVJjOFJXNHphS2lHT09TYi1mQmJBNVJZQUwtcnppYmJpVVVSQWs4NVVQRFkzRWt2M21aSnVqMEJLWnNEU1RpOGRMcV9LeDRRS0lVWFZ5b1dfSkN2QWU3U0hWOA?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBjTElkbnMzeXczbVJjOFJXNHphS2lHT09TYi1mQmJBNVJZQUwtcnppYmJpVVVSQWs4NVVQRFkzRWt2M21aSnVqMEJLWnNEU1RpOGRMcV9LeDRRS0lVWFZ5b1dfSkN2QWU3U0hWOA?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T10:29:09.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "米国と日本の金融政策はどう動く？FOMCと日銀会合から読み解く金利・インフレ・為替の行方 &nbsp;&nbsp; Bloomo（Google News: 為替・金利、7/27 19:29） 検出テーマ: 金融政策 / 為替 / FOMC。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTFBjTElkbnMzeXczbVJjOFJXNHphS2lHT09TYi1mQmJBNVJZQUwtcnppYmJpVVVSQWs4NVVQRFkzRWt2M21aSnVqMEJLWnNEU1RpOGRMcV9LeDRRS0lVWFZ5b1dfSkN2QWU3U0hWOA?oc=5\" target=\"_blank\">米国と日本の金融政策はどう動く？FOMCと日銀会合から読み解く金利・インフレ・為替の行方</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Bloomo</font>",
+      "keywords": [
+        "金融政策",
+        "為替",
+        "FOMC"
+      ],
+      "score": 10.69
+    },
+    {
+      "id": "google-japan-stocks-1785191400000-14",
+      "title": "日経平均株価、米半導体株安が重荷（先読み株式相場） - 日本経済新聞",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1XSjVDeVNfZm9ZbU9ubnY4eDhoZUo1SGVMSGdzenotNDVEQ1cxTXBvNXJfbkoxcGlYSV83aTFFZTRWLUZlWGRTTG9RdzFsaFpHWHNBNkNzblpuclN2dEJaYUMyM2hBQ0dvRFRRQg?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1XSjVDeVNfZm9ZbU9ubnY4eDhoZUo1SGVMSGdzenotNDVEQ1cxTXBvNXJfbkoxcGlYSV83aTFFZTRWLUZlWGRTTG9RdzFsaFpHWHNBNkNzblpuclN2dEJaYUMyM2hBQ0dvRFRRQg?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T22:30:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "日経平均株価、米半導体株安が重荷（先読み株式相場） &nbsp;&nbsp; 日本経済新聞（Google News: 日本株・企業決算、7/28 07:30） 検出テーマ: 日経平均 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE1XSjVDeVNfZm9ZbU9ubnY4eDhoZUo1SGVMSGdzenotNDVEQ1cxTXBvNXJfbkoxcGlYSV83aTFFZTRWLUZlWGRTTG9RdzFsaFpHWHNBNkNzblpuclN2dEJaYUMyM2hBQ0dvRFRRQg?oc=5\" target=\"_blank\">日経平均株価、米半導体株安が重荷（先読み株式相場）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日本経済新聞</font>",
+      "keywords": [
+        "日経平均",
+        "半導体"
+      ],
+      "score": 10.59
+    },
+    {
+      "id": "google-yen-rates-1785190373000-40",
+      "title": "１６４円を引き続き意識した展開 今週は日米金融政策会合＝ＮＹ為替概況 - みんかぶ FX/為替",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9naG5hdGZGSDkxeXpnMkF0RzdYNGtOTXY5bnpGa1dKMFVKZlBJNUcxSm9iQjZ6bl83Um5ZcXEtbVFTYzFGLUNkXw?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9naG5hdGZGSDkxeXpnMkF0RzdYNGtOTXY5bnpGa1dKMFVKZlBJNUcxSm9iQjZ6bl83Um5ZcXEtbVFTYzFGLUNkXw?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T22:12:53.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "１６４円を引き続き意識した展開 今週は日米金融政策会合＝ＮＹ為替概況 &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 07:12） 検出テーマ: 金融政策 / 為替。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTE9naG5hdGZGSDkxeXpnMkF0RzdYNGtOTXY5bnpGa1dKMFVKZlBJNUcxSm9iQjZ6bl83Um5ZcXEtbVFTYzFGLUNkXw?oc=5\" target=\"_blank\">１６４円を引き続き意識した展開 今週は日米金融政策会合＝ＮＹ為替概況</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">みんかぶ FX/為替</font>",
+      "keywords": [
+        "金融政策",
+        "為替"
+      ],
+      "score": 10.57
+    },
+    {
+      "id": "google-yen-rates-1785150040000-77",
+      "title": "新規材料乏しくドル売りにやや調整入る 原油相場は一段安 ドル円１６３円台半ば＝ロンドン為替概況 - みんかぶ FX/為替",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1oQ0JBVnlkdlo4OVNoS0dzMjdoQmtyUVMxM3RkZWhEeWFvWHhwa3VOWEJpeEhmUlY1eFlfeXpnbTN2aTlKOE84Yg?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1oQ0JBVnlkdlo4OVNoS0dzMjdoQmtyUVMxM3RkZWhEeWFvWHhwa3VOWEJpeEhmUlY1eFlfeXpnbTN2aTlKOE84Yg?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T11:00:40.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "新規材料乏しくドル売りにやや調整入る 原油相場は一段安 ドル円１６３円台半ば＝ロンドン為替概況 &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/27 20:00） 検出テーマ: 為替 / 原油。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTE1oQ0JBVnlkdlo4OVNoS0dzMjdoQmtyUVMxM3RkZWhEeWFvWHhwa3VOWEJpeEhmUlY1eFlfeXpnbTN2aTlKOE84Yg?oc=5\" target=\"_blank\">新規材料乏しくドル売りにやや調整入る 原油相場は一段安 ドル円１６３円台半ば＝ロンドン為替概況</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">みんかぶ FX/為替</font>",
+      "keywords": [
+        "為替",
+        "原油"
+      ],
+      "score": 10.34
+    },
+    {
+      "id": "google-japan-stocks-1785189897000-31",
+      "title": "本日注目すべき【好決算】銘柄 円谷フィＨＤ、コーテクＨＤ、フジオーゼ (27日引け後 発表分)(株探ニュース) - Yahoo!ファイナンス",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQOGZWRzRvRk16WVVodUVGeGVwVzREcUNiNHdFdmZndi15UHFiNlNsNTFaMG5VcUhja3NHWWZFbkpNOUlfb19uUWZsd2U1d2Y0dmphODMtSmFVNVFDakxiWDZMQnVjM1VqOFBvVnM3bkJOMnlNbTRRNVMzTnlLWEg3XzdGcjdxeDA?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQOGZWRzRvRk16WVVodUVGeGVwVzREcUNiNHdFdmZndi15UHFiNlNsNTFaMG5VcUhja3NHWWZFbkpNOUlfb19uUWZsd2U1d2Y0dmphODMtSmFVNVFDakxiWDZMQnVjM1VqOFBvVnM3bkJOMnlNbTRRNVMzTnlLWEg3XzdGcjdxeDA?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T22:04:57.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "本日注目すべき【好決算】銘柄 円谷フィＨＤ、コーテクＨＤ、フジオーゼ (27日引け後 発表分)(株探ニュース) &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 日本株・企業決算、7/28 07:04） 検出テーマ: 決算。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxQOGZWRzRvRk16WVVodUVGeGVwVzREcUNiNHdFdmZndi15UHFiNlNsNTFaMG5VcUhja3NHWWZFbkpNOUlfb19uUWZsd2U1d2Y0dmphODMtSmFVNVFDakxiWDZMQnVjM1VqOFBvVnM3bkJOMnlNbTRRNVMzTnlLWEg3XzdGcjdxeDA?oc=5\" target=\"_blank\">本日注目すべき【好決算】銘柄 円谷フィＨＤ、コーテクＨＤ、フジオーゼ (27日引け後 発表分)(株探ニュース)</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo!ファイナンス</font>",
+      "keywords": [
+        "決算"
+      ],
+      "score": 10.16
+    },
+    {
+      "id": "google-japan-stocks-1785171600000-0",
+      "title": "日経平均1日で2%超変動、韓国株が半導体に影響 個人の短期売買活発 - 日本経済新聞",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBYY3hkbHRtQjRpTE9JY2Q5YXpySldENlFLYjhuV1pXYlpJVmJUaFVPamdVY3lSdnhxdTZ6cWJHdmlFd1VXZ095UUxyU2lkbUdvdU5OOTF0LU9qSXhNSzlWRTUzajN5SmMxdFBjeQ?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBYY3hkbHRtQjRpTE9JY2Q5YXpySldENlFLYjhuV1pXYlpJVmJUaFVPamdVY3lSdnhxdTZ6cWJHdmlFd1VXZ095UUxyU2lkbUdvdU5OOTF0LU9qSXhNSzlWRTUzajN5SmMxdFBjeQ?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T17:00:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "日経平均1日で2%超変動、韓国株が半導体に影響 個人の短期売買活発 &nbsp;&nbsp; 日本経済新聞（Google News: 日本株・企業決算、7/28 02:00） 検出テーマ: 日経平均 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTFBYY3hkbHRtQjRpTE9JY2Q5YXpySldENlFLYjhuV1pXYlpJVmJUaFVPamdVY3lSdnhxdTZ6cWJHdmlFd1VXZ095UUxyU2lkbUdvdU5OOTF0LU9qSXhNSzlWRTUzajN5SmMxdFBjeQ?oc=5\" target=\"_blank\">日経平均1日で2%超変動、韓国株が半導体に影響 個人の短期売買活発</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日本経済新聞</font>",
+      "keywords": [
+        "日経平均",
+        "半導体"
+      ],
+      "score": 10.14
+    },
+    {
+      "id": "google-yen-rates-1785140559000-68",
+      "title": "ドル売りは一服、原油の下げ渋りに反応 ドル円１６３．５０台＝ロンドン為替 - みんかぶ FX/為替",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFAyT1VhVEVmWHFWR3h0YTNJTzlhUTUtTGtZMW1rcVNKQXBxYTh0ZmJxdEVjNlpwZlk3dFpoeDhOZnowTDRSd2dkVg?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFAyT1VhVEVmWHFWR3h0YTNJTzlhUTUtTGtZMW1rcVNKQXBxYTh0ZmJxdEVjNlpwZlk3dFpoeDhOZnowTDRSd2dkVg?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T08:22:39.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "ドル売りは一服、原油の下げ渋りに反応 ドル円１６３．５０台＝ロンドン為替 &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/27 17:22） 検出テーマ: 為替 / 原油。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTFAyT1VhVEVmWHFWR3h0YTNJTzlhUTUtTGtZMW1rcVNKQXBxYTh0ZmJxdEVjNlpwZlk3dFpoeDhOZnowTDRSd2dkVg?oc=5\" target=\"_blank\">ドル売りは一服、原油の下げ渋りに反応 ドル円１６３．５０台＝ロンドン為替</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">みんかぶ FX/為替</font>",
+      "keywords": [
+        "為替",
+        "原油"
+      ],
+      "score": 10.12
+    },
+    {
+      "id": "google-yen-rates-1785170040000-82",
+      "title": "ユーロ圏の国債利回り低下、原油価格の下落を受け 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5MVWo4R25fcjFfN2xnMVBYdDlEY0VYVkJmWEh3QVQ0U1FfT3dRcVpSYU8xTGFUZk1TemE5YUstUXNGYkRCRkJ4eGdOcmtkYzBoc2hoTW5yeG9GTHp0aU1NempRbmh6enZZRVAzcU9YeWI?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5MVWo4R25fcjFfN2xnMVBYdDlEY0VYVkJmWEh3QVQ0U1FfT3dRcVpSYU8xTGFUZk1TemE5YUstUXNGYkRCRkJ4eGdOcmtkYzBoc2hoTW5yeG9GTHp0aU1NempRbmh6enZZRVAzcU9YeWI?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T16:34:00.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "ユーロ圏の国債利回り低下、原油価格の下落を受け 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 為替・金利、7/28 01:34） 検出テーマ: 国債 / 原油。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE5MVWo4R25fcjFfN2xnMVBYdDlEY0VYVkJmWEh3QVQ0U1FfT3dRcVpSYU8xTGFUZk1TemE5YUstUXNGYkRCRkJ4eGdOcmtkYzBoc2hoTW5yeG9GTHp0aU1NempRbmh6enZZRVAzcU9YeWI?oc=5\" target=\"_blank\">ユーロ圏の国債利回り低下、原油価格の下落を受け 執筆</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース</font>",
+      "keywords": [
+        "国債",
+        "原油"
+      ],
+      "score": 10.1
+    },
+    {
+      "id": "google-yen-rates-1785166380000-99",
+      "title": "イランの停戦で原油急落、米国債利回りも低下 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1BcUVTOGFoZmRrZ3F5V1BuLXBRcU9wcWIxTjJyTUVLSmxzWkZ6b2dxYzJXcUdrWTZpalcyYWY5SWVxUDFEODE4Y1ZzN2ZMU3lxeFEzS00tNXE2TWFFSVlRSVREYjEzalNZY2dENlhIUEE?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1BcUVTOGFoZmRrZ3F5V1BuLXBRcU9wcWIxTjJyTUVLSmxzWkZ6b2dxYzJXcUdrWTZpalcyYWY5SWVxUDFEODE4Y1ZzN2ZMU3lxeFEzS00tNXE2TWFFSVlRSVREYjEzalNZY2dENlhIUEE?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T15:33:00.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "イランの停戦で原油急落、米国債利回りも低下 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 為替・金利、7/28 00:33） 検出テーマ: 国債 / 原油。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE1BcUVTOGFoZmRrZ3F5V1BuLXBRcU9wcWIxTjJyTUVLSmxzWkZ6b2dxYzJXcUdrWTZpalcyYWY5SWVxUDFEODE4Y1ZzN2ZMU3lxeFEzS00tNXE2TWFFSVlRSVREYjEzalNZY2dENlhIUEE?oc=5\" target=\"_blank\">イランの停戦で原油急落、米国債利回りも低下 執筆</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース</font>",
+      "keywords": [
+        "国債",
+        "原油"
+      ],
+      "score": 10.02
+    },
+    {
+      "id": "google-japan-stocks-1785135240000-35",
+      "title": "日経平均は３２０円高と反発、ＡＩや半導体関連株が下げ幅縮小＝２７日後場(ウエルスアドバイザー) - Yahoo!ファイナンス",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNTDl0ZV9ocWVHUUFCZi1XR3VZbHhfY3FWOWFkd19YNy1LWW9YR0h0cVQyRXB1bHJtWG1RdkV3eU1iT2lmRFNQdThjaV9Ca3ctTHlDU3dRQVBmVm56MVJUVm5WTi1wN3RfVFVTSkZGM0NpRmdfT213emptSFRORnpaSWYwZmdHa1U?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNTDl0ZV9ocWVHUUFCZi1XR3VZbHhfY3FWOWFkd19YNy1LWW9YR0h0cVQyRXB1bHJtWG1RdkV3eU1iT2lmRFNQdThjaV9Ca3ctTHlDU3dRQVBmVm56MVJUVm5WTi1wN3RfVFVTSkZGM0NpRmdfT213emptSFRORnpaSWYwZmdHa1U?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T06:54:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "日経平均は３２０円高と反発、ＡＩや半導体関連株が下げ幅縮小＝２７日後場(ウエルスアドバイザー) &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 日本株・企業決算、7/27 15:54） 検出テーマ: 日経平均 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxNTDl0ZV9ocWVHUUFCZi1XR3VZbHhfY3FWOWFkd19YNy1LWW9YR0h0cVQyRXB1bHJtWG1RdkV3eU1iT2lmRFNQdThjaV9Ca3ctTHlDU3dRQVBmVm56MVJUVm5WTi1wN3RfVFVTSkZGM0NpRmdfT213emptSFRORnpaSWYwZmdHa1U?oc=5\" target=\"_blank\">日経平均は３２０円高と反発、ＡＩや半導体関連株が下げ幅縮小＝２７日後場(ウエルスアドバイザー)</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo!ファイナンス</font>",
+      "keywords": [
+        "日経平均",
+        "半導体"
+      ],
+      "score": 9.99
+    },
+    {
+      "id": "google-japan-stocks-1785162059000-49",
+      "title": "Google好決算でも半導体ショックの引き金に？ 警戒相場で探る「フジクラ」の勝機と注意が必要な銘柄 - マネーフォワード",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9zMm5xRG9EcmxWQWRTQlpQa1hxVmpQVjhjU043d3RTZlVPM1pITlpVY2dfaXYzSlNlbnhOQjZKdnhha3liNFNlQV9HdmJZaHhyT1liemVFNFpQR0ZIQTRudzFoSQ?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9zMm5xRG9EcmxWQWRTQlpQa1hxVmpQVjhjU043d3RTZlVPM1pITlpVY2dfaXYzSlNlbnhOQjZKdnhha3liNFNlQV9HdmJZaHhyT1liemVFNFpQR0ZIQTRudzFoSQ?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T14:20:59.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "Google好決算でも半導体ショックの引き金に？ 警戒相場で探る「フジクラ」の勝機と注意が必要な銘柄 &nbsp;&nbsp; マネーフォワード（Google News: 日本株・企業決算、7/27 23:20） 検出テーマ: 決算 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE9zMm5xRG9EcmxWQWRTQlpQa1hxVmpQVjhjU043d3RTZlVPM1pITlpVY2dfaXYzSlNlbnhOQjZKdnhha3liNFNlQV9HdmJZaHhyT1liemVFNFpQR0ZIQTRudzFoSQ?oc=5\" target=\"_blank\">Google好決算でも半導体ショックの引き金に？ 警戒相場で探る「フジクラ」の勝機と注意が必要な銘柄</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">マネーフォワード</font>",
+      "keywords": [
+        "決算",
+        "半導体"
+      ],
+      "score": 9.92
+    },
+    {
+      "id": "google-japan-stocks-1785131508000-98",
+      "title": "日経平均は191円高、今週は内外金融イベントや企業決算に関心 - 株探",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rYk5fbTVNb1k4WG5yMmdXWDM1MUNCZGpXVW5NUWdJV0JCYzRoWFVnQzJlVG1veU1pMGhqOUhGdUdtTDRqSGxhV0VIaUFLM1hfc2c?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rYk5fbTVNb1k4WG5yMmdXWDM1MUNCZGpXVW5NUWdJV0JCYzRoWFVnQzJlVG1veU1pMGhqOUhGdUdtTDRqSGxhV0VIaUFLM1hfc2c?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T05:51:48.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "日経平均は191円高、今週は内外金融イベントや企業決算に関心 &nbsp;&nbsp; 株探（Google News: 日本株・企業決算、7/27 14:51） 検出テーマ: 日経平均 / 決算。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rYk5fbTVNb1k4WG5yMmdXWDM1MUNCZGpXVW5NUWdJV0JCYzRoWFVnQzJlVG1veU1pMGhqOUhGdUdtTDRqSGxhV0VIaUFLM1hfc2c?oc=5\" target=\"_blank\">日経平均は191円高、今週は内外金融イベントや企業決算に関心</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">株探</font>",
+      "keywords": [
+        "日経平均",
+        "決算"
+      ],
+      "score": 9.91
+    },
+    {
+      "id": "google-japan-stocks-1785161160000-51",
+      "title": "ベーカー・ヒューズ、決算受け上昇 ＩＥＴ事業の通期受注見通しを引き上げ＝米国株個別(株探ニュース) - Yahoo!ファイナンス",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNazdvUy1qX0hPMTFFMmU2S0pIa1hCdTlZUVdkWTdGanlOZ3hVanJCVXdiVEZSVFZ5cVZSSWhkaTh4RHFoa25wVERBOEFDYlR1NVhCN2RSVjVydENUQzdQaXMtMDVFblRYZW0yY2pqRnlGQzJGb29PUXNZNE1xNGk1dTJCUE1rdGc?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNazdvUy1qX0hPMTFFMmU2S0pIa1hCdTlZUVdkWTdGanlOZ3hVanJCVXdiVEZSVFZ5cVZSSWhkaTh4RHFoa25wVERBOEFDYlR1NVhCN2RSVjVydENUQzdQaXMtMDVFblRYZW0yY2pqRnlGQzJGb29PUXNZNE1xNGk1dTJCUE1rdGc?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T14:06:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "ベーカー・ヒューズ、決算受け上昇 ＩＥＴ事業の通期受注見通しを引き上げ＝米国株個別(株探ニュース) &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 日本株・企業決算、7/27 23:06） 検出テーマ: 米国株 / 決算。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxNazdvUy1qX0hPMTFFMmU2S0pIa1hCdTlZUVdkWTdGanlOZ3hVanJCVXdiVEZSVFZ5cVZSSWhkaTh4RHFoa25wVERBOEFDYlR1NVhCN2RSVjVydENUQzdQaXMtMDVFblRYZW0yY2pqRnlGQzJGb29PUXNZNE1xNGk1dTJCUE1rdGc?oc=5\" target=\"_blank\">ベーカー・ヒューズ、決算受け上昇 ＩＥＴ事業の通期受注見通しを引き上げ＝米国株個別(株探ニュース)</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo!ファイナンス</font>",
+      "keywords": [
+        "米国株",
+        "決算"
+      ],
+      "score": 9.89
+    },
+    {
+      "id": "google-yen-rates-1785158619000-35",
+      "title": "修正：ドル円、戻り売りが出るも１６４円を意識した展開続く 今週は日米金融政策会合＝ＮＹ為替序盤 - みんかぶ FX/為替",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE14dnA5cDIwcTJWeU9iMlJxM2ZMNGg4cE53NWJyUmZqQm04ampXSEVaeGdHRXE3Tk5kLWtqYm1wS2JOS19fZHJQWQ?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE14dnA5cDIwcTJWeU9iMlJxM2ZMNGg4cE53NWJyUmZqQm04ampXSEVaeGdHRXE3Tk5kLWtqYm1wS2JOS19fZHJQWQ?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T13:23:39.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "修正：ドル円、戻り売りが出るも１６４円を意識した展開続く 今週は日米金融政策会合＝ＮＹ為替序盤 &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/27 22:23） 検出テーマ: 金融政策 / 為替。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTE14dnA5cDIwcTJWeU9iMlJxM2ZMNGg4cE53NWJyUmZqQm04ampXSEVaeGdHRXE3Tk5kLWtqYm1wS2JOS19fZHJQWQ?oc=5\" target=\"_blank\">修正：ドル円、戻り売りが出るも１６４円を意識した展開続く 今週は日米金融政策会合＝ＮＹ為替序盤</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">みんかぶ FX/為替</font>",
+      "keywords": [
+        "金融政策",
+        "為替"
+      ],
+      "score": 9.84
+    },
+    {
+      "id": "google-japan-stocks-1785121018000-43",
+      "title": "半導体は決算前で調整、関連株に警戒感【今日の市場はどう動いた？】 - Yahoo!ファイナンス",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1oMjBraVFLZ3ZFWU5QeFpENE9kczVFTkpfdktpYWhnbFdIcjJLR0dadlVhMjUweURzcVFtUGIxQklnVTR4SlUzVzZFY0VYNC1lQjNRMmo2a2p5bXJQZEVHMGZHSXc?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1oMjBraVFLZ3ZFWU5QeFpENE9kczVFTkpfdktpYWhnbFdIcjJLR0dadlVhMjUweURzcVFtUGIxQklnVTR4SlUzVzZFY0VYNC1lQjNRMmo2a2p5bXJQZEVHMGZHSXc?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T02:56:58.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "半導体は決算前で調整、関連株に警戒感【今日の市場はどう動いた？】 &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 日本株・企業決算、7/27 11:56） 検出テーマ: 決算 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTE1oMjBraVFLZ3ZFWU5QeFpENE9kczVFTkpfdktpYWhnbFdIcjJLR0dadlVhMjUweURzcVFtUGIxQklnVTR4SlUzVzZFY0VYNC1lQjNRMmo2a2p5bXJQZEVHMGZHSXc?oc=5\" target=\"_blank\">半導体は決算前で調整、関連株に警戒感【今日の市場はどう動いた？】</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo!ファイナンス</font>",
+      "keywords": [
+        "決算",
+        "半導体"
+      ],
+      "score": 9.67
+    },
+    {
+      "id": "google-japan-stocks-1785146061000-23",
+      "title": "決算:マクニカHDの純利益2.1倍 4〜6月、産業機器向けで半導体需要回復 - 日本経済新聞",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1vYXh4eHpYbkdybnpJeDhWeF90SHJROTQ5V3I4MUJQZUUtS0hPdmRoMUxDcWFwdlp3SUxNcmNlY0RyNWhxOHdsRUs5QWdHcmJCLUxOWkRENFdXV3lJbWxicWdNUzdQZ3p3NFNpZA?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1vYXh4eHpYbkdybnpJeDhWeF90SHJROTQ5V3I4MUJQZUUtS0hPdmRoMUxDcWFwdlp3SUxNcmNlY0RyNWhxOHdsRUs5QWdHcmJCLUxOWkRENFdXV3lJbWxicWdNUzdQZ3p3NFNpZA?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T09:54:21.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "決算:マクニカHDの純利益2.1倍 4〜6月、産業機器向けで半導体需要回復 &nbsp;&nbsp; 日本経済新聞（Google News: 日本株・企業決算、7/27 18:54） 検出テーマ: 決算 / 半導体。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE1vYXh4eHpYbkdybnpJeDhWeF90SHJROTQ5V3I4MUJQZUUtS0hPdmRoMUxDcWFwdlp3SUxNcmNlY0RyNWhxOHdsRUs5QWdHcmJCLUxOWkRENFdXV3lJbWxicWdNUzdQZ3p3NFNpZA?oc=5\" target=\"_blank\">決算:マクニカHDの純利益2.1倍 4〜6月、産業機器向けで半導体需要回復</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日本経済新聞</font>",
+      "keywords": [
+        "決算",
+        "半導体"
+      ],
+      "score": 9.54
+    },
+    {
+      "id": "google-japan-stocks-1785190500000-91",
+      "title": "シンプソン・マニュファクチャリング、2026年第2四半期決算が市場予想を上回り株価上昇 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1hU3ZvSi14bEVXV1RnbHczaVBoRVJDV0lfSFBpRlYzY0FlZ1NuWVVEdTBLRnI4WDdyN2lvMzVQWHB3emVZZ3pYVVNiNGtaNko3Sl9lMHJLNnRxaW9vcEd0R09rMTRkMldvR1ZWT2R4VQ?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1hU3ZvSi14bEVXV1RnbHczaVBoRVJDV0lfSFBpRlYzY0FlZ1NuWVVEdTBLRnI4WDdyN2lvMzVQWHB3emVZZ3pYVVNiNGtaNko3Sl9lMHJLNnRxaW9vcEd0R09rMTRkMldvR1ZWT2R4VQ?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T22:15:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "シンプソン・マニュファクチャリング、2026年第2四半期決算が市場予想を上回り株価上昇 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 日本株・企業決算、7/28 07:15） 検出テーマ: 決算。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE1hU3ZvSi14bEVXV1RnbHczaVBoRVJDV0lfSFBpRlYzY0FlZ1NuWVVEdTBLRnI4WDdyN2lvMzVQWHB3emVZZ3pYVVNiNGtaNko3Sl9lMHJLNnRxaW9vcEd0R09rMTRkMldvR1ZWT2R4VQ?oc=5\" target=\"_blank\">シンプソン・マニュファクチャリング、2026年第2四半期決算が市場予想を上回り株価上昇 執筆</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース</font>",
+      "keywords": [
+        "決算"
+      ],
+      "score": 9.47
+    },
+    {
+      "id": "google-yen-rates-1785189879000-8",
+      "title": "朝のドル円は163.70円台＝東京為替 - みんかぶ FX/為替",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8wb1JhR1lfNWZXNGRYZTZqU2EtQUNKems4OWMtQzZ2YS1MWUU4MlR2dGh5VTVCZHZGTE5xUzFScVBNU1U0ZFFFbw?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8wb1JhR1lfNWZXNGRYZTZqU2EtQUNKems4OWMtQzZ2YS1MWUU4MlR2dGh5VTVCZHZGTE5xUzFScVBNU1U0ZFFFbw?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T22:04:39.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "朝のドル円は163.70円台＝東京為替 &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 07:04） 検出テーマ: 為替。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTE8wb1JhR1lfNWZXNGRYZTZqU2EtQUNKems4OWMtQzZ2YS1MWUU4MlR2dGh5VTVCZHZGTE5xUzFScVBNU1U0ZFFFbw?oc=5\" target=\"_blank\">朝のドル円は163.70円台＝東京為替</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">みんかぶ FX/為替</font>",
+      "keywords": [
+        "為替"
+      ],
+      "score": 9.46
+    },
+    {
+      "id": "google-japan-stocks-1785189600000-76",
+      "title": "F5、2026年度第3四半期決算で予想を上回り、見通しを上方修正 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE84aHA0LTFBU01SV0dDR2xMZzdfTXZQa1F3YjY1ZkFkUVJ1RXpZLS1CN0VDR2tNalZpUEM4Nno2ZWo3QkwzMElQOXBEZklLR3dqRUVLT3Jha3V6WmhfeWlPVXdXLXhjT1l6bDkxXzJQRQ?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMib0FVX3lxTE84aHA0LTFBU01SV0dDR2xMZzdfTXZQa1F3YjY1ZkFkUVJ1RXpZLS1CN0VDR2tNalZpUEM4Nno2ZWo3QkwzMElQOXBEZklLR3dqRUVLT3Jha3V6WmhfeWlPVXdXLXhjT1l6bDkxXzJQRQ?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T22:00:00.000Z",
+      "source": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "summary": "F5、2026年度第3四半期決算で予想を上回り、見通しを上方修正 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 日本株・企業決算、7/28 07:00） 検出テーマ: 決算。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE84aHA0LTFBU01SV0dDR2xMZzdfTXZQa1F3YjY1ZkFkUVJ1RXpZLS1CN0VDR2tNalZpUEM4Nno2ZWo3QkwzMElQOXBEZklLR3dqRUVLT3Jha3V6WmhfeWlPVXdXLXhjT1l6bDkxXzJQRQ?oc=5\" target=\"_blank\">F5、2026年度第3四半期決算で予想を上回り、見通しを上方修正 執筆</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース</font>",
+      "keywords": [
+        "決算"
+      ],
+      "score": 9.45
+    },
+    {
+      "id": "google-yen-rates-1785187680000-65",
+      "title": "ドル円オーダー＝163.50円 OP30日NYカット/OP4日NYカット大きめ｜FX・為替ニュース - ザイFX！",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBUVUJDWWY3STlGXzdGSFd5clJpV1c3UW9sczVvMDFISkxmQ0ZVR0REc01RYlNrcEgya2RHYUZFbnJqaVFOazdjM1A1RUM0UHVyNGc?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBUVUJDWWY3STlGXzdGSFd5clJpV1c3UW9sczVvMDFISkxmQ0ZVR0REc01RYlNrcEgya2RHYUZFbnJqaVFOazdjM1A1RUM0UHVyNGc?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T21:28:00.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "ドル円オーダー＝163.50円 OP30日NYカット/OP4日NYカット大きめ｜FX・為替ニュース &nbsp;&nbsp; ザイFX！（Google News: 為替・金利、7/28 06:28） 検出テーマ: 為替。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiUkFVX3lxTFBUVUJDWWY3STlGXzdGSFd5clJpV1c3UW9sczVvMDFISkxmQ0ZVR0REc01RYlNrcEgya2RHYUZFbnJqaVFOazdjM1A1RUM0UHVyNGc?oc=5\" target=\"_blank\">ドル円オーダー＝163.50円 OP30日NYカット/OP4日NYカット大きめ｜FX・為替ニュース</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ザイFX！</font>",
+      "keywords": [
+        "為替"
+      ],
+      "score": 9.41
+    },
+    {
+      "id": "google-yen-rates-1785187300000-59",
+      "title": "２７日の為替市場の四本値（ポンド円・豪ドル円・カナダ円） - みんかぶ FX/為替",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBXREU4Qzk1dGZmVzdIS0Z4VDFwZTN0c3JNM3VfYmZ1d2xhdFNEbTk4bUgxZ2dOa1NLSno1bWFUX3dRaDl3dU1XNQ?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBXREU4Qzk1dGZmVzdIS0Z4VDFwZTN0c3JNM3VfYmZ1d2xhdFNEbTk4bUgxZ2dOa1NLSno1bWFUX3dRaDl3dU1XNQ?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T21:21:40.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "２７日の為替市場の四本値（ポンド円・豪ドル円・カナダ円） &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 06:21） 検出テーマ: 為替。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTFBXREU4Qzk1dGZmVzdIS0Z4VDFwZTN0c3JNM3VfYmZ1d2xhdFNEbTk4bUgxZ2dOa1NLSno1bWFUX3dRaDl3dU1XNQ?oc=5\" target=\"_blank\">２７日の為替市場の四本値（ポンド円・豪ドル円・カナダ円）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">みんかぶ FX/為替</font>",
+      "keywords": [
+        "為替"
+      ],
+      "score": 9.4
+    },
+    {
+      "id": "google-yen-rates-1785187240000-27",
+      "title": "２７日の為替市場の四本値（ドル円・ユーロドル・ユーロ円） - みんかぶ FX/為替",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1EQ3E2X2dEdVl6YTZQN0c2QW5RU2M5T3QtUjRLWXJNZnhsMm81VjlWM21KczRoM085T0d4ZnBBc2RtaTR0cktCNw?oc=5",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1EQ3E2X2dEdVl6YTZQN0c2QW5RU2M5T3QtUjRLWXJNZnhsMm81VjlWM21KczRoM085T0d4ZnBBc2RtaTR0cktCNw?oc=5",
+      "sourceFeedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "publishedAt": "2026-07-27T21:20:40.000Z",
+      "source": "Google News: 為替・金利",
+      "region": "Japan",
+      "summary": "２７日の為替市場の四本値（ドル円・ユーロドル・ユーロ円） &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 06:20） 検出テーマ: 為替。",
+      "rawSummary": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTE1EQ3E2X2dEdVl6YTZQN0c2QW5RU2M5T3QtUjRLWXJNZnhsMm81VjlWM21KczRoM085T0d4ZnBBc2RtaTR0cktCNw?oc=5\" target=\"_blank\">２７日の為替市場の四本値（ドル円・ユーロドル・ユーロ円）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">みんかぶ FX/為替</font>",
+      "keywords": [
+        "為替"
+      ],
+      "score": 9.4
+    }
+  ],
+  "events": [],
+  "sourceHealth": [
+    {
+      "id": "boj-stat",
+      "name": "日本銀行 統計RSS",
+      "region": "Japan",
+      "ok": true,
+      "count": 57,
+      "error": "",
+      "feedUrl": "https://www.boj.or.jp/rss/statistics.xml",
+      "rssItems": [
+        {
+          "title": "外国為替市況（7月27日）",
+          "link": "http://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260727.pdf",
+          "publishedAt": "2026-07-27T08:40:00.000Z",
+          "summary": "外国為替市況（7月27日）（日本銀行 統計RSS、7/27 17:40） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "企業向けサービス価格指数（6月）",
+          "link": "http://www.boj.or.jp/statistics/pi/cspi_release/sppi2606.pdf",
+          "publishedAt": "2026-07-26T23:50:00.000Z",
+          "summary": "企業向けサービス価格指数（6月）（日本銀行 統計RSS、7/27 08:50）",
+          "keywords": []
+        },
+        {
+          "title": "外国為替市況（7月24日）",
+          "link": "http://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260724.pdf",
+          "publishedAt": "2026-07-24T08:40:00.000Z",
+          "summary": "外国為替市況（7月24日）（日本銀行 統計RSS、7/24 17:40） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "外国為替市況（7月23日）",
+          "link": "http://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260723.pdf",
+          "publishedAt": "2026-07-23T08:40:00.000Z",
+          "summary": "外国為替市況（7月23日）（日本銀行 統計RSS、7/23 17:40） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "外国為替市況（7月22日）",
+          "link": "http://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260722.pdf",
+          "publishedAt": "2026-07-22T08:40:00.000Z",
+          "summary": "外国為替市況（7月22日）（日本銀行 統計RSS、7/22 17:40） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "日本銀行が保有する国債の銘柄別残高",
+          "link": "http://www.boj.or.jp/statistics/boj/other/mei/release/2026/mei260717.xlsx",
+          "publishedAt": "2026-07-22T08:00:00.000Z",
+          "summary": "日本銀行が保有する国債の銘柄別残高（日本銀行 統計RSS、7/22 17:00） 検出テーマ: 国債。",
+          "keywords": [
+            "国債"
+          ]
+        },
+        {
+          "title": "営業毎旬報告（7月20日現在）",
+          "link": "http://www.boj.or.jp/statistics/boj/other/acmai/release/2026/ac260720.htm",
+          "publishedAt": "2026-07-22T01:00:00.000Z",
+          "summary": "営業毎旬報告（7月20日現在）（日本銀行 統計RSS、7/22 10:00）",
+          "keywords": []
+        },
+        {
+          "title": "FSBレポ統計の日本分集計結果",
+          "link": "http://www.boj.or.jp/statistics/bis/repo/index.htm",
+          "publishedAt": "2026-07-21T23:50:00.000Z",
+          "summary": "FSBレポ統計の日本分集計結果（日本銀行 統計RSS、7/22 08:50）",
+          "keywords": []
+        },
+        {
+          "title": "外国為替市況（7月21日）",
+          "link": "http://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260721.pdf",
+          "publishedAt": "2026-07-21T08:50:00.000Z",
+          "summary": "外国為替市況（7月21日）（日本銀行 統計RSS、7/21 17:50） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "外国為替市況（7月17日）",
+          "link": "http://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260717.pdf",
+          "publishedAt": "2026-07-17T08:50:00.000Z",
+          "summary": "外国為替市況（7月17日）（日本銀行 統計RSS、7/17 17:50） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "主要銀行貸出動向アンケート調査（7月）",
+          "link": "http://www.boj.or.jp/statistics/dl/loan/loos/release/loos2607.pdf",
+          "publishedAt": "2026-07-16T23:50:00.000Z",
+          "summary": "主要銀行貸出動向アンケート調査（7月）（日本銀行 統計RSS、7/17 08:50）",
+          "keywords": []
+        },
+        {
+          "title": "外国為替市況（7月16日）",
+          "link": "http://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260716.pdf",
+          "publishedAt": "2026-07-16T08:40:00.000Z",
+          "summary": "外国為替市況（7月16日）（日本銀行 統計RSS、7/16 17:40） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boj",
+      "name": "日本銀行 新着RSS",
+      "region": "Japan",
+      "ok": true,
+      "count": 56,
+      "error": "",
+      "feedUrl": "https://www.boj.or.jp/rss/whatsnew.xml",
+      "rssItems": [
+        {
+          "title": "（金研ニュースレター）2026年国際コンファランス",
+          "link": "http://www.boj.or.jp/about/release_2026/rel260727a.htm",
+          "publishedAt": "2026-07-27T07:00:00.000Z",
+          "summary": "（金研ニュースレター）2026年国際コンファランス（日本銀行 新着RSS、7/27 16:00）",
+          "keywords": []
+        },
+        {
+          "title": "日本銀行に関する学生向けのインターンシップ（総合コース向け）およびオープン・カンパニー（特定コース向け）への参加募集について",
+          "link": "http://www.boj.or.jp/about/recruit/rec260727a.htm",
+          "publishedAt": "2026-07-27T06:00:00.000Z",
+          "summary": "日本銀行に関する学生向けのインターンシップ（総合コース向け）およびオープン・カンパニー（特定コース向け）への参加募集について（日本銀行 新着RSS、7/27 15:00）",
+          "keywords": []
+        },
+        {
+          "title": "企業向けサービス価格指数（6月）",
+          "link": "http://www.boj.or.jp/statistics/pi/cspi_release/sppi2606.pdf",
+          "publishedAt": "2026-07-26T23:50:00.000Z",
+          "summary": "企業向けサービス価格指数（6月）（日本銀行 新着RSS、7/27 08:50）",
+          "keywords": []
+        },
+        {
+          "title": "金融システムレポート別冊「2025年度の銀行・信用金庫決算」",
+          "link": "http://www.boj.or.jp/research/brp/fsr/fsrb260724.htm",
+          "publishedAt": "2026-07-24T07:00:00.000Z",
+          "summary": "金融システムレポート別冊「2025年度の銀行・信用金庫決算」（日本銀行 新着RSS、7/24 16:00） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        },
+        {
+          "title": "実質輸出入の動向",
+          "link": "http://www.boj.or.jp/research/research_data/reri/index.htm",
+          "publishedAt": "2026-07-23T07:00:00.000Z",
+          "summary": "実質輸出入の動向（日本銀行 新着RSS、7/23 16:00）",
+          "keywords": []
+        },
+        {
+          "title": "日本銀行が保有する国債の銘柄別残高",
+          "link": "http://www.boj.or.jp/statistics/boj/other/mei/release/2026/mei260717.xlsx",
+          "publishedAt": "2026-07-22T08:00:00.000Z",
+          "summary": "日本銀行が保有する国債の銘柄別残高（日本銀行 新着RSS、7/22 17:00） 検出テーマ: 国債。",
+          "keywords": [
+            "国債"
+          ]
+        },
+        {
+          "title": "営業毎旬報告（7月20日現在）",
+          "link": "http://www.boj.or.jp/statistics/boj/other/acmai/release/2026/ac260720.htm",
+          "publishedAt": "2026-07-22T01:00:00.000Z",
+          "summary": "営業毎旬報告（7月20日現在）（日本銀行 新着RSS、7/22 10:00）",
+          "keywords": []
+        },
+        {
+          "title": "「気候変動関連の市場機能サーベイ」第5回説明会",
+          "link": "http://www.boj.or.jp/paym/m-climate/mcli260722a.htm",
+          "publishedAt": "2026-07-22T01:00:00.000Z",
+          "summary": "「気候変動関連の市場機能サーベイ」第5回説明会（日本銀行 新着RSS、7/22 10:00）",
+          "keywords": []
+        },
+        {
+          "title": "FSBレポ統計の日本分集計結果",
+          "link": "http://www.boj.or.jp/statistics/bis/repo/index.htm",
+          "publishedAt": "2026-07-21T23:50:00.000Z",
+          "summary": "FSBレポ統計の日本分集計結果（日本銀行 新着RSS、7/22 08:50）",
+          "keywords": []
+        },
+        {
+          "title": "「金融研究」掲載論文（2026年収録分）",
+          "link": "http://www.boj.or.jp/research/imes/mes/mes26.htm",
+          "publishedAt": "2026-07-21T02:00:00.000Z",
+          "summary": "「金融研究」掲載論文（2026年収録分）（日本銀行 新着RSS、7/21 11:00）",
+          "keywords": []
+        },
+        {
+          "title": "気候変動対応を支援するための資金供給オペレーションの実施結果",
+          "link": "http://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260717a.pdf",
+          "publishedAt": "2026-07-17T07:00:00.000Z",
+          "summary": "気候変動対応を支援するための資金供給オペレーションの実施結果（日本銀行 新着RSS、7/17 16:00）",
+          "keywords": []
+        },
+        {
+          "title": "基準外国為替相場及び裁定外国為替相場（8月分）",
+          "link": "http://www.boj.or.jp/about/services/tame/tame_rate/kijun/kiju2608.htm",
+          "publishedAt": "2026-07-17T00:00:00.000Z",
+          "summary": "基準外国為替相場及び裁定外国為替相場（8月分）（日本銀行 新着RSS、7/17 09:00） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cao",
+      "name": "内閣府 報道発表RSS",
+      "region": "Japan",
+      "ok": true,
+      "count": 10,
+      "error": "",
+      "feedUrl": "https://www.cao.go.jp/rss/news.rdf",
+      "rssItems": [
+        {
+          "title": "第496回消費者委員会本会議【7月24日開催】",
+          "link": "https://www.cao.go.jp/consumer/iinkai/2026/496/shiryou/index.html",
+          "publishedAt": "2026-07-27T06:35:00.000Z",
+          "summary": "第496回消費者委員会本会議【7月24日開催】（内閣府 報道発表RSS、7/27 15:35）",
+          "keywords": []
+        },
+        {
+          "title": "第19回支払手段の多様化と消費者問題に関する専門調査会【8月3日開催】",
+          "link": "https://www.cao.go.jp/consumer/kabusoshiki/payment/019/kaisai/index.html",
+          "publishedAt": "2026-07-27T06:30:00.000Z",
+          "summary": "第19回支払手段の多様化と消費者問題に関する専門調査会【8月3日開催】（内閣府 報道発表RSS、7/27 15:30）",
+          "keywords": []
+        },
+        {
+          "title": "景気動向指数（令和8年5月分速報からの改訂状況）",
+          "link": "https://www.esri.cao.go.jp/jp/stat/di/di.html",
+          "publishedAt": "2026-07-27T04:34:00.000Z",
+          "summary": "景気動向指数（令和8年5月分速報からの改訂状況）（内閣府 報道発表RSS、7/27 13:34） 検出テーマ: 景気動向。",
+          "keywords": [
+            "景気動向"
+          ]
+        },
+        {
+          "title": "第497回消費者委員会本会議【7月31日開催】",
+          "link": "https://www.cao.go.jp/consumer/iinkai/2026/497/kaisai/index.html",
+          "publishedAt": "2026-07-24T06:27:00.000Z",
+          "summary": "第497回消費者委員会本会議【7月31日開催】（内閣府 報道発表RSS、7/24 15:27）",
+          "keywords": []
+        },
+        {
+          "title": "第18回支払手段の多様化と消費者問題に関する専門調査会【7月23日開催】",
+          "link": "https://www.cao.go.jp/consumer/kabusoshiki/payment/018/shiryou/index.html",
+          "publishedAt": "2026-07-24T06:26:00.000Z",
+          "summary": "第18回支払手段の多様化と消費者問題に関する専門調査会【7月23日開催】（内閣府 報道発表RSS、7/24 15:26）",
+          "keywords": []
+        },
+        {
+          "title": "令和8年度経済財政白書",
+          "link": "https://www5.cao.go.jp/keizai3/whitepaper.html",
+          "publishedAt": "2026-07-24T00:46:00.000Z",
+          "summary": "令和8年度経済財政白書（内閣府 報道発表RSS、7/24 09:46）",
+          "keywords": []
+        },
+        {
+          "title": "第7回人工知能（AI）技術の利用と消費者問題に関する専門調査会【7月30日開催】",
+          "link": "https://www.cao.go.jp/consumer/kabusoshiki/ai_technology/007/kaisai/index.html",
+          "publishedAt": "2026-07-23T08:17:00.000Z",
+          "summary": "第7回人工知能（AI）技術の利用と消費者問題に関する専門調査会【7月30日開催】（内閣府 報道発表RSS、7/23 17:17）",
+          "keywords": []
+        },
+        {
+          "title": "第22回景気動向指数研究会の資料掲載【7月23日開催】",
+          "link": "https://www.esri.cao.go.jp/jp/stat/di/di_ken.html",
+          "publishedAt": "2026-07-23T06:17:00.000Z",
+          "summary": "第22回景気動向指数研究会の資料掲載【7月23日開催】（内閣府 報道発表RSS、7/23 15:17） 検出テーマ: 景気動向。",
+          "keywords": [
+            "景気動向"
+          ]
+        },
+        {
+          "title": "【構造改革特別区域】「特定法人による農地取得事業」に関する調査の実施について",
+          "link": "https://www.chisou.go.jp/tiiki/kokusentoc/260722_nouchi_chousa.html",
+          "publishedAt": "2026-07-23T05:39:00.000Z",
+          "summary": "【構造改革特別区域】「特定法人による農地取得事業」に関する調査の実施について（内閣府 報道発表RSS、7/23 14:39）",
+          "keywords": []
+        },
+        {
+          "title": "食品安全委員会（第1032回）の開催について【7月28日開催】",
+          "link": "https://www.fsc.go.jp/iinkai_annai/annai/annai1032.html",
+          "publishedAt": "2026-07-23T04:51:00.000Z",
+          "summary": "食品安全委員会（第1032回）の開催について【7月28日開催】（内閣府 報道発表RSS、7/23 13:51）",
+          "keywords": []
+        }
+      ]
+    },
+    {
+      "id": "fsa",
+      "name": "金融庁 新着RSS",
+      "region": "Japan",
+      "ok": true,
+      "count": 15,
+      "error": "",
+      "feedUrl": "https://www.fsa.go.jp/fsaNewsListAll_rss2.xml",
+      "rssItems": [
+        {
+          "title": "その他,「FinTech実証実験ハブ」支援決定案件の実験結果（第13号案件）について公表しました。",
+          "link": "https://www.fsa.go.jp/news/r8/sonota/20260724-4/20260724.html",
+          "publishedAt": "2026-07-27T22:33:59.942Z",
+          "summary": "その他,「FinTech実証実験ハブ」支援決定案件の実験結果（第13号案件）について公表しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」報告書について公表しました。",
+          "link": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+          "publishedAt": "2026-07-27T22:33:59.942Z",
+          "summary": "「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」報告書について公表しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "「中小・地域金融機関向けの総合的な監督指針」等の一部改正（案）に対するパブリックコメントの結果等について公表しました。",
+          "link": "https://www.fsa.go.jp/news/r8/sonota/20260723/20260723.html",
+          "publishedAt": "2026-07-27T22:33:59.942Z",
+          "summary": "「中小・地域金融機関向けの総合的な監督指針」等の一部改正（案）に対するパブリックコメントの結果等について公表しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "その他,無登録で金融商品取引業を行う者の名称等について更新しました。",
+          "link": "https://www.fsa.go.jp/ordinary/chuui/mutouroku.html",
+          "publishedAt": "2026-07-27T22:33:59.942Z",
+          "summary": "その他,無登録で金融商品取引業を行う者の名称等について更新しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "その他,令和８年６月に開催された業界団体との意見交換会において、金融庁が提起した主な論点を公表しました。",
+          "link": "https://www.fsa.go.jp/common/ronten/index.html",
+          "publishedAt": "2026-07-27T22:33:59.942Z",
+          "summary": "その他,令和８年６月に開催された業界団体との意見交換会において、金融庁が提起した主な論点を公表しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "記者会見,片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要（令和８年７月17日）について掲載しました。",
+          "link": "https://www.fsa.go.jp/common/conference/minister/2026b/20260717-1.html",
+          "publishedAt": "2026-07-27T22:33:59.942Z",
+          "summary": "記者会見,片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要（令和８年７月17日）について掲載しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "記者会見,片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要（令和８年７月14日）について掲載しました。",
+          "link": "https://www.fsa.go.jp/common/conference/minister/2026b/20260714-1.html",
+          "publishedAt": "2026-07-27T22:33:59.942Z",
+          "summary": "記者会見,片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要（令和８年７月14日）について掲載しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "記者会見,片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要（令和８年７月21日）について掲載しました。",
+          "link": "https://www.fsa.go.jp/common/conference/minister/2026b/20260721-1.html",
+          "publishedAt": "2026-07-27T22:33:59.941Z",
+          "summary": "記者会見,片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要（令和８年７月21日）について掲載しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "国際関係,FATFによる「暗号資産及び暗号資産サービス・プロバイダー（VASP）に係るFATF基準の実施状況についての報告書」について公表しました。",
+          "link": "https://www.fsa.go.jp/inter/fatf/20260716/20260716.html",
+          "publishedAt": "2026-07-27T22:33:59.941Z",
+          "summary": "国際関係,FATFによる「暗号資産及び暗号資産サービス・プロバイダー（VASP）に係るFATF基準の実施状況についての報告書」について公表しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "その他,つみたて投資枠対象商品の概要を更新しました。",
+          "link": "https://www.fsa.go.jp/policy/nisa2/products/index.html",
+          "publishedAt": "2026-07-27T22:33:59.941Z",
+          "summary": "つみたて投資枠対象商品に関する、様々な資料を掲載しています。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "「資産運用サービスの高度化に向けたプログレスレポート2026」について公表しました。",
+          "link": "https://www.fsa.go.jp/policy/pjlamc/20260724/20260724.html",
+          "publishedAt": "2026-07-27T22:33:59.941Z",
+          "summary": "「資産運用サービスの高度化に向けたプログレスレポート2026」について公表しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        },
+        {
+          "title": "「金融分野における個人情報保護に関するガイドライン」の一部改正（案）に対する意見募集の結果等について公表しました。",
+          "link": "https://www.fsa.go.jp/news/r8/sonota/20260724/20260724.html",
+          "publishedAt": "2026-07-27T22:33:59.941Z",
+          "summary": "「金融分野における個人情報保護に関するガイドライン」の一部改正（案）に対する意見募集の結果等について公表しました。（金融庁 新着RSS、7/28 07:33）",
+          "keywords": []
+        }
+      ]
+    },
+    {
+      "id": "fed",
+      "name": "FRB Press Releases",
+      "region": "Global",
+      "ok": true,
+      "count": 20,
+      "error": "",
+      "feedUrl": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "rssItems": [
+        {
+          "title": "Agencies issue joint statement on handling of highly sensitive information during bank examinations",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260716a.htm",
+          "publishedAt": "2026-07-16T18:00:00.000Z",
+          "summary": "Agencies issue joint statement on handling of highly sensitive information during bank examinations（FRB Press Releases、7/17 03:00）",
+          "keywords": []
+        },
+        {
+          "title": "Federal Reserve Board issues enforcement action with former chief lending officer of Heritage State Bank",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260716a.htm",
+          "publishedAt": "2026-07-16T15:00:00.000Z",
+          "summary": "Federal Reserve Board issues enforcement action with former chief lending officer of Heritage State Bank（FRB Press Releases、7/17 00:00）",
+          "keywords": []
+        },
+        {
+          "title": "Minutes of the Board's discount rate meetings on June 8 and June 17, 2026",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260714a.htm",
+          "publishedAt": "2026-07-14T18:00:00.000Z",
+          "summary": "Minutes of the Board's discount rate meetings on June 8 and June 17, 2026（FRB Press Releases、7/15 03:00）",
+          "keywords": []
+        },
+        {
+          "title": "Federal Reserve announces the leadership and objectives of its task forces to advance the conduct of monetary policy",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260709a.htm",
+          "publishedAt": "2026-07-09T19:00:00.000Z",
+          "summary": "Federal Reserve announces the leadership and objectives of its task forces to advance the conduct of monetary policy（FRB Press Releases、7/10 04:00） 検出テーマ: monetary policy。",
+          "keywords": [
+            "monetary policy"
+          ]
+        },
+        {
+          "title": "Federal Reserve Board issues enforcement action with TS Banking Group, Inc. and TS Contrarian Bancshares, Inc.",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260709a.htm",
+          "publishedAt": "2026-07-09T15:00:00.000Z",
+          "summary": "Federal Reserve Board issues enforcement action with TS Banking Group, Inc. and TS Contrarian Bancshares, Inc.（FRB Press Releases、7/10 00:00）",
+          "keywords": []
+        },
+        {
+          "title": "Minutes of the Federal Open Market Committee, June 16-17, 2026",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260708a.htm",
+          "publishedAt": "2026-07-08T18:00:00.000Z",
+          "summary": "Minutes of the Federal Open Market Committee, June 16-17, 2026（FRB Press Releases、7/9 03:00）",
+          "keywords": []
+        },
+        {
+          "title": "Federal Reserve Board requests comment on a proposal to amend its requirements for banks to maintain anti-money laundering programs",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260707a.htm",
+          "publishedAt": "2026-07-07T19:00:00.000Z",
+          "summary": "Federal Reserve Board requests comment on a proposal to amend its requirements for banks to maintain anti-money laundering programs（FRB Press Releases、7/8 04:00）",
+          "keywords": []
+        },
+        {
+          "title": "Federal Reserve Board issues enforcement action with Small Business Bank and announces termination enforcement actions with BNP Paribas S.A., BNP Paribas USA, Inc., BNP Paribas Securities Corp., and Community Bankshares, Inc.",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260702a.htm",
+          "publishedAt": "2026-07-02T15:00:00.000Z",
+          "summary": "Federal Reserve Board issues enforcement action with Small Business Bank and announces termination enforcement actions with BNP Paribas S.A., BNP Paribas USA, Inc., BNP Paribas Securities Corp., and Community Bankshares, Inc.（FRB Press Releases、7/3 00:00）",
+          "keywords": []
+        },
+        {
+          "title": "Federal Reserve issues initial findings from its 2025 triennial payments study",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/other20260701a.htm",
+          "publishedAt": "2026-07-01T18:30:00.000Z",
+          "summary": "Federal Reserve issues initial findings from its 2025 triennial payments study（FRB Press Releases、7/2 03:30）",
+          "keywords": []
+        },
+        {
+          "title": "Agencies release list of distressed or underserved nonmetropolitan middle-income geographies",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260630a.htm",
+          "publishedAt": "2026-06-30T14:00:00.000Z",
+          "summary": "Agencies release list of distressed or underserved nonmetropolitan middle-income geographies（FRB Press Releases、6/30 23:00）",
+          "keywords": []
+        },
+        {
+          "title": "Federal Reserve Board issues enforcement action with employee of Bank of Eufaula and S N B Bancshares, Inc.",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260625b.htm",
+          "publishedAt": "2026-06-25T15:00:00.000Z",
+          "summary": "Federal Reserve Board issues enforcement action with employee of Bank of Eufaula and S N B Bancshares, Inc.（FRB Press Releases、6/26 00:00）",
+          "keywords": []
+        },
+        {
+          "title": "Federal Reserve Board announces termination of enforcement action with Jiko Group, Inc.",
+          "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260625a.htm",
+          "publishedAt": "2026-06-25T15:00:00.000Z",
+          "summary": "Federal Reserve Board announces termination of enforcement action with Jiko Group, Inc.（FRB Press Releases、6/26 00:00）",
+          "keywords": []
+        }
+      ]
+    },
+    {
+      "id": "bls",
+      "name": "BLS Latest Numbers",
+      "region": "Global",
+      "ok": true,
+      "count": 1,
+      "error": "",
+      "feedUrl": "https://www.bls.gov/feed/bls_latest.rss",
+      "rssItems": [
+        {
+          "title": "Major Economic Indicators Latest Numbers",
+          "link": "https://www.bls.gov/bls/",
+          "publishedAt": "2026-07-22T16:12:18.000Z",
+          "summary": "Consumer Price Index (CPI): -0.4% in Jun 2026 News Release Historical Data Unemployment Rate: 4.2% in Jun 2026 News Release Historical Data Payroll Employment: +57,000(p) in Jun 2026 News Release Historical Data Average Hourly Earnings: +$0.13(p) in Jun 2026 News Release Historical Data Producer Price Index - Final Demand: -0.3%(p) in Jun 2026 News Release H",
+          "keywords": [
+            "CPI",
+            "employment",
+            "payroll",
+            "earnings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ecb",
+      "name": "ECB News",
+      "region": "Global",
+      "ok": true,
+      "count": 15,
+      "error": "",
+      "feedUrl": "https://www.ecb.europa.eu/rss/press.html",
+      "rssItems": [
+        {
+          "title": "Philip R. Lane: Outlook for the euro area economy",
+          "link": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260724~d484b483b9.en.pdf",
+          "publishedAt": "2026-07-24T15:30:00.000Z",
+          "summary": "Philip R. Lane: Outlook for the euro area economy（ECB News、7/25 00:30）",
+          "keywords": []
+        },
+        {
+          "title": "Decisions taken by the Governing Council of the ECB (in addition to decisions setting interest rates)",
+          "link": "https://www.ecb.europa.eu//press/govcdec/otherdec/2026/html/ecb.gc260724~eebbc30622.en.html",
+          "publishedAt": "2026-07-24T13:00:00.000Z",
+          "summary": "Decisions taken by the Governing Council of the ECB (in addition to decisions setting interest rates)（ECB News、7/24 22:00） 検出テーマ: interest rate。",
+          "keywords": [
+            "interest rate"
+          ]
+        },
+        {
+          "title": "ECB to extend use of climate factors in Eurosystem collateral framework to non-financial corporate credit claims",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724_4~f082ce289d.en.html",
+          "publishedAt": "2026-07-24T10:00:00.000Z",
+          "summary": "ECB to extend use of climate factors in Eurosystem collateral framework to non-financial corporate credit claims（ECB News、7/24 19:00）",
+          "keywords": []
+        },
+        {
+          "title": "Results of the June 2026 survey on credit terms and conditions in euro-denominated securities financing and OTC derivatives markets (SESFOD)",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724_3~c0b45e246f.en.html",
+          "publishedAt": "2026-07-24T09:00:00.000Z",
+          "summary": "Results of the June 2026 survey on credit terms and conditions in euro-denominated securities financing and OTC derivatives markets (SESFOD)（ECB News、7/24 18:00）",
+          "keywords": []
+        },
+        {
+          "title": "ECB to start implementing enhanced repo facility for central banks",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724_2~d7d475d2f0.en.html",
+          "publishedAt": "2026-07-24T08:30:00.000Z",
+          "summary": "ECB to start implementing enhanced repo facility for central banks（ECB News、7/24 17:30） 検出テーマ: central bank。",
+          "keywords": [
+            "central bank"
+          ]
+        },
+        {
+          "title": "Results of the ECB Survey of Professional Forecasters for the third quarter of 2026",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724~a099353951.en.html",
+          "publishedAt": "2026-07-24T08:00:00.000Z",
+          "summary": "Results of the ECB Survey of Professional Forecasters for the third quarter of 2026（ECB News、7/24 17:00）",
+          "keywords": []
+        },
+        {
+          "title": "ECB Consumer Expectations Survey results – June 2026",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260724_1~fa277eb6fe.en.html",
+          "publishedAt": "2026-07-24T08:00:00.000Z",
+          "summary": "ECB Consumer Expectations Survey results – June 2026（ECB News、7/24 17:00）",
+          "keywords": []
+        },
+        {
+          "title": "ECB reveals shortlisted designs for new banknotes and launches public survey",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260723~c2d43f9170.en.html",
+          "publishedAt": "2026-07-23T14:15:00.000Z",
+          "summary": "ECB reveals shortlisted designs for new banknotes and launches public survey（ECB News、7/23 23:15）",
+          "keywords": []
+        },
+        {
+          "title": "Christine Lagarde, Boris Vujčić: Monetary policy statement (with Q&A)",
+          "link": "https://www.ecb.europa.eu//press/press_conference/monetary-policy-statement/2026/html/ecb.is260723~b6fadd48f4.en.html",
+          "publishedAt": "2026-07-23T13:00:00.000Z",
+          "summary": "Christine Lagarde, Boris Vujčić: Monetary policy statement (with Q&A)（ECB News、7/23 22:00） 検出テーマ: monetary policy。",
+          "keywords": [
+            "monetary policy"
+          ]
+        },
+        {
+          "title": "Monetary policy decisions",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.mp260723~29f24d99bc.en.html",
+          "publishedAt": "2026-07-23T12:15:00.000Z",
+          "summary": "Monetary policy decisions（ECB News、7/23 21:15） 検出テーマ: monetary policy。",
+          "keywords": [
+            "monetary policy"
+          ]
+        },
+        {
+          "title": "ECB appoints Boris Kisselevsky as Director General Secretariat",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260721_1~8c6ba4c5fb.en.html",
+          "publishedAt": "2026-07-21T14:00:00.000Z",
+          "summary": "ECB appoints Boris Kisselevsky as Director General Secretariat（ECB News、7/21 23:00）",
+          "keywords": []
+        },
+        {
+          "title": "July 2026 euro area bank lending survey",
+          "link": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr260721~44ee50f75c.en.html",
+          "publishedAt": "2026-07-21T08:00:00.000Z",
+          "summary": "July 2026 euro area bank lending survey（ECB News、7/21 17:00）",
+          "keywords": []
+        }
+      ]
+    },
+    {
+      "id": "google-japan-stocks",
+      "name": "Google News: 日本株・企業決算",
+      "region": "Japan",
+      "ok": true,
+      "count": 100,
+      "error": "",
+      "feedUrl": "https://news.google.com/rss/search?q=%28%E6%97%A5%E6%9C%AC%E6%A0%AA+OR+%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87+OR+TOPIX+OR+%E6%B1%BA%E7%AE%97+OR+%E6%A5%AD%E7%B8%BE%E4%BA%88%E6%83%B3+OR+%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": [
+        {
+          "title": "日経平均株価、米半導体株安が重荷（先読み株式相場） - 日本経済新聞",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1XSjVDeVNfZm9ZbU9ubnY4eDhoZUo1SGVMSGdzenotNDVEQ1cxTXBvNXJfbkoxcGlYSV83aTFFZTRWLUZlWGRTTG9RdzFsaFpHWHNBNkNzblpuclN2dEJaYUMyM2hBQ0dvRFRRQg?oc=5",
+          "publishedAt": "2026-07-27T22:30:00.000Z",
+          "summary": "日経平均株価、米半導体株安が重荷（先読み株式相場） &nbsp;&nbsp; 日本経済新聞（Google News: 日本株・企業決算、7/28 07:30） 検出テーマ: 日経平均 / 半導体。",
+          "keywords": [
+            "日経平均",
+            "半導体"
+          ]
+        },
+        {
+          "title": "シンプソン・マニュファクチャリング、2026年第2四半期決算が市場予想を上回り株価上昇 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1hU3ZvSi14bEVXV1RnbHczaVBoRVJDV0lfSFBpRlYzY0FlZ1NuWVVEdTBLRnI4WDdyN2lvMzVQWHB3emVZZ3pYVVNiNGtaNko3Sl9lMHJLNnRxaW9vcEd0R09rMTRkMldvR1ZWT2R4VQ?oc=5",
+          "publishedAt": "2026-07-27T22:15:00.000Z",
+          "summary": "シンプソン・マニュファクチャリング、2026年第2四半期決算が市場予想を上回り株価上昇 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 日本株・企業決算、7/28 07:15） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        },
+        {
+          "title": "TOPIX先物テクニカルポイント（28日夜間取引終了時点） - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1FNnJlRkFVRl8zcl92MzBiUC1BajNzdW5wS0VkVnB4bEFkdi1YOHpfUGNYeUNoS1hQUHFZM3R5VWQ5SzVDTVR4X0s1YzJFaTZFS0E?oc=5",
+          "publishedAt": "2026-07-27T22:10:31.000Z",
+          "summary": "TOPIX先物テクニカルポイント（28日夜間取引終了時点） &nbsp;&nbsp; 株探（Google News: 日本株・企業決算、7/28 07:10） 検出テーマ: TOPIX。",
+          "keywords": [
+            "TOPIX"
+          ]
+        },
+        {
+          "title": "ソフトウェアSなど、7月27日の自社株買い発表(フィスコ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPc2RNOF9KVnFIVzdZazQwSFlTWkJFMGNIM3dXOThNVDdlbWt1eWlnb3JibzUyTGdnR2RHd2UtYXpyREdzeDROZS0xd1BkYm1KZjF3YjNHRDNvWUEyOU9NSjRCX3o0MDFnekFGaW9MWE4yaVlHbjdSME9kRlFEanJiNTd3MjB5cDg?oc=5",
+          "publishedAt": "2026-07-27T22:07:23.000Z",
+          "summary": "ソフトウェアSなど、7月27日の自社株買い発表(フィスコ) &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 日本株・企業決算、7/28 07:07） 検出テーマ: 自社株買い。",
+          "keywords": [
+            "自社株買い"
+          ]
+        },
+        {
+          "title": "本日注目すべき【好決算】銘柄 円谷フィＨＤ、コーテクＨＤ、フジオーゼ (27日引け後 発表分)(株探ニュース) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQOGZWRzRvRk16WVVodUVGeGVwVzREcUNiNHdFdmZndi15UHFiNlNsNTFaMG5VcUhja3NHWWZFbkpNOUlfb19uUWZsd2U1d2Y0dmphODMtSmFVNVFDakxiWDZMQnVjM1VqOFBvVnM3bkJOMnlNbTRRNVMzTnlLWEg3XzdGcjdxeDA?oc=5",
+          "publishedAt": "2026-07-27T22:04:57.000Z",
+          "summary": "本日注目すべき【好決算】銘柄 円谷フィＨＤ、コーテクＨＤ、フジオーゼ (27日引け後 発表分)(株探ニュース) &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 日本株・企業決算、7/28 07:04） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        },
+        {
+          "title": "F5、2026年度第3四半期決算で予想を上回り、見通しを上方修正 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE84aHA0LTFBU01SV0dDR2xMZzdfTXZQa1F3YjY1ZkFkUVJ1RXpZLS1CN0VDR2tNalZpUEM4Nno2ZWo3QkwzMElQOXBEZklLR3dqRUVLT3Jha3V6WmhfeWlPVXdXLXhjT1l6bDkxXzJQRQ?oc=5",
+          "publishedAt": "2026-07-27T22:00:00.000Z",
+          "summary": "F5、2026年度第3四半期決算で予想を上回り、見通しを上方修正 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 日本株・企業決算、7/28 07:00） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        },
+        {
+          "title": "米国株式市場＝まちまち、ハイテク決算見極め 利上げ警戒感も - ロイター",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWThwUmJFZGJBQ1didFI1REVGRm1SRWNHZzdTeE1VZkNxd0ZfUTVoNk93VDEtdTA3SzNsSlNTNHVQdVNnTU8wRklkTC1WQWlnSUZ1Y2VWaGpaVjdoRmFsTmxHMGJwRm9oRW5LTmNXdVg3WFd5U2xUeG4taVRiT1I2OA?oc=5",
+          "publishedAt": "2026-07-27T21:22:58.000Z",
+          "summary": "米国株式市場＝まちまち、ハイテク決算見極め 利上げ警戒感も &nbsp;&nbsp; ロイター（Google News: 日本株・企業決算、7/28 06:22） 検出テーマ: 利上げ / 米国株 / 決算。",
+          "keywords": [
+            "利上げ",
+            "米国株",
+            "決算"
+          ]
+        },
+        {
+          "title": "【決算速報】サン・コミュニティーズ、売上高は予想を下回り、利益は予想を下回る結果に 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9QTG1OcFhvczh4Q3pSaV9ybjFieXNzUVIzd2ZuV3FpakdpeXJyTnF2MFdzNm1GTmJGeXA1M2RmYTVxdERrcXlJakF1aGFhbl9SSnJ5MUlyUTFUS2phMndZbDIxekw?oc=5",
+          "publishedAt": "2026-07-27T21:19:00.000Z",
+          "summary": "【決算速報】サン・コミュニティーズ、売上高は予想を下回り、利益は予想を下回る結果に 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 日本株・企業決算、7/28 06:19） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        },
+        {
+          "title": "【決算速報】ブラウン・アンド・ブラウン、売上高は予想を下回り、利益は予想を下回る結果に 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBoMUtxWGM0c0g2OHpReTFybEpjTXpiU0Y4cTRTYjluZVp1aE53ZnNtb2xwamtreGpZTExrSHZIZENyUVZpZlVXcURNQnBVVzVRdmRjOEhSN2wxcXhRZ2ZkV2lRMmU?oc=5",
+          "publishedAt": "2026-07-27T21:16:00.000Z",
+          "summary": "【決算速報】ブラウン・アンド・ブラウン、売上高は予想を下回り、利益は予想を下回る結果に 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 日本株・企業決算、7/28 06:16） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        },
+        {
+          "title": "【日本株】今期･来期で｢利益＆配当が伸びる高配当株｣の2銘柄！ ともに利回り5％前後で、当期利益予想が前期比10倍の｢グンゼ｣、前期比3倍の｢ダイセル｣に注目 - ダイヤモンド・オンライン",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE0yT0dtUnIzQ3QySExnYTFCdE9ldG83N1FLOWI4TlFkNmIwVmJDX2QtczVkR0JWU0U2S1U0SlluU2NoVTZwYzRxQjJkbEp5Y2xHU3Nr?oc=5",
+          "publishedAt": "2026-07-27T21:15:06.000Z",
+          "summary": "【日本株】今期･来期で｢利益＆配当が伸びる高配当株｣の2銘柄！ ともに利回り5％前後で、当期利益予想が前期比10倍の｢グンゼ｣、前期比3倍の｢ダイセル｣に注目 &nbsp;&nbsp; ダイヤモンド・オンライン（Google News: 日本株・企業決算、7/28 06:15） 検出テーマ: 日本株。",
+          "keywords": [
+            "日本株"
+          ]
+        },
+        {
+          "title": "本日の決算発表予定 … スクリン、カプコン、日東電など 35社 (7月28日) - 株探",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9XQlVMME8yWElyTTFhVXNlYl9uSmxkaEx2U2l1LUMzSUtUdUNrZ040RkVvTXRMNVc4NUVTLXlBRFl5a0tUb2Vrd00zY0d6QWxrVjhoTlV4NWh4amQyVFFjSw?oc=5",
+          "publishedAt": "2026-07-27T21:00:00.000Z",
+          "summary": "本日の決算発表予定 … スクリン、カプコン、日東電など 35社 (7月28日) &nbsp;&nbsp; 株探（Google News: 日本株・企業決算、7/28 06:00） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        },
+        {
+          "title": "【決算速報】ピーパック・グラッドストーン、売上高は予想を上回り、利益は予想を下回る結果に 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE91UnN2dzF2a0NfNG5Rd2hNb1pTaU9rVEVoR1UzUlZyY2M1S2hBUmd5Q3pTMzJHQi0yZUQ2QmQzeGlJd2FZREFXZDhiOTNhQ3hNd2RWWHZnbVJXNkJMMjJubVc3Zks?oc=5",
+          "publishedAt": "2026-07-27T20:40:00.000Z",
+          "summary": "【決算速報】ピーパック・グラッドストーン、売上高は予想を上回り、利益は予想を下回る結果に 執筆 &nbsp;&nbsp; Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース（Google News: 日本株・企業決算、7/28 05:40） 検出テーマ: 決算。",
+          "keywords": [
+            "決算"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-yen-rates",
+      "name": "Google News: 為替・金利",
+      "region": "Japan",
+      "ok": true,
+      "count": 100,
+      "error": "",
+      "feedUrl": "https://news.google.com/rss/search?q=%28%E5%86%86%E7%9B%B8%E5%A0%B4+OR+%E3%83%89%E3%83%AB%E5%86%86+OR+%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9+OR+%E5%9B%BD%E5%82%B5+OR+%E6%97%A5%E9%8A%80%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": [
+        {
+          "title": "賃上げ率が高まると170 円まで円安が進む？ #エキスパートトピ（藤代宏一） - エキスパート - Yahoo!ニュース",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPbE5STXQ3MDBERy13V0xNNGN1bXJUUXk3Q1Z6bmxNeUtRM1pZRzc3aTBEWFRLbEFKVnRvRzIwSnMyR3dnSXlyOEcxX3NiMTlxLUxrRzBxNktkX1pENGJualZ3QkFaY1pSbFZ6aEs4MThwZ05hbTB1T1VBTlk0YjFFRTU0My1EeTJz?oc=5",
+          "publishedAt": "2026-07-27T22:21:47.000Z",
+          "summary": "賃上げ率が高まると170 円まで円安が進む？ #エキスパートトピ（藤代宏一） - エキスパート &nbsp;&nbsp; Yahoo!ニュース（Google News: 為替・金利、7/28 07:21）",
+          "keywords": []
+        },
+        {
+          "title": "１６４円を引き続き意識した展開 今週は日米金融政策会合＝ＮＹ為替概況 - みんかぶ FX/為替",
+          "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9naG5hdGZGSDkxeXpnMkF0RzdYNGtOTXY5bnpGa1dKMFVKZlBJNUcxSm9iQjZ6bl83Um5ZcXEtbVFTYzFGLUNkXw?oc=5",
+          "publishedAt": "2026-07-27T22:12:53.000Z",
+          "summary": "１６４円を引き続き意識した展開 今週は日米金融政策会合＝ＮＹ為替概況 &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 07:12） 検出テーマ: 金融政策 / 為替。",
+          "keywords": [
+            "金融政策",
+            "為替"
+          ]
+        },
+        {
+          "title": "朝のドル円は163.70円台＝東京為替 - みんかぶ FX/為替",
+          "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8wb1JhR1lfNWZXNGRYZTZqU2EtQUNKems4OWMtQzZ2YS1MWUU4MlR2dGh5VTVCZHZGTE5xUzFScVBNU1U0ZFFFbw?oc=5",
+          "publishedAt": "2026-07-27T22:04:39.000Z",
+          "summary": "朝のドル円は163.70円台＝東京為替 &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 07:04） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "ドル円オーダー＝163.50円 OP30日NYカット/OP4日NYカット大きめ｜FX・為替ニュース - ザイFX！",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBUVUJDWWY3STlGXzdGSFd5clJpV1c3UW9sczVvMDFISkxmQ0ZVR0REc01RYlNrcEgya2RHYUZFbnJqaVFOazdjM1A1RUM0UHVyNGc?oc=5",
+          "publishedAt": "2026-07-27T21:28:00.000Z",
+          "summary": "ドル円オーダー＝163.50円 OP30日NYカット/OP4日NYカット大きめ｜FX・為替ニュース &nbsp;&nbsp; ザイFX！（Google News: 為替・金利、7/28 06:28） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "２７日の為替市場の四本値（ポンド円・豪ドル円・カナダ円） - みんかぶ FX/為替",
+          "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBXREU4Qzk1dGZmVzdIS0Z4VDFwZTN0c3JNM3VfYmZ1d2xhdFNEbTk4bUgxZ2dOa1NLSno1bWFUX3dRaDl3dU1XNQ?oc=5",
+          "publishedAt": "2026-07-27T21:21:40.000Z",
+          "summary": "２７日の為替市場の四本値（ポンド円・豪ドル円・カナダ円） &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 06:21） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "２７日の為替市場の四本値（ドル円・ユーロドル・ユーロ円） - みんかぶ FX/為替",
+          "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1EQ3E2X2dEdVl6YTZQN0c2QW5RU2M5T3QtUjRLWXJNZnhsMm81VjlWM21KczRoM085T0d4ZnBBc2RtaTR0cktCNw?oc=5",
+          "publishedAt": "2026-07-27T21:20:40.000Z",
+          "summary": "２７日の為替市場の四本値（ドル円・ユーロドル・ユーロ円） &nbsp;&nbsp; みんかぶ FX/為替（Google News: 為替・金利、7/28 06:20） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "米国債市場概況・27日 10年物国債利回り、4.65％に低下(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPalZsMjNkQlZ4TmdHczgtc2FUdkxyamVCOUk1RXByWjJWTTVGaFpMT1pTVlBudFNPcFRHSmk1NV9lVml5MFJmQzZlaEtUSVJVVWdyWmN0QW5UR3BNM2xSSl9wN0FZQTJvd2ZlR3AwRzBTUWQ0VzIyWDFPc0RPcGx6ZjZ2RnNYT2s?oc=5",
+          "publishedAt": "2026-07-27T21:12:42.000Z",
+          "summary": "米国債市場概況・27日 10年物国債利回り、4.65％に低下(トレーダーズ・ウェブ) &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 為替・金利、7/28 06:12） 検出テーマ: 国債。",
+          "keywords": [
+            "国債"
+          ]
+        },
+        {
+          "title": "ニューヨーク外国為替市場概況・27日 ドル円、小幅続落(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNd3U2c1QxcDlsWmtLTU02SGZxMi0wTVhob1lIanlzNndMODJnX2wzaG1SX1p2SWE5LUdIMngwQi0tU2dXd0VjbTBYMDdmV1VnZTdkSlNDRTQ5eUZOS0tjNGtESjRYcm9tZXB5b0x0TUNRRVBIdjBhM1R2bmJwdHQtdGFLVzJLbHc?oc=5",
+          "publishedAt": "2026-07-27T21:08:02.000Z",
+          "summary": "ニューヨーク外国為替市場概況・27日 ドル円、小幅続落(トレーダーズ・ウェブ) &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 為替・金利、7/28 06:08） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "米ドル/円【USDJPY】：外国為替相場FXレート・チャートをリアルタイム表示 - Yahoo!ファイナンス",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBzbWxqc1ltSU1ndEE0VElnZldUTGdyRVJpOTdKeXBsc0RDSm40dm9kLTJqaDZlOVpoR2E5eEZIX1o0bFR1SFR2N2k4WjRiTnN5dHVBTHJn?oc=5",
+          "publishedAt": "2026-07-27T20:07:32.000Z",
+          "summary": "米ドル/円【USDJPY】：外国為替相場FXレート・チャートをリアルタイム表示 &nbsp;&nbsp; Yahoo!ファイナンス（Google News: 為替・金利、7/28 05:07） 検出テーマ: 為替。",
+          "keywords": [
+            "為替"
+          ]
+        },
+        {
+          "title": "利上げすると暮らし・経済はどう変わる？ ニュースがもっと分かる「金利」のキホン - 日本経済新聞",
+          "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBJWmp0QXdjMGNXbDQwT0c4ZS12WUZQdnBuc2lyWnN5dU9yUHcyVS1MZE43cjBJRXUyb0NwZGIxenZvVEgzOXVsb1NoaTlhV1I0Z190aE00UWJrOGpJc1dSeG1zTXNIOWdWTFYyOU1CMVJjb243VVU0Zk1VaUNXdw?oc=5",
+          "publishedAt": "2026-07-27T20:00:03.000Z",
+          "summary": "利上げすると暮らし・経済はどう変わる？ ニュースがもっと分かる「金利」のキホン &nbsp;&nbsp; 日本経済新聞（Google News: 為替・金利、7/28 05:00） 検出テーマ: 利上げ。",
+          "keywords": [
+            "利上げ"
+          ]
+        },
+        {
+          "title": "東北景況「持ち直し」維持 日銀が7月の金融経済概況を発表 賃上げで個人消費底堅く - 河北新報オンライン",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4wSjgzelJBNXdkV2tZaURXamxMaGtmYlhJUjUzbkh4bzZjTE5xbUlaQ29pMDdUSmJvY2tlOVpzamZ4MHk1N3VOWkIyN3h1QmFNc2NGUEtacVFjeDBueEpzRg?oc=5",
+          "publishedAt": "2026-07-27T20:00:00.000Z",
+          "summary": "東北景況「持ち直し」維持 日銀が7月の金融経済概況を発表 賃上げで個人消費底堅く &nbsp;&nbsp; 河北新報オンライン（Google News: 為替・金利、7/28 05:00）",
+          "keywords": []
+        },
+        {
+          "title": "【テクニカル】乖離ランク＝NZドル円 上昇幅を縮小してランク1位から2位へ後退 - 外為どっとコム",
+          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hbVVXVlc4NkJ2TmNaQnFZc3FxQnIxeEQ1S0VNbm9UZ3AxWE13QmFhdDNydFJsbDdlV0QybmVkei1fWkt5bi1ERF9pX1Z4X3NCQncxN0NON2gyWGNtMnMzNzYyMA?oc=5",
+          "publishedAt": "2026-07-27T19:45:20.000Z",
+          "summary": "【テクニカル】乖離ランク＝NZドル円 上昇幅を縮小してランク1位から2位へ後退 &nbsp;&nbsp; 外為どっとコム（Google News: 為替・金利、7/28 04:45）",
+          "keywords": []
+        }
+      ]
+    },
+    {
+      "id": "google-us-markets",
+      "name": "Google News: 米国株・金利",
+      "region": "Global",
+      "ok": true,
+      "count": 1,
+      "error": "",
+      "feedUrl": "https://news.google.com/rss/search?q=%28US+stocks+OR+S%26P+500+OR+Nasdaq+OR+Treasury+yields+OR+Fed%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": [
+        {
+          "title": "FRBは政策金利据え置きと予想されるが、それは最も重要ではないかもしれない。 - Moomoo",
+          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxONW10TU5Idm9RU3QzbUFGMy1iclFiYm5OSk92WTc1clVyOUlMMUNRNl9oNlFma0ZOMWJsek9BZm1ySllxOG5pTXZULXRFU2dQNVQ1NDctREVHTVlhaDlRTEh0b1YybXlKaW5QYVpKbjBLMGswSkJJNVNOUjhGSWsyaU9kSkNuYlQzZ1I3NzltVy0yTFlraDJ4WVkxSkNiU2dZMFE?oc=5",
+          "publishedAt": "2026-07-27T02:54:10.000Z",
+          "summary": "FRBは政策金利据え置きと予想されるが、それは最も重要ではないかもしれない。 &nbsp;&nbsp; Moomoo（Google News: 米国株・金利、7/27 11:54）",
+          "keywords": []
+        }
+      ]
+    },
+    {
+      "id": "google-commodities-geopolitics",
+      "name": "Google News: 商品・地政学",
+      "region": "Global",
+      "ok": true,
+      "count": 2,
+      "error": "",
+      "feedUrl": "https://news.google.com/rss/search?q=%28oil+prices+OR+gold+OR+semiconductor+stocks+OR+geopolitics+OR+tariffs%29+when%3A1d&hl=ja&gl=JP&ceid=JP%3Aja",
+      "rssItems": [
+        {
+          "title": "CSP Inc (CSPI) 業績予想：将来のEPS＆売上高成長予測 - TradingKey",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9NLXFSUDhBUDlOUV82THp6SXZqX0VSVHFhWlU3Z1NHQU4xTy1Wc1BWRFVNTXdXRTJpM29wZGFTakJfSWZ3X05FMWpYRlh6SE15V2JPN1J5ZGpMUGZsWVVId09nTWNlcmU4V0E?oc=5",
+          "publishedAt": "2026-07-27T14:41:45.000Z",
+          "summary": "CSP Inc (CSPI) 業績予想：将来のEPS＆売上高成長予測 &nbsp;&nbsp; TradingKey（Google News: 商品・地政学、7/27 23:41） 検出テーマ: 業績。",
+          "keywords": [
+            "業績"
+          ]
+        },
+        {
+          "title": "JCI and rupiah seen under pressure after BI governor's resigns - IDNFinancials",
+          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPNDNXb2xReHZITklpOWdIb1pRWlRMNEpZZy1Gcm90NnM4Qm5aNTNQYUtkcDN5SXYyN2JHTGNTeWJmUHloSVc3Zm1mNGc3VGhDUmFQQ283WDJtWUhaQjkxZzh2MVZpbnlpNnBncF9RUWthWWtmZWlkZDB2aWE0S053eFkzUWtmTTB5dUppYURXSTdKMW1nWHd2Nk1GNEd2RjkzT2lkV2hYZk11Q240LWtMbg?oc=5",
+          "publishedAt": "2026-07-27T02:03:00.000Z",
+          "summary": "JCI and rupiah seen under pressure after BI governor's resigns &nbsp;&nbsp; IDNFinancials（Google News: 商品・地政学、7/27 11:03）",
+          "keywords": []
+        }
+      ]
+    }
+  ],
+  "marketErrors": [],
+  "sources": [
+    {
+      "name": "BOJ RSS / BOJ Time-Series Data Search API",
+      "url": "https://www.boj.or.jp/rss.htm"
+    },
+    {
+      "name": "e-Stat / 統計ダッシュボードAPI",
+      "url": "https://dashboard.e-stat.go.jp/static/api"
+    },
+    {
+      "name": "Cabinet Office ESRI release schedule",
+      "url": "https://www.esri.cao.go.jp/en/stat/stat-schedule-e.html"
+    },
+    {
+      "name": "Federal Reserve RSS",
+      "url": "https://www.federalreserve.gov/feeds/feeds.htm"
+    },
+    {
+      "name": "BLS RSS",
+      "url": "https://www.bls.gov/feed/"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07111f" />
+    <meta name="description" content="日本市場の主要指標、ニュース、重要日程を毎朝まとめるマーケットインテリジェンス・ダッシュボード" />
+    <title>MORNING ALPHA | Japan Market Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="MORNING ALPHA トップへ">
+          <span class="brand-mark">M</span>
+          <span><strong>MORNING ALPHA</strong><small>JAPAN MARKET INTELLIGENCE</small></span>
+        </a>
+        <div class="market-status"><span class="live-dot"></span><span id="generatedAt">更新時刻を取得中</span></div>
+        <div class="header-actions">
+          <a class="status-link" href="https://github.com/ohba-t0321/Market-Briefing-Bot/actions" target="_blank" rel="noopener">CLOUD RUN</a>
+          <span class="avatar" aria-hidden="true">AM</span>
+        </div>
+      </header>
+
+      <section class="hero-row" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">MORNING BRIEF / JAPAN</p>
+          <h1 id="heroHeadline">日本市場の変化を、<br /><em>一歩先に読む朝。</em></h1>
+          <p id="heroLede" class="lede">市場データとニュースを取得しています。</p>
+          <div class="hero-meta">
+            <span id="liveBadge" class="status-pill">取得中</span>
+            <span id="marketBadge" class="status-pill">市場確認中</span>
+            <span id="summarySourceBadge" class="status-pill">要約確認中</span>
+          </div>
+        </div>
+        <aside class="signal-panel" aria-labelledby="signalTitle">
+          <div class="signal-head"><span id="signalTitle">TODAY'S SIGNAL</span><b id="signalLabel">WATCH</b></div>
+          <div class="signal-score"><strong id="signalScore">--</strong><span>/ 100<br />警戒度</span></div>
+          <div class="signal-bar"><i id="signalBar"></i></div>
+          <p id="signalCopy">株式・為替・金利と重要ニュースから警戒度を算出します。</p>
+        </aside>
+      </section>
+
+      <section class="metric-section" aria-labelledby="marketTitle">
+        <div class="section-title-row">
+          <div><p class="eyebrow">MARKET PULSE</p><h2 id="marketTitle">主要アセットの推移</h2></div>
+          <button id="refreshBtn" class="quiet-button" type="button">最新データを取得</button>
+        </div>
+        <div id="marketGrid" class="market-grid"></div>
+      </section>
+
+      <section class="main-grid">
+        <div class="left-stack">
+          <article class="panel summary-panel" aria-labelledby="summaryTitle">
+            <div class="panel-heading"><div><p class="eyebrow">AI MORNING DIGEST</p><h2 id="summaryTitle">今朝の要点</h2></div><span class="panel-index">01</span></div>
+            <ol id="summaryList" class="summary-list"></ol>
+          </article>
+
+          <article class="panel news-panel" aria-labelledby="newsTitle">
+            <div class="panel-heading news-heading">
+              <div><p class="eyebrow">MARKET MOVERS</p><h2 id="newsTitle">運用に効くニュース</h2></div>
+              <label class="search"><span aria-hidden="true">⌕</span><input id="newsSearch" type="search" placeholder="ニュースを絞り込む" aria-label="ニュース検索" /></label>
+            </div>
+            <div class="news-toolbar"><span id="newsCount">--</span><span>重要度順・出典リンク付き</span></div>
+            <div id="newsList" class="news-list"></div>
+          </article>
+        </div>
+
+        <aside class="right-stack">
+          <section class="panel command-panel" aria-labelledby="commandTitle">
+            <div class="panel-heading"><div><p class="eyebrow">CLOUD RESEARCH DESK</p><h2 id="commandTitle">朝のリサーチ</h2></div><span class="runner-status"><i></i> GITHUB READY</span></div>
+            <p class="panel-copy">一次情報と市場データをクラウドで収集し、OpenAI要約と朝会資料へ反映します。</p>
+            <div class="command-actions">
+              <button id="researchBtn" type="button"><span>01</span><span><b>最新ニュースを検索</b><small>市場データも再取得</small></span><i>→</i></button>
+              <button id="summarizeBtn" type="button"><span>02</span><span><b>AI要約を確認</b><small>事実・市場反応・確認点</small></span><i>→</i></button>
+              <button id="downloadBtn" type="button"><span>03</span><span><b>朝会スライドを生成</b><small>PPTX形式でダウンロード</small></span><i>→</i></button>
+            </div>
+            <div id="actionStatus" class="notice" role="status">平日6:30 JSTにクラウド更新します。</div>
+          </section>
+
+          <section class="panel calendar-panel" aria-labelledby="eventTitle">
+            <div class="panel-heading"><div><p class="eyebrow">NEXT CATALYSTS</p><h2 id="eventTitle">重要イベント</h2></div><span class="panel-index">02</span></div>
+            <div id="eventList" class="event-list"></div>
+          </section>
+
+          <section class="panel sources-panel" aria-labelledby="sourceTitle">
+            <div class="panel-heading"><div><p class="eyebrow">SOURCE HEALTH</p><h2 id="sourceTitle">取得元と稼働状況</h2></div><span class="panel-index">03</span></div>
+            <div id="sourceList" class="source-list"></div>
+          </section>
+        </aside>
+      </section>
+
+      <footer>
+        <span>MORNING ALPHA</span>
+        <p>情報提供のみを目的とし、投資判断を勧誘するものではありません。数値は各出典の公表時点。</p>
+        <div><a href="https://www.boj.or.jp/" target="_blank" rel="noopener">日本銀行</a><a href="https://www.jpx.co.jp/" target="_blank" rel="noopener">JPX</a><a href="https://www.stat.go.jp/" target="_blank" rel="noopener">総務省統計局</a></div>
+      </footer>
+    </main>
+
+    <template id="marketTemplate">
+      <article class="market-card">
+        <div class="market-top"><h3></h3><span class="change"></span></div>
+        <div class="market-value"></div>
+        <div class="market-chart" aria-label="直近の値動き"></div>
+        <p class="market-source"></p>
+      </article>
+    </template>
+    <script src="app.js"></script>
+    <script src="design.js"></script>
+  </body>
+</html>
